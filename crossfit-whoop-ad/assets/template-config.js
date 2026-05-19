@@ -1,0 +1,60 @@
+window.__TEMPLATE_CONFIG__ = {
+  "version": 1,
+  "name": "crossfit-whoop-vertical-ad",
+  "format": {
+    "width": 2160,
+    "height": 3840,
+    "fps": 30,
+    "duration": 30,
+    "output": "renders/crossfit-whoop-ad-template.mp4"
+  },
+  "media": {
+    "videoA": {
+      "src": "assets/training-a.mov",
+      "source": "",
+      "mediaStart": 1.2,
+      "duration": 15.2
+    },
+    "videoB": {
+      "src": "assets/training-b.mov",
+      "source": "",
+      "mediaStart": 8,
+      "duration": 15.3
+    },
+    "whoopCapture": {
+      "src": "assets/whoop-source.mp4",
+      "source": "",
+      "enabled": true
+    },
+    "audio": {
+      "src": "assets/training-b.mov",
+      "source": "",
+      "mediaStart": 8,
+      "volume": 0.78
+    }
+  },
+  "layout": {
+    "subjectArea": "center",
+    "hudPosition": "right",
+    "dataDensity": "balanced"
+  },
+  "copy": {
+    "brandLine": "Live strain broadcast",
+    "heroLabel": "CrossFit Training",
+    "heroHeadline": "Every rep has a signal",
+    "heroCopy": "Heart rate, strain, recovery, and output move with the athlete in real time.",
+    "scene2Label": "Block 01: Engine",
+    "scene2Headline": "Find the redline",
+    "scene2Copy": "The workout stops being guesswork when the live signal is on screen.",
+    "scene3Label": "Block 02: Work capacity",
+    "scene3Headline": "Output you can feel",
+    "scene4Label": "Block 03: Control",
+    "scene4Headline": "Push hard, recover smarter",
+    "scene4Copy": "The next interval is built from the last one: strain rising, recovery protected.",
+    "finalBrandLine": "Real time training intelligence",
+    "finalLabel": "End state: Ready for the next session",
+    "finalHeadline": "Train where the data says go",
+    "finalTag": "CrossFit",
+    "finalCopy": "measured live. Effort made visible."
+  }
+};

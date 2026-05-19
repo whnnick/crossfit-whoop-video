@@ -1,0 +1,15 @@
+{
+  "name": "crossfit-whoop-ad",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes@0.6.22 preview",
+    "check": "npx --yes hyperframes@0.6.22 lint && npx --yes hyperframes@0.6.22 validate && npx --yes hyperframes@0.6.22 inspect",
+    "render": "npx --yes hyperframes@0.6.22 render",
+    "publish": "npx --yes hyperframes@0.6.22 publish",
+    "whoop:auth": "node scripts/whoop-auth.mjs",
+    "whoop:fetch": "node scripts/fetch-whoop-data.mjs",
+    "template:apply": "node scripts/apply-template.mjs",
+    "template:render": "node scripts/render-template.mjs"
+  }
+}

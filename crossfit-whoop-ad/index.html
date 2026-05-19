@@ -1,0 +1,1562 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=2160, height=3840" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="assets/template-config.js"></script>
+    <script src="assets/whoop-data.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #050605;
+        color: #f4f1e8;
+        font-family: Inter, Arial, Helvetica, sans-serif;
+      }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #050605;
+      }
+
+      video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background: #050605;
+      }
+
+      .training-video {
+        filter: contrast(1.16) saturate(0.88) brightness(0.66);
+      }
+
+      #video-a {
+        z-index: 1;
+      }
+
+      #video-b {
+        z-index: 2;
+      }
+
+      .capture-video {
+        z-index: 8;
+        inset: auto 116px 126px auto;
+        width: 430px;
+        height: 242px;
+        object-fit: cover;
+        border: 1px solid rgba(199, 255, 0, 0.5);
+        border-radius: 6px;
+        opacity: 0.84;
+        filter: contrast(1.1) brightness(0.76) saturate(0.9);
+      }
+
+      .grade,
+      .grain,
+      .grid,
+      .scan {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      .grade {
+        z-index: 3;
+        background:
+          radial-gradient(circle at 18% 28%, rgba(199, 255, 0, 0.18), transparent 28%),
+          radial-gradient(circle at 86% 72%, rgba(255, 59, 31, 0.22), transparent 28%),
+          linear-gradient(90deg, rgba(5, 6, 5, 0.72), rgba(5, 6, 5, 0.16) 44%, rgba(5, 6, 5, 0.82));
+        mix-blend-mode: normal;
+      }
+
+      .grain {
+        z-index: 5;
+        opacity: 0.18;
+        background-image:
+          repeating-radial-gradient(circle at 17% 22%, rgba(244, 241, 232, 0.16) 0 1px, transparent 1px 4px),
+          repeating-linear-gradient(0deg, rgba(244, 241, 232, 0.08) 0 1px, transparent 1px 5px);
+        mix-blend-mode: overlay;
+      }
+
+      .grid {
+        z-index: 4;
+        opacity: 0.24;
+        background-image:
+          linear-gradient(rgba(199, 255, 0, 0.14) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(199, 255, 0, 0.14) 1px, transparent 1px);
+        background-size: 96px 96px;
+        mask-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.72) 34%, transparent 82%);
+      }
+
+      .scan {
+        z-index: 6;
+        opacity: 0.12;
+        background: repeating-linear-gradient(180deg, rgba(244, 241, 232, 0.12) 0 1px, transparent 1px 5px);
+      }
+
+      .scene {
+        position: absolute;
+        inset: 0;
+        z-index: 20;
+        overflow: hidden;
+      }
+
+      .s2,
+      .s3,
+      .s4,
+      .s5 {
+        opacity: 0;
+      }
+
+      .scene-content {
+        width: 100%;
+        height: 100%;
+        padding: 98px 116px 94px;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+      }
+
+      .scene-label {
+        display: inline-flex;
+        width: fit-content;
+        padding: 9px 13px;
+        border-left: 6px solid #c7ff00;
+        background: rgba(5, 6, 5, 0.88);
+        font-family: SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 22px;
+        line-height: 1;
+        color: #f4f1e8;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .scene-label::before {
+        content: attr(data-label);
+      }
+
+      .brand-row {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        color: #f4f1e8;
+        font-family: SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 20px;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        width: 86px;
+        height: 32px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(244, 241, 232, 0.72);
+        border-radius: 16px;
+        color: #f4f1e8;
+        background: #050605;
+        font-family: Arial Black, Impact, sans-serif;
+        font-size: 18px;
+      }
+
+      .brand-mark::before {
+        content: attr(data-label);
+      }
+
+      .headline {
+        max-width: 1040px;
+        font-family: Arial Black, Impact, sans-serif;
+        font-size: 126px;
+        line-height: 0.9;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        color: #f4f1e8;
+        text-shadow: 0 18px 48px rgba(0, 0, 0, 0.48);
+      }
+
+      .copy {
+        max-width: 720px;
+        font-size: 31px;
+        line-height: 1.18;
+        color: #f4f1e8;
+        font-weight: 700;
+        width: fit-content;
+        padding: 10px 14px;
+        border-radius: 4px;
+        background: rgba(5, 6, 5, 0.72);
+      }
+
+      .copy::before {
+        content: attr(data-copy);
+      }
+
+      .s1 .scene-content {
+        justify-content: space-between;
+      }
+
+      .s1 .hero-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .s1 .headline {
+        max-width: 1120px;
+        font-size: 142px;
+      }
+
+      .signal-bar {
+        width: 610px;
+        height: 12px;
+        background: rgba(244, 241, 232, 0.15);
+        overflow: hidden;
+      }
+
+      .signal-fill {
+        width: 100%;
+        height: 100%;
+        transform-origin: left center;
+        background: #c7ff00;
+        box-shadow: 0 0 28px rgba(199, 255, 0, 0.72);
+      }
+
+      .hud {
+        position: absolute;
+        z-index: 24;
+        right: 116px;
+        top: 98px;
+        width: 438px;
+        padding: 24px;
+        border: 1px solid rgba(244, 241, 232, 0.26);
+        border-radius: 8px;
+        background: rgba(5, 6, 5, 0.72);
+        backdrop-filter: blur(10px);
+      }
+
+      .hud-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+        font-family: SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 18px;
+        color: #8f9890;
+        text-transform: uppercase;
+      }
+
+      .hud-title::before,
+      .bar-name::before,
+      .tag-chip::before,
+      .tagline::after {
+        content: attr(data-label);
+      }
+
+      .live-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #c7ff00;
+        box-shadow: 0 0 18px rgba(199, 255, 0, 0.88);
+      }
+
+      .metric-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 14px;
+        align-items: end;
+        padding: 16px 0;
+        border-top: 1px solid rgba(244, 241, 232, 0.12);
+      }
+
+      .metric-label {
+        font-family: SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 17px;
+        color: #d9d5c8;
+        text-transform: uppercase;
+      }
+
+      .metric-value {
+        font-family: SFMono-Regular, Menlo, Consolas, monospace;
+        font-variant-numeric: tabular-nums;
+        font-size: 48px;
+        line-height: 0.9;
+        color: #f4f1e8;
+      }
+
+      .metric-value.hot {
+        color: #ff3b1f;
+      }
+
+      .zone-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .zone {
+        height: 10px;
+        background: rgba(244, 241, 232, 0.16);
+        overflow: hidden;
+      }
+
+      .zone span {
+        display: block;
+        height: 100%;
+        width: 100%;
+        transform-origin: left center;
+        background: #c7ff00;
+      }
+
+      .zone.hot span {
+        background: #ff3b1f;
+      }
+
+      .s2 .scene-content,
+      .s4 .scene-content {
+        justify-content: center;
+        gap: 42px;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 520px;
+        gap: 72px;
+        align-items: center;
+      }
+
+      .mega-number {
+        font-family: Arial Black, Impact, sans-serif;
+        font-variant-numeric: tabular-nums;
+        font-size: 242px;
+        line-height: 0.82;
+        color: #c7ff00;
+        text-shadow: 0 18px 70px rgba(199, 255, 0, 0.32);
+      }
+
+      .mega-caption {
+        margin-top: 12px;
+        font-family: SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 24px;
+        color: #f4f1e8;
+        text-transform: uppercase;
+      }
+
+      .ring-wrap {
+        width: 424px;
+        height: 424px;
+        position: relative;
+        display: grid;
+        place-items: center;
+      }
+
+      .ring-wrap svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+      }
+
+      .ring-bg {
+        fill: none;
+        stroke: rgba(244, 241, 232, 0.14);
+        stroke-width: 28;
+      }
+
+      .ring-value {
+        fill: none;
+        stroke: #c7ff00;
+        stroke-width: 28;
+        stroke-linecap: round;
+        stroke-dasharray: 1131;
+        stroke-dashoffset: 1131;
+        filter: drop-shadow(0 0 18px rgba(199, 255, 0, 0.72));
+      }
+
+      .ring-center {
+        text-align: center;
+        font-family: SFMono-Regular, Menlo, Consolas, monospace;
+        text-transform: uppercase;
+      }
+
+      .ring-center strong {
+        display: block;
+        font-family: Arial Black, Impact, sans-serif;
+        font-size: 92px;
+        line-height: 0.9;
+        color: #f4f1e8;
+      }
+
+      .ring-center span {
+        display: block;
+        margin-top: 12px;
+        font-size: 20px;
+        color: #8f9890;
+      }
+
+      .s3 .scene-content {
+        justify-content: space-between;
+      }
+
+      .s3 .headline {
+        max-width: 960px;
+        font-size: 118px;
+      }
+
+      .timeline {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 18px;
+      }
+
+      .timeline-step {
+        min-height: 164px;
+        padding: 22px;
+        border: 1px solid rgba(244, 241, 232, 0.18);
+        border-radius: 8px;
+        background: rgba(5, 6, 5, 0.66);
+      }
+
+      .timeline-step .metric-label {
+        margin-bottom: 16px;
+      }
+
+      .step-value {
+        font-family: Arial Black, Impact, sans-serif;
+        font-variant-numeric: tabular-nums;
+        font-size: 62px;
+        line-height: 0.94;
+        color: #f4f1e8;
+      }
+
+      .step-value.green {
+        color: #c7ff00;
+      }
+
+      .s4 .headline {
+        max-width: 980px;
+      }
+
+      .bar-card {
+        width: 520px;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+      }
+
+      .bar-row {
+        display: grid;
+        grid-template-columns: 92px 1fr 70px;
+        gap: 18px;
+        align-items: center;
+        font-family: SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 18px;
+        color: #f4f1e8;
+      }
+
+      .bar-track {
+        height: 16px;
+        background: rgba(244, 241, 232, 0.14);
+        overflow: hidden;
+      }
+
+      .bar-fill {
+        height: 100%;
+        width: 100%;
+        transform-origin: left center;
+        background: #c7ff00;
+      }
+
+      .bar-row.red .bar-fill {
+        background: #ff3b1f;
+      }
+
+      .s5 .scene-content {
+        justify-content: center;
+        align-items: flex-start;
+        gap: 34px;
+      }
+
+      .s5 .headline {
+        max-width: 1280px;
+        font-size: 132px;
+      }
+
+      .tagline {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+        font-family: SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 24px;
+        color: #f4f1e8;
+        text-transform: uppercase;
+      }
+
+      .tagline span {
+        padding: 5px 10px;
+        border-radius: 4px;
+        border: 1px solid rgba(199, 255, 0, 0.72);
+        background: #050605;
+        color: #f4f1e8;
+      }
+
+      .persistent-strip {
+        position: absolute;
+        z-index: 26;
+        left: 116px;
+        right: 116px;
+        bottom: 46px;
+        height: 58px;
+        display: grid;
+        grid-template-columns: 1.1fr 1fr 1fr 1fr 1.2fr;
+        align-items: center;
+        border-top: 1px solid rgba(244, 241, 232, 0.22);
+        border-bottom: 1px solid rgba(244, 241, 232, 0.22);
+        background: rgba(5, 6, 5, 0.54);
+        backdrop-filter: blur(8px);
+        font-family: SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 18px;
+        color: #f4f1e8;
+        text-transform: uppercase;
+      }
+
+      .persistent-strip div {
+        padding: 0 20px;
+        border-right: 1px solid rgba(244, 241, 232, 0.14);
+        white-space: nowrap;
+      }
+
+      .persistent-strip div:last-child {
+        border-right: 0;
+      }
+
+      .persistent-strip strong {
+        color: #c7ff00;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .transition {
+        position: absolute;
+        inset: 0;
+        z-index: 60;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .transition .blade {
+        position: absolute;
+        inset: 0;
+        transform-origin: left center;
+        background: #c7ff00;
+        box-shadow: 0 0 42px rgba(199, 255, 0, 0.68);
+      }
+
+      .transition .black-blade {
+        position: absolute;
+        inset: 0;
+        transform-origin: right center;
+        background: #050605;
+      }
+
+      .corner-code {
+        position: absolute;
+        z-index: 27;
+        right: 116px;
+        bottom: 126px;
+        font-family: SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 18px;
+        color: rgba(244, 241, 232, 0.62);
+        text-transform: uppercase;
+      }
+
+      .fx-layer,
+      .energy-field,
+      .impact-flash,
+      .chroma-slice,
+      .speed-lines,
+      .focus-frame,
+      .pulse-ring,
+      .sensor-sweep {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      .fx-layer {
+        z-index: 18;
+        overflow: hidden;
+      }
+
+      .energy-field {
+        opacity: 0.16;
+        mix-blend-mode: screen;
+        background:
+          radial-gradient(circle at 50% 34%, rgba(199, 255, 0, 0.42), transparent 18%),
+          radial-gradient(circle at 26% 70%, rgba(255, 59, 31, 0.3), transparent 24%),
+          repeating-linear-gradient(105deg, transparent 0 44px, rgba(199, 255, 0, 0.16) 45px 47px, transparent 48px 96px);
+      }
+
+      .impact-flash {
+        opacity: 0;
+        background: rgba(244, 241, 232, 0.58);
+        mix-blend-mode: overlay;
+      }
+
+      .chroma-slice {
+        opacity: 0;
+        background:
+          linear-gradient(90deg, transparent 0 10%, rgba(199, 255, 0, 0.42) 10% 13%, transparent 13% 55%, rgba(255, 59, 31, 0.34) 55% 58%, transparent 58%),
+          repeating-linear-gradient(180deg, transparent 0 118px, rgba(244, 241, 232, 0.2) 119px 122px, transparent 123px 260px);
+        mix-blend-mode: screen;
+      }
+
+      .speed-lines {
+        opacity: 0.18;
+        background: repeating-linear-gradient(96deg, transparent 0 74px, rgba(244, 241, 232, 0.24) 75px 77px, transparent 78px 160px);
+        transform-origin: center;
+        mix-blend-mode: soft-light;
+      }
+
+      .focus-frame {
+        inset: 132px;
+        border: 2px solid rgba(199, 255, 0, 0.62);
+        opacity: 0;
+        box-shadow: inset 0 0 80px rgba(199, 255, 0, 0.16), 0 0 50px rgba(199, 255, 0, 0.18);
+      }
+
+      .focus-frame::before,
+      .focus-frame::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: rgba(244, 241, 232, 0.52);
+      }
+
+      .focus-frame::before {
+        top: 33%;
+      }
+
+      .focus-frame::after {
+        bottom: 33%;
+      }
+
+      .pulse-ring {
+        inset: auto auto 920px 310px;
+        width: 780px;
+        height: 780px;
+        border: 22px solid rgba(255, 59, 31, 0.66);
+        border-radius: 50%;
+        opacity: 0;
+        box-shadow: 0 0 90px rgba(255, 59, 31, 0.5);
+      }
+
+      .sensor-sweep {
+        opacity: 0;
+        background: linear-gradient(180deg, transparent, rgba(199, 255, 0, 0.34), transparent);
+        height: 420px;
+        top: -460px;
+        mix-blend-mode: screen;
+      }
+
+      /* 9:16 vertical 4K artboard */
+      html,
+      body,
+      #root {
+        width: 2160px;
+        height: 3840px;
+      }
+
+      .training-video {
+        filter: contrast(1.22) saturate(0.95) brightness(0.62);
+      }
+
+      .grade {
+        background:
+          radial-gradient(circle at 50% 22%, rgba(199, 255, 0, 0.18), transparent 20%),
+          radial-gradient(circle at 74% 72%, rgba(255, 59, 31, 0.22), transparent 24%),
+          linear-gradient(180deg, rgba(5, 6, 5, 0.2), rgba(5, 6, 5, 0.58) 54%, rgba(5, 6, 5, 0.86));
+      }
+
+      .grid {
+        background-size: 132px 132px;
+        mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.76) 42%, transparent 92%);
+      }
+
+      .scene-content {
+        padding: 220px 150px 220px;
+      }
+
+      .brand-row {
+        gap: 28px;
+        font-size: 34px;
+      }
+
+      .brand-mark {
+        width: 148px;
+        height: 54px;
+        border-radius: 28px;
+        font-size: 30px;
+      }
+
+      .scene-label {
+        padding: 18px 22px;
+        border-left-width: 10px;
+        font-size: 34px;
+      }
+
+      .headline {
+        max-width: 1700px;
+        font-size: 188px;
+        line-height: 0.92;
+        text-shadow: 0 34px 110px rgba(0, 0, 0, 0.58);
+      }
+
+      .s1 .headline {
+        max-width: 1780px;
+        font-size: 228px;
+      }
+
+      .copy {
+        max-width: 1280px;
+        padding: 20px 26px;
+        font-size: 54px;
+        line-height: 1.15;
+      }
+
+      .s1 .hero-stack {
+        gap: 56px;
+        margin-bottom: 330px;
+      }
+
+      .signal-bar {
+        width: 1160px;
+        height: 24px;
+      }
+
+      .split {
+        grid-template-columns: 1fr;
+        gap: 96px;
+        align-items: end;
+      }
+
+      .hud {
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 100%;
+        padding: 46px;
+        border-width: 2px;
+        border-radius: 10px;
+      }
+
+      .hud-top {
+        margin-bottom: 44px;
+        font-size: 30px;
+      }
+
+      .live-dot {
+        width: 18px;
+        height: 18px;
+      }
+
+      .metric-row {
+        padding: 32px 0;
+      }
+
+      .metric-label {
+        font-size: 30px;
+      }
+
+      .metric-value {
+        font-size: 96px;
+      }
+
+      .zone-stack {
+        gap: 18px;
+        margin-top: 24px;
+      }
+
+      .zone {
+        height: 22px;
+      }
+
+      .s2 .scene-content,
+      .s4 .scene-content {
+        justify-content: flex-end;
+        padding-bottom: 410px;
+      }
+
+      .s3 .scene-content {
+        justify-content: space-between;
+        padding-bottom: 360px;
+      }
+
+      .s3 .headline {
+        max-width: 1600px;
+        font-size: 184px;
+      }
+
+      .timeline {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        max-width: 1120px;
+      }
+
+      .timeline-step {
+        min-height: 250px;
+        padding: 40px;
+        border-width: 2px;
+        border-radius: 10px;
+      }
+
+      .timeline-step .metric-label {
+        margin-bottom: 28px;
+      }
+
+      .step-value {
+        font-size: 108px;
+      }
+
+      .capture-video {
+        inset: auto 150px 1020px auto;
+        width: 760px;
+        height: 1352px;
+        border-width: 2px;
+        border-radius: 10px;
+        opacity: 0.9;
+      }
+
+      .corner-code {
+        right: 150px;
+        bottom: 248px;
+        font-size: 30px;
+      }
+
+      .bar-card {
+        width: 100%;
+        gap: 34px;
+      }
+
+      .bar-row {
+        grid-template-columns: 160px 1fr 110px;
+        gap: 28px;
+        font-size: 34px;
+      }
+
+      .bar-track {
+        height: 30px;
+      }
+
+      .ring-wrap {
+        width: 720px;
+        height: 720px;
+        margin-top: 34px;
+        justify-self: center;
+      }
+
+      .ring-center strong {
+        font-size: 144px;
+      }
+
+      .ring-center span {
+        font-size: 34px;
+      }
+
+      .s5 .scene-content {
+        justify-content: center;
+        gap: 62px;
+      }
+
+      .s5 .headline {
+        max-width: 1780px;
+        font-size: 218px;
+      }
+
+      .tagline {
+        flex-wrap: wrap;
+        gap: 28px;
+        max-width: 1480px;
+        font-size: 42px;
+        line-height: 1.2;
+      }
+
+      .tagline span {
+        padding: 10px 18px;
+      }
+
+      .persistent-strip {
+        left: 92px;
+        right: 92px;
+        bottom: 78px;
+        height: 230px;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 1fr;
+        font-size: 32px;
+      }
+
+      .persistent-strip div {
+        padding: 0 30px;
+        border-right: 1px solid rgba(244, 241, 232, 0.14);
+        border-bottom: 1px solid rgba(244, 241, 232, 0.14);
+      }
+
+      .persistent-strip div:last-child {
+        grid-column: 1 / -1;
+      }
+
+      /* Keep WHOOP data secondary so the athlete footage remains dominant. */
+      .copy {
+        max-width: 1040px;
+        background: rgba(5, 6, 5, 0.46);
+      }
+
+      .hud {
+        width: 720px;
+        margin-left: auto;
+        padding: 30px;
+        background: rgba(5, 6, 5, 0.46);
+        backdrop-filter: blur(6px);
+      }
+
+      .hud-top {
+        margin-bottom: 22px;
+        font-size: 24px;
+      }
+
+      .metric-row {
+        padding: 20px 0;
+      }
+
+      .metric-label {
+        font-size: 24px;
+      }
+
+      .metric-value {
+        font-size: 66px;
+      }
+
+      .zone-stack {
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .zone {
+        height: 12px;
+      }
+
+      .timeline {
+        max-width: 780px;
+        gap: 14px;
+      }
+
+      .timeline-step {
+        min-height: 128px;
+        padding: 22px 26px;
+        background: rgba(5, 6, 5, 0.42);
+      }
+
+      .timeline-step .metric-label {
+        margin-bottom: 10px;
+      }
+
+      .step-value {
+        font-size: 60px;
+      }
+
+      .capture-video {
+        inset: auto 118px 650px auto;
+        width: 430px;
+        height: 764px;
+        opacity: 0.62;
+      }
+
+      .bar-card {
+        width: 780px;
+        margin-left: auto;
+        gap: 18px;
+        padding: 24px 28px;
+        border: 1px solid rgba(244, 241, 232, 0.14);
+        background: rgba(5, 6, 5, 0.38);
+        backdrop-filter: blur(6px);
+      }
+
+      .bar-row {
+        grid-template-columns: 112px 1fr 82px;
+        gap: 18px;
+        font-size: 24px;
+      }
+
+      .bar-track {
+        height: 18px;
+      }
+
+      .ring-wrap {
+        width: 360px;
+        height: 360px;
+        margin: 18px 0 0 auto;
+      }
+
+      .ring-bg,
+      .ring-value {
+        stroke-width: 20;
+      }
+
+      .ring-center strong {
+        font-size: 74px;
+      }
+
+      .ring-center span {
+        font-size: 22px;
+      }
+
+      .persistent-strip {
+        left: 150px;
+        right: 150px;
+        bottom: 92px;
+        height: 92px;
+        grid-template-columns: repeat(3, 1fr);
+        font-size: 28px;
+        background: rgba(5, 6, 5, 0.42);
+      }
+
+      .persistent-strip div {
+        padding: 0 24px;
+        border-bottom: 0;
+      }
+
+      .persistent-strip div:first-child,
+      .persistent-strip div:last-child {
+        display: none;
+      }
+
+      body[data-subject-area="left"] .hud,
+      body[data-subject-area="left"] .bar-card,
+      body[data-subject-area="left"] .ring-wrap {
+        margin-left: auto;
+        margin-right: 0;
+      }
+
+      body[data-subject-area="right"] .hud,
+      body[data-subject-area="right"] .bar-card,
+      body[data-subject-area="right"] .ring-wrap,
+      body[data-hud-position="left"] .hud,
+      body[data-hud-position="left"] .bar-card,
+      body[data-hud-position="left"] .ring-wrap {
+        margin-left: 0;
+        margin-right: auto;
+      }
+
+      body[data-subject-area="right"] .capture-video,
+      body[data-hud-position="left"] .capture-video {
+        right: auto;
+        left: 118px;
+      }
+
+      body[data-data-density="minimal"] .capture-video,
+      body[data-data-density="minimal"] .timeline,
+      body[data-data-density="minimal"] .bar-card {
+        opacity: 0;
+      }
+
+      body[data-data-density="minimal"] .persistent-strip {
+        background: rgba(5, 6, 5, 0.28);
+      }
+
+      .transition .blade {
+        background:
+          linear-gradient(90deg, rgba(5, 6, 5, 0) 0 12%, #c7ff00 12% 70%, rgba(244, 241, 232, 0.9) 70% 76%, #ff3b1f 76% 100%);
+      }
+
+      .transition .black-blade {
+        background:
+          repeating-linear-gradient(180deg, rgba(244, 241, 232, 0.18) 0 2px, transparent 2px 14px),
+          #050605;
+      }
+
+      .transition::before,
+      .transition::after {
+        content: "";
+        position: absolute;
+        z-index: 3;
+        left: -15%;
+        width: 130%;
+        height: 44px;
+        background: #f4f1e8;
+        opacity: 0.72;
+        transform: rotate(-10deg);
+        box-shadow: 0 0 56px rgba(244, 241, 232, 0.55);
+      }
+
+      .transition::before {
+        top: 34%;
+      }
+
+      .transition::after {
+        top: 58%;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="30"
+      data-width="2160"
+      data-height="3840"
+    >
+      <video
+        id="video-a"
+        class="training-video"
+        data-start="0"
+        data-duration="15.2"
+        data-track-index="0"
+        data-media-start="1.2"
+        src="assets/training-a.mov"
+        muted
+        playsinline
+      ></video>
+      <video
+        id="video-b"
+        class="training-video"
+        data-start="14.7"
+        data-duration="15.3"
+        data-track-index="1"
+        data-media-start="8"
+        src="assets/training-b.mov"
+        muted
+        playsinline
+      ></video>
+      <video
+        id="whoop-capture"
+        class="capture-video"
+        data-start="12.2"
+        data-duration="6.4"
+        data-track-index="2"
+        src="assets/whoop-source.mp4"
+        muted
+        playsinline
+      ></video>
+      <audio
+        id="training-audio"
+        data-start="0"
+        data-duration="30"
+        data-track-index="3"
+        data-media-start="8"
+        data-volume="0.78"
+        src="assets/training-b.mov"
+      ></audio>
+
+      <div class="grade"></div>
+      <div class="grid"></div>
+      <div class="scan"></div>
+      <div class="grain"></div>
+      <div class="fx-layer" data-layout-ignore>
+        <div class="energy-field"></div>
+        <div class="speed-lines"></div>
+        <div class="chroma-slice"></div>
+        <div class="impact-flash"></div>
+        <div class="focus-frame"></div>
+        <div class="pulse-ring"></div>
+        <div class="sensor-sweep"></div>
+      </div>
+
+      <div id="strip" class="clip persistent-strip" data-start="0" data-duration="30" data-track-index="30">
+        <div>WHOOP LIVE <strong id="strip-live">ON</strong></div>
+        <div>HR <strong id="strip-hr">128</strong></div>
+        <div>STRAIN <strong id="strip-strain">7.2</strong></div>
+        <div>RECOVERY <strong id="strip-rec">86%</strong></div>
+        <div>SESSION <strong>METCON 30</strong></div>
+      </div>
+
+      <section id="scene-1" class="clip scene s1" data-start="0" data-duration="6" data-track-index="10">
+        <div class="scene-content">
+          <div class="brand-row">
+            <div class="brand-mark" data-label="WHOOP"></div>
+            <div>Live strain broadcast</div>
+          </div>
+          <div class="hero-stack">
+            <div class="scene-label" data-label="CrossFit Training"></div>
+            <h1 class="headline">Every rep has a signal</h1>
+            <p class="copy" data-copy="Heart rate, strain, recovery, and output move with the athlete in real time."></p>
+            <div class="signal-bar"><div class="signal-fill"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene-2" class="clip scene s2" data-start="5.72" data-duration="6.18" data-track-index="11">
+        <div class="scene-content">
+          <div class="split">
+            <div>
+              <div class="scene-label" data-label="Block 01: Engine"></div>
+              <h2 class="headline">Find the redline</h2>
+              <p class="copy" data-copy="The workout stops being guesswork when the live signal is on screen."></p>
+            </div>
+            <div class="hud">
+              <div class="hud-top"><span class="hud-title" data-label="WHOOP Live"></span><span class="live-dot"></span></div>
+              <div class="metric-row">
+                <div class="metric-label">Heart rate</div>
+                <div class="metric-value hot"><span id="hr-main">154</span></div>
+              </div>
+              <div class="metric-row">
+                <div class="metric-label">Strain</div>
+                <div class="metric-value"><span id="strain-main">10.8</span></div>
+              </div>
+              <div class="zone-stack">
+                <div class="zone"><span class="zone-fill"></span></div>
+                <div class="zone"><span class="zone-fill"></span></div>
+                <div class="zone hot"><span class="zone-fill"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene-3" class="clip scene s3" data-start="11.62" data-duration="6.48" data-track-index="10">
+        <div class="scene-content">
+          <div>
+            <div class="scene-label" data-label="Block 02: Work capacity"></div>
+            <h2 class="headline">Output you can feel</h2>
+          </div>
+          <div class="timeline">
+            <div class="timeline-step">
+              <div class="metric-label">Duration</div>
+              <div class="step-value green"><span id="pace">1:42</span></div>
+            </div>
+            <div class="timeline-step">
+              <div class="metric-label">Calories</div>
+              <div class="step-value"><span id="calories">218</span></div>
+            </div>
+            <div class="timeline-step">
+              <div class="metric-label">Zone 2 time</div>
+              <div class="step-value"><span id="zone-time">03:14</span></div>
+            </div>
+          </div>
+          <div class="corner-code">Sensor feed locked</div>
+        </div>
+      </section>
+
+      <section id="scene-4" class="clip scene s4" data-start="17.82" data-duration="6.38" data-track-index="11">
+        <div class="scene-content">
+          <div class="split">
+            <div>
+              <div class="scene-label" data-label="Block 03: Control"></div>
+              <h2 class="headline">Push hard, recover smarter</h2>
+              <p class="copy" data-copy="The next interval is built from the last one: strain rising, recovery protected."></p>
+            </div>
+            <div class="bar-card">
+              <div class="bar-row">
+                <span class="bar-name" data-label="HRV"></span><div class="bar-track"><div class="bar-fill bar-a"></div></div><strong id="hrv-value">71</strong>
+              </div>
+              <div class="bar-row">
+                <span class="bar-name" data-label="LOAD"></span><div class="bar-track"><div class="bar-fill bar-b"></div></div><strong id="load-value">88</strong>
+              </div>
+              <div class="bar-row red">
+                <span class="bar-name" data-label="PEAK"></span><div class="bar-track"><div class="bar-fill bar-c"></div></div><strong id="peak-value">94</strong>
+              </div>
+              <div class="ring-wrap">
+                <svg viewBox="0 0 424 424" aria-hidden="true">
+                  <circle class="ring-bg" cx="212" cy="212" r="180"></circle>
+                  <circle class="ring-value" id="recovery-ring" cx="212" cy="212" r="180"></circle>
+                </svg>
+                <div class="ring-center"><strong><span id="recovery">86</span>%</strong><span>Recovery</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene-5" class="clip scene s5" data-start="24" data-duration="6" data-track-index="10">
+        <div class="scene-content">
+          <div class="brand-row">
+            <div class="brand-mark" data-label="WHOOP"></div>
+            <div>Real time training intelligence</div>
+          </div>
+          <div class="scene-label" data-label="End state: Ready for the next session"></div>
+          <h2 class="headline">Train where the data says go</h2>
+          <div class="tagline" data-label="measured live. Effort made visible."><span class="tag-chip" data-label="CrossFit"></span></div>
+        </div>
+      </section>
+
+      <div id="transition-1" class="clip transition" data-layout-allow-overflow data-start="5.48" data-duration="0.72" data-track-index="20">
+        <div class="blade"></div>
+        <div class="black-blade"></div>
+      </div>
+      <div id="transition-2" class="clip transition" data-layout-allow-overflow data-start="11.42" data-duration="0.72" data-track-index="21">
+        <div class="blade"></div>
+        <div class="black-blade"></div>
+      </div>
+      <div id="transition-3" class="clip transition" data-layout-allow-overflow data-start="17.62" data-duration="0.72" data-track-index="20">
+        <div class="blade"></div>
+        <div class="black-blade"></div>
+      </div>
+      <div id="transition-4" class="clip transition" data-layout-allow-overflow data-start="23.72" data-duration="0.72" data-track-index="21">
+        <div class="blade"></div>
+        <div class="black-blade"></div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const templateConfig = window.__TEMPLATE_CONFIG__ || {};
+
+      function applyTemplateConfig(config) {
+        const format = config.format || {};
+        const media = config.media || {};
+        const layout = config.layout || {};
+        const copy = config.copy || {};
+
+        document.body.dataset.subjectArea = layout.subjectArea || "center";
+        document.body.dataset.hudPosition = layout.hudPosition || "right";
+        document.body.dataset.dataDensity = layout.dataDensity || "balanced";
+
+        const root = document.querySelector("#root");
+        if (root) {
+          root.dataset.duration = String(format.duration || 30);
+          root.dataset.width = String(format.width || 2160);
+          root.dataset.height = String(format.height || 3840);
+        }
+
+        const videoA = document.querySelector("#video-a");
+        if (videoA && media.videoA) {
+          videoA.src = media.videoA.src || videoA.getAttribute("src");
+          videoA.dataset.mediaStart = String(media.videoA.mediaStart ?? videoA.dataset.mediaStart);
+          videoA.dataset.duration = String(media.videoA.duration ?? videoA.dataset.duration);
+        }
+
+        const videoB = document.querySelector("#video-b");
+        if (videoB && media.videoB) {
+          videoB.src = media.videoB.src || videoB.getAttribute("src");
+          videoB.dataset.mediaStart = String(media.videoB.mediaStart ?? videoB.dataset.mediaStart);
+          videoB.dataset.duration = String(media.videoB.duration ?? videoB.dataset.duration);
+        }
+
+        const whoopCapture = document.querySelector("#whoop-capture");
+        if (whoopCapture && media.whoopCapture) {
+          whoopCapture.src = media.whoopCapture.src || whoopCapture.getAttribute("src");
+          whoopCapture.style.display = media.whoopCapture.enabled === false ? "none" : "";
+        }
+
+        const audio = document.querySelector("#training-audio");
+        if (audio && media.audio) {
+          audio.src = media.audio.src || audio.getAttribute("src");
+          audio.dataset.mediaStart = String(media.audio.mediaStart ?? audio.dataset.mediaStart);
+          audio.dataset.volume = String(media.audio.volume ?? audio.dataset.volume);
+        }
+
+        const setText = (selector, value) => {
+          const el = document.querySelector(selector);
+          if (el && value) el.textContent = value;
+        };
+        const setLabel = (selector, value) => {
+          const el = document.querySelector(selector);
+          if (el && value) el.dataset.label = value;
+        };
+        const setCopy = (selector, value) => {
+          const el = document.querySelector(selector);
+          if (el && value) el.dataset.copy = value;
+        };
+
+        setText(".s1 .brand-row > div:last-child", copy.brandLine);
+        setLabel(".s1 .scene-label", copy.heroLabel);
+        setText(".s1 .headline", copy.heroHeadline);
+        setCopy(".s1 .copy", copy.heroCopy);
+        setLabel(".s2 .scene-label", copy.scene2Label);
+        setText(".s2 .headline", copy.scene2Headline);
+        setCopy(".s2 .copy", copy.scene2Copy);
+        setLabel(".s3 .scene-label", copy.scene3Label);
+        setText(".s3 .headline", copy.scene3Headline);
+        setLabel(".s4 .scene-label", copy.scene4Label);
+        setText(".s4 .headline", copy.scene4Headline);
+        setCopy(".s4 .copy", copy.scene4Copy);
+        setText(".s5 .brand-row > div:last-child", copy.finalBrandLine);
+        setLabel(".s5 .scene-label", copy.finalLabel);
+        setText(".s5 .headline", copy.finalHeadline);
+        setLabel(".tag-chip", copy.finalTag);
+        setLabel(".tagline", copy.finalCopy);
+      }
+
+      applyTemplateConfig(templateConfig);
+
+      function count(selector, from, to, start, duration, decimals, suffix) {
+        const state = { value: from };
+        tl.to(
+          state,
+          {
+            value: to,
+            duration,
+            ease: "power2.out",
+            onUpdate: () => {
+              const el = document.querySelector(selector);
+              if (el) el.textContent = state.value.toFixed(decimals) + suffix;
+            },
+          },
+          start
+        );
+      }
+
+      const whoopMetrics = window.__WHOOP_DATA__?.video_metrics || {};
+      const whoopWorkout = whoopMetrics.workout || {};
+      const whoopRecovery = whoopMetrics.recovery || {};
+      const whoopBody = whoopMetrics.body_measurement || {};
+      const zoneDurations = whoopWorkout.zone_durations || {};
+      const avgHr = Math.round(whoopWorkout.average_heart_rate ?? 100);
+      const maxHr = Math.round(whoopWorkout.max_heart_rate ?? 138);
+      const restHr = Math.round(whoopRecovery.resting_heart_rate ?? 57);
+      const strain = Number(whoopWorkout.strain ?? 11.4);
+      const recoveryScore = Math.round(whoopRecovery.recovery_score ?? 57);
+      const hrv = Math.round(whoopRecovery.hrv_rmssd_milli ?? 35);
+      const maxProfileHr = Math.round(whoopBody.max_heart_rate ?? 184);
+      const peakPercent = Math.round((maxHr / Math.max(maxProfileHr, 1)) * 100);
+      const recordedPercent = Math.round((whoopWorkout.percent_recorded ?? 1) * 100);
+      const calories = Math.round((whoopWorkout.kilojoule ?? 615) / 4.184);
+
+      function elapsedSeconds(start, end) {
+        if (!start || !end) return 0;
+        return Math.max(0, Math.round((Date.parse(end) - Date.parse(start)) / 1000));
+      }
+
+      function mmss(seconds) {
+        const safe = Math.max(0, Math.round(seconds || 0));
+        const minutes = Math.floor(safe / 60);
+        const rest = safe % 60;
+        return `${minutes}:${String(rest).padStart(2, "0")}`;
+      }
+
+      function text(selector, value) {
+        const el = document.querySelector(selector);
+        if (el) el.textContent = String(value);
+      }
+
+      text("#strip-hr", restHr);
+      text("#strip-strain", Math.max(0, strain - 3).toFixed(1));
+      text("#strip-rec", `${recoveryScore}%`);
+      text("#hr-main", avgHr);
+      text("#strain-main", Math.max(0, strain - 1.5).toFixed(1));
+      text("#pace", mmss(elapsedSeconds(whoopWorkout.start, whoopWorkout.end)));
+      text("#calories", calories);
+      text("#zone-time", mmss((zoneDurations.zone_two_milli || 0) / 1000));
+      text("#hrv-value", hrv);
+      text("#load-value", recordedPercent);
+      text("#peak-value", peakPercent);
+      text("#recovery", recoveryScore);
+
+      function transition(id, at) {
+        tl.from(`${id} .blade`, { scaleX: 0, duration: 0.28, ease: "power4.in" }, at);
+        tl.from(`${id} .black-blade`, { scaleX: 0, duration: 0.34, ease: "expo.inOut" }, at + 0.16);
+        tl.fromTo(".chroma-slice", { opacity: 0, x: -180 }, { opacity: 0.72, x: 90, duration: 0.12, ease: "steps(2)", overwrite: "auto" }, at + 0.1);
+        tl.to(".chroma-slice", { opacity: 0, x: 260, duration: 0.16, ease: "power2.out", overwrite: "auto" }, at + 0.24);
+        tl.to(`${id} .blade`, { x: 2160, duration: 0.24, ease: "power3.out" }, at + 0.46);
+        tl.to(`${id} .black-blade`, { x: -2160, duration: 0.24, ease: "power2.out" }, at + 0.48);
+      }
+
+      function impact(at, x, y) {
+        tl.fromTo(".impact-flash", { opacity: 0 }, { opacity: 0.58, duration: 0.05, ease: "none", overwrite: "auto" }, at);
+        tl.to(".impact-flash", { opacity: 0, duration: 0.24, ease: "power2.out", overwrite: "auto" }, at + 0.05);
+        tl.set(".pulse-ring", { left: x, bottom: y }, at);
+        tl.fromTo(".pulse-ring", { scale: 0.18, opacity: 0.78 }, { scale: 1.65, opacity: 0, duration: 0.58, ease: "power3.out" }, at);
+        tl.fromTo(".focus-frame", { opacity: 0, scale: 1.04 }, { opacity: 0.75, scale: 1, duration: 0.08, ease: "none", overwrite: "auto" }, at + 0.02);
+        tl.to(".focus-frame", { opacity: 0, duration: 0.22, ease: "power2.out", overwrite: "auto" }, at + 0.12);
+      }
+
+      tl.from(".grade", { opacity: 0, duration: 0.6, ease: "power2.out" }, 0.1);
+      tl.from(".grid", { x: -80, opacity: 0, duration: 0.8, ease: "expo.out" }, 0.12);
+      tl.from(".persistent-strip", { y: 70, opacity: 0, duration: 0.55, ease: "back.out(1.4)" }, 0.24);
+      tl.to(".grid", { x: -96, duration: 29.08, ease: "none" }, 0.92);
+      tl.to(".scan", { y: 96, duration: 2.8, ease: "sine.inOut", repeat: 10, yoyo: true }, 0);
+      tl.to(".grain", { opacity: 0.26, duration: 1.2, ease: "sine.inOut", repeat: 24, yoyo: true }, 0);
+      tl.to(".energy-field", { y: -180, scale: 1.08, duration: 30, ease: "none" }, 0);
+      tl.to(".speed-lines", { x: -580, y: 160, duration: 2.4, ease: "sine.inOut", repeat: 12, yoyo: true }, 0);
+      tl.fromTo(".sensor-sweep", { y: 0, opacity: 0 }, { y: 4300, opacity: 0.58, duration: 2.1, ease: "power2.inOut", repeat: 6 }, 1.1);
+      tl.to("#video-a", { scale: 1.08, x: -56, y: 82, duration: 5.2, ease: "power1.inOut" }, 0.22);
+      tl.to("#video-a", { scale: 1.14, x: 34, y: -68, duration: 8.2, ease: "power1.inOut" }, 6.1);
+      tl.to("#video-b", { scale: 1.1, x: 44, y: -80, duration: 7.9, ease: "power1.inOut" }, 14.82);
+      tl.to("#video-b", { scale: 1.16, x: -38, y: 96, duration: 6.6, ease: "power1.inOut" }, 23.2);
+      impact(1.55, 320, 1100);
+      impact(7.78, 780, 1560);
+      impact(13.58, 230, 920);
+      impact(20.36, 640, 1240);
+      impact(25.4, 420, 1520);
+
+      tl.from(".s1 .brand-row", { y: -34, opacity: 0, duration: 0.42, ease: "power3.out" }, 0.18);
+      tl.from(".s1 .scene-label", { x: -46, opacity: 0, duration: 0.45, ease: "expo.out" }, 0.34);
+      tl.from(".s1 .headline", { y: 86, scale: 0.96, opacity: 0, duration: 0.66, ease: "back.out(1.15)" }, 0.48);
+      tl.from(".s1 .copy", { x: 52, opacity: 0, duration: 0.48, ease: "power2.out" }, 0.8);
+      tl.from(".s1 .signal-bar", { scaleX: 0, opacity: 0, duration: 0.42, ease: "circ.out" }, 1.0);
+      tl.from(".s1 .signal-fill", { scaleX: 0.08, duration: 3.8, ease: "power1.inOut" }, 1.08);
+
+      transition("#transition-1", 5.48);
+      tl.set("#scene-1", { opacity: 0 }, 6.2);
+      tl.set("#scene-2", { opacity: 1 }, 5.72);
+
+      tl.from(".s2 .scene-label", { x: -64, opacity: 0, duration: 0.44, ease: "expo.out" }, 5.9);
+      tl.from(".s2 .headline", { y: 76, opacity: 0, duration: 0.58, ease: "power4.out" }, 6.02);
+      tl.from(".s2 .copy", { y: 38, opacity: 0, duration: 0.42, ease: "sine.out" }, 6.22);
+      tl.from(".s2 .hud", { x: 92, scale: 0.96, opacity: 0, duration: 0.52, ease: "back.out(1.2)" }, 6.1);
+      tl.from(".s2 .metric-row", { x: 38, opacity: 0, duration: 0.34, stagger: 0.09, ease: "power2.out" }, 6.34);
+      tl.from(".s2 .zone-fill", { scaleX: 0.08, duration: 1.5, stagger: 0.14, ease: "power3.out" }, 6.46);
+      count("#hr-main", avgHr, maxHr, 6.16, 4.7, 0, "");
+      count("#strain-main", Math.max(0, strain - 1.5), strain, 6.16, 4.7, 1, "");
+      count("#strip-hr", restHr, maxHr, 0.9, 10.4, 0, "");
+      count("#strip-strain", Math.max(0, strain - 3), strain, 0.9, 10.4, 1, "");
+
+      transition("#transition-2", 11.42);
+      tl.set("#scene-2", { opacity: 0 }, 12.14);
+      tl.set("#scene-3", { opacity: 1 }, 11.62);
+
+      tl.from(".s3 .scene-label", { y: -36, opacity: 0, duration: 0.38, ease: "power2.out" }, 11.86);
+      tl.from(".s3 .headline", { x: -84, opacity: 0, duration: 0.54, ease: "expo.out" }, 12.0);
+      tl.from(".capture-video", { y: 46, scale: 0.95, opacity: 0, duration: 0.52, ease: "back.out(1.1)" }, 12.16);
+      tl.from(".timeline-step", { y: 74, opacity: 0, duration: 0.48, stagger: 0.12, ease: "power3.out" }, 12.52);
+      tl.from(".corner-code", { x: 34, opacity: 0, duration: 0.32, ease: "circ.out" }, 13.0);
+      count("#calories", Math.max(0, calories - 42), calories, 12.54, 4.5, 0, "");
+
+      transition("#transition-3", 17.62);
+      tl.set("#scene-3", { opacity: 0 }, 18.34);
+      tl.set("#scene-4", { opacity: 1 }, 17.82);
+
+      tl.from(".s4 .scene-label", { x: -52, opacity: 0, duration: 0.4, ease: "expo.out" }, 18.02);
+      tl.from(".s4 .headline", { y: 80, opacity: 0, duration: 0.56, ease: "power4.out" }, 18.14);
+      tl.from(".s4 .copy", { x: 42, opacity: 0, duration: 0.42, ease: "sine.out" }, 18.36);
+      tl.from(".bar-row", { x: 74, opacity: 0, duration: 0.38, stagger: 0.1, ease: "power2.out" }, 18.2);
+      tl.from(".bar-a", { scaleX: 0.2, duration: 1.0, ease: "power3.out" }, 18.52);
+      tl.from(".bar-b", { scaleX: 0.16, duration: 1.15, ease: "power4.out" }, 18.62);
+      tl.from(".bar-c", { scaleX: 0.18, duration: 1.3, ease: "expo.out" }, 18.72);
+      tl.from(".ring-wrap", { scale: 0.88, opacity: 0, duration: 0.48, ease: "back.out(1.2)" }, 18.82);
+      tl.to("#recovery-ring", { strokeDashoffset: 1131 * (1 - recoveryScore / 100), duration: 2.4, ease: "power2.out" }, 19.0);
+      count("#recovery", Math.max(0, recoveryScore - 18), recoveryScore, 19.0, 2.4, 0, "");
+      count("#strip-rec", Math.max(0, recoveryScore - 18), recoveryScore, 18.4, 3.3, 0, "%");
+
+      transition("#transition-4", 23.72);
+      tl.set("#scene-4", { opacity: 0 }, 24.44);
+      tl.set("#scene-5", { opacity: 1 }, 24);
+
+      tl.from(".s5 .brand-row", { y: -42, opacity: 0, duration: 0.42, ease: "power3.out" }, 24.18);
+      tl.from(".s5 .scene-label", { x: -58, opacity: 0, duration: 0.4, ease: "expo.out" }, 24.36);
+      tl.from(".s5 .headline", { y: 92, scale: 0.96, opacity: 0, duration: 0.64, ease: "back.out(1.15)" }, 24.52);
+      tl.from(".tagline", { y: 38, opacity: 0, duration: 0.44, ease: "circ.out" }, 24.86);
+      tl.to(".s5 .scene-content", { opacity: 0, y: -34, duration: 0.5, ease: "power2.in" }, 29.28);
+      tl.to(".persistent-strip", { opacity: 0, y: 42, duration: 0.36, ease: "power2.in" }, 29.34);
+      tl.to(".grade", { opacity: 0.92, duration: 0.42, ease: "power1.in" }, 29.44);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=2160, height=3840" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 2160px;
+        height: 3840px;
+        overflow: hidden;
+        background: #050706;
+        color: #f4f1e8;
+        font-family: Inter, Arial, Helvetica, sans-serif;
+      }
+
+      #flow-whoop-60s {
+        position: relative;
+        width: 2160px;
+        height: 3840px;
+        overflow: hidden;
+        background: #050706;
+      }
+
+      video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background: #050706;
+      }
+
+      .shot {
+        opacity: 0;
+        filter: contrast(1.18) saturate(0.92) brightness(0.76);
+        transform-origin: 50% 50%;
+      }
+
+      .shot.active-grade {
+        filter: contrast(1.24) saturate(0.95) brightness(0.72);
+      }
+
+      .layer,
+      .clip {
+        position: absolute;
+      }
+
+      .grade,
+      .vignette,
+      .grain,
+      .scan,
+      .speed-lines,
+      .edge-grid {
+        inset: 0;
+        pointer-events: none;
+      }
+
+      .grade {
+        z-index: 10;
+        background:
+          radial-gradient(circle at 12% 18%, rgba(199, 255, 0, 0.16), transparent 24%),
+          radial-gradient(circle at 90% 66%, rgba(255, 59, 31, 0.18), transparent 30%),
+          linear-gradient(90deg, rgba(5, 7, 6, 0.7), transparent 42%, rgba(5, 7, 6, 0.72));
+        mix-blend-mode: multiply;
+      }
+
+      .vignette {
+        z-index: 11;
+        background: radial-gradient(circle at 50% 45%, transparent 42%, rgba(5, 7, 6, 0.5) 72%, rgba(5, 7, 6, 0.92) 100%);
+      }
+
+      .grain {
+        z-index: 12;
+        opacity: 0.18;
+        background-image:
+          repeating-radial-gradient(circle at 14% 16%, rgba(244, 241, 232, 0.18) 0 1px, transparent 1px 5px),
+          repeating-linear-gradient(0deg, rgba(244, 241, 232, 0.1) 0 1px, transparent 1px 6px);
+        mix-blend-mode: overlay;
+      }
+
+      .scan {
+        z-index: 13;
+        opacity: 0.11;
+        background: repeating-linear-gradient(180deg, rgba(244, 241, 232, 0.12) 0 1px, transparent 1px 7px);
+      }
+
+      .edge-grid {
+        z-index: 14;
+        opacity: 0.28;
+        background-image:
+          linear-gradient(rgba(199, 255, 0, 0.18) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(22, 215, 255, 0.16) 1px, transparent 1px);
+        background-size: 128px 128px;
+        mask-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.48) 20%, transparent 56%);
+      }
+
+      .speed-lines {
+        z-index: 24;
+        opacity: 0;
+        background:
+          repeating-linear-gradient(105deg, transparent 0 52px, rgba(244, 241, 232, 0.32) 52px 57px, transparent 57px 112px),
+          linear-gradient(90deg, transparent, rgba(255, 59, 31, 0.16), transparent);
+        filter: blur(2px);
+        mix-blend-mode: screen;
+      }
+
+      .transition {
+        z-index: 35;
+        inset: 0;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .transition.flash {
+        background: #f4f1e8;
+        mix-blend-mode: screen;
+      }
+
+      .transition.red {
+        background: linear-gradient(100deg, transparent 0 38%, rgba(255, 59, 31, 0.92) 46%, rgba(199, 255, 0, 0.7) 51%, transparent 60%);
+        filter: blur(12px);
+        mix-blend-mode: screen;
+      }
+
+      .hud {
+        z-index: 30;
+        top: 1510px;
+        right: 96px;
+        width: 560px;
+        min-height: 720px;
+        opacity: 0;
+        border-left: 5px solid #c7ff00;
+        padding: 34px 34px 32px;
+        background: linear-gradient(135deg, rgba(5, 7, 6, 0.82), rgba(5, 7, 6, 0.44));
+        box-shadow: 0 28px 72px rgba(0, 0, 0, 0.34);
+        backdrop-filter: blur(10px);
+      }
+
+      .hud-kicker,
+      .mono {
+        font-family: SFMono-Regular, Menlo, Consolas, monospace;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .hud-kicker {
+        font-size: 30px;
+        color: #c7ff00;
+      }
+
+      .hud-title {
+        margin-top: 18px;
+        font-family: Arial Black, Impact, sans-serif;
+        font-size: 94px;
+        line-height: 0.84;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .metric-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px 18px;
+        margin-top: 38px;
+      }
+
+      .metric {
+        min-height: 104px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(244, 241, 232, 0.22);
+      }
+
+      .metric b {
+        display: block;
+        font-family: Arial Black, Impact, sans-serif;
+        font-size: 54px;
+        line-height: 0.95;
+      }
+
+      .metric span {
+        display: block;
+        margin-top: 9px;
+        font-family: SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 23px;
+        color: rgba(244, 241, 232, 0.72);
+        text-transform: uppercase;
+      }
+
+      .zone-strip {
+        z-index: 31;
+        left: 92px;
+        right: 92px;
+        bottom: 180px;
+        height: 118px;
+        opacity: 0;
+        display: grid;
+        grid-template-columns: 230px 1fr 190px;
+        align-items: center;
+        gap: 26px;
+        padding: 0 32px;
+        background: rgba(5, 7, 6, 0.7);
+        border-top: 1px solid rgba(244, 241, 232, 0.18);
+        border-bottom: 1px solid rgba(244, 241, 232, 0.18);
+      }
+
+      .bar {
+        display: grid;
+        grid-template-columns: 14fr 42fr 13fr 15fr 7fr;
+        height: 18px;
+        overflow: hidden;
+        background: rgba(244, 241, 232, 0.16);
+      }
+
+      .bar i:nth-child(1) {
+        background: #5b6770;
+      }
+
+      .bar i:nth-child(2) {
+        background: #16d7ff;
+      }
+
+      .bar i:nth-child(3) {
+        background: #c7ff00;
+      }
+
+      .bar i:nth-child(4) {
+        background: #ffb000;
+      }
+
+      .bar i:nth-child(5) {
+        background: #ff3b1f;
+      }
+
+      .big-copy {
+        z-index: 28;
+        left: 92px;
+        right: 92px;
+        bottom: 430px;
+        opacity: 0;
+        font-family: Arial Black, Impact, sans-serif;
+        font-size: 190px;
+        line-height: 0.86;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        text-shadow: 0 22px 72px rgba(0, 0, 0, 0.54);
+      }
+
+      .big-copy.small {
+        font-size: 126px;
+      }
+
+      .tagline {
+        z-index: 29;
+        left: 96px;
+        top: 116px;
+        opacity: 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 16px;
+        padding: 12px 18px;
+        color: #f4f1e8;
+        background: rgba(5, 7, 6, 0.76);
+        border-left: 5px solid #c7ff00;
+        font-family: SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 34px;
+        text-transform: uppercase;
+      }
+
+      .tagline::after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        background: #ff3b1f;
+        box-shadow: 0 0 26px #ff3b1f;
+      }
+
+      .finish {
+        z-index: 38;
+        inset: 0;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 0 92px 220px;
+        background: linear-gradient(180deg, transparent 0 52%, rgba(5, 7, 6, 0.78) 100%);
+      }
+
+      .finish .mono {
+        font-size: 36px;
+        color: #c7ff00;
+      }
+
+      .finish h1 {
+        margin-top: 24px;
+        font-family: Arial Black, Impact, sans-serif;
+        font-size: 204px;
+        line-height: 0.82;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .corner {
+        z-index: 32;
+        right: 94px;
+        top: 116px;
+        opacity: 0.76;
+        display: grid;
+        gap: 10px;
+        justify-items: end;
+        font-family: SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 28px;
+        color: rgba(244, 241, 232, 0.82);
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="flow-whoop-60s" data-composition-id="flow-whoop-60s" data-start="0" data-duration="60" data-width="2160" data-height="3840">
+      <video id="shot-01" class="clip shot active-grade" data-start="0" data-duration="3.1" data-track-index="0" src="assets/shot-01.mp4" muted playsinline></video>
+      <video id="shot-02" class="clip shot" data-start="2.72" data-duration="7.0" data-track-index="1" src="assets/shot-02.mp4" muted playsinline></video>
+      <video id="shot-03" class="clip shot active-grade" data-start="9.25" data-duration="8.0" data-track-index="0" src="assets/shot-03.mp4" muted playsinline></video>
+      <video id="shot-04" class="clip shot" data-start="17.05" data-duration="7.4" data-track-index="1" src="assets/shot-04.mp4" muted playsinline></video>
+      <video id="shot-05" class="clip shot active-grade" data-start="23.85" data-duration="7.45" data-track-index="0" src="assets/shot-05.mp4" muted playsinline></video>
+      <video id="shot-06" class="clip shot" data-start="31.05" data-duration="8.95" data-track-index="1" src="assets/shot-06.mp4" muted playsinline></video>
+      <video id="shot-07" class="clip shot active-grade" data-start="39.45" data-duration="6.05" data-track-index="0" src="assets/shot-07.mp4" muted playsinline></video>
+      <video id="shot-08" class="clip shot active-grade" data-start="45.1" data-duration="7.2" data-track-index="1" src="assets/shot-08.mp4" muted playsinline></video>
+      <video id="shot-09" class="clip shot" data-start="52" data-duration="8" data-track-index="0" src="assets/shot-09.mp4" muted playsinline></video>
+
+      <audio id="beat" data-start="0" data-duration="60" data-track-index="10" src="assets/flow-sport-beat.wav" data-volume="0.92"></audio>
+
+      <div class="layer grade"></div>
+      <div class="layer vignette"></div>
+      <div class="layer edge-grid"></div>
+      <div class="layer scan"></div>
+      <div class="layer grain"></div>
+      <div id="speed-01" class="clip speed-lines" data-start="0" data-duration="0.48" data-track-index="32"></div>
+      <div id="speed-02" class="clip speed-lines" data-start="9.25" data-duration="0.48" data-track-index="32"></div>
+      <div id="speed-03" class="clip speed-lines" data-start="23.85" data-duration="0.48" data-track-index="32"></div>
+      <div id="speed-04" class="clip speed-lines" data-start="39.45" data-duration="0.48" data-track-index="32"></div>
+      <div id="speed-05" class="clip speed-lines" data-start="45.1" data-duration="0.48" data-track-index="32"></div>
+      <div id="speed-06" class="clip speed-lines" data-start="52" data-duration="0.48" data-track-index="32"></div>
+
+      <div id="tag-01" class="clip tagline" data-start="0.18" data-duration="2.55" data-track-index="20">05.06 / CROSSFIT TEST</div>
+      <div id="copy-01" class="clip big-copy" data-start="0.34" data-duration="2.55" data-track-index="21">FIND<br />THE REDLINE</div>
+      <div id="tag-02" class="clip tagline" data-start="9.65" data-duration="4.8" data-track-index="22">LOAD / PULL / COMMIT</div>
+      <div id="copy-02" class="clip big-copy small" data-start="17.55" data-duration="4.7" data-track-index="23">EVERY REP<br />COUNTS</div>
+      <div id="copy-03" class="clip big-copy small" data-start="31.7" data-duration="4.4" data-track-index="24">FATIGUE<br />IS DATA</div>
+
+      <section id="whoop-hud" class="clip hud" data-start="39.8" data-duration="5.8" data-track-index="25">
+        <div class="hud-kicker">WHOOP / MAY 06</div>
+        <div class="hud-title">Strain<br />14.6</div>
+        <div class="metric-grid">
+          <div class="metric"><b>170</b><span>max hr</span></div>
+          <div class="metric"><b>126</b><span>avg hr</span></div>
+          <div class="metric"><b>504</b><span>kcal</span></div>
+          <div class="metric"><b>64:28</b><span>duration</span></div>
+          <div class="metric"><b>38%</b><span>recovery</span></div>
+          <div class="metric"><b>49%</b><span>sleep</span></div>
+        </div>
+      </section>
+
+      <section id="zone-strip" class="clip zone-strip" data-start="40.4" data-duration="5.0" data-track-index="26">
+        <div class="mono">HR Zones</div>
+        <div class="bar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="mono">Z4 05:04</div>
+      </section>
+
+      <div id="finish" class="clip finish" data-start="55.25" data-duration="4.75" data-track-index="27">
+        <div class="mono">WORK CAPACITY / VERIFIED</div>
+        <h1>BREAK<br />THROUGH</h1>
+      </div>
+
+      <div class="corner">
+        <div>2160x3840</div>
+        <div>30 FPS</div>
+      </div>
+
+      <div id="flash-01" class="clip transition flash" data-start="2.82" data-duration="0.28" data-track-index="30"></div>
+      <div id="flash-02" class="clip transition red" data-start="9.18" data-duration="0.36" data-track-index="31"></div>
+      <div id="flash-03" class="clip transition flash" data-start="17.08" data-duration="0.24" data-track-index="30"></div>
+      <div id="flash-04" class="clip transition red" data-start="23.92" data-duration="0.34" data-track-index="31"></div>
+      <div id="flash-05" class="clip transition flash" data-start="31.05" data-duration="0.26" data-track-index="30"></div>
+      <div id="flash-06" class="clip transition red" data-start="39.45" data-duration="0.42" data-track-index="31"></div>
+      <div id="flash-07" class="clip transition flash" data-start="45.08" data-duration="0.24" data-track-index="30"></div>
+      <div id="flash-08" class="clip transition red" data-start="52" data-duration="0.38" data-track-index="31"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      const cuts = [
+        ["#shot-01", 0, 3.1, 1.12, 0, 0],
+        ["#shot-02", 2.72, 7.0, 1.06, 0, 24],
+        ["#shot-03", 9.25, 8.0, 1.16, -18, 0],
+        ["#shot-04", 17.05, 7.4, 1.12, 24, 0],
+        ["#shot-05", 23.85, 7.45, 1.14, -26, 0],
+        ["#shot-06", 31.05, 8.95, 1.08, 0, 20],
+        ["#shot-07", 39.45, 6.05, 1.18, -28, 0],
+        ["#shot-08", 45.1, 7.2, 1.2, 0, -16],
+        ["#shot-09", 52, 8, 1.08, 0, 0]
+      ];
+
+      cuts.forEach(([selector, start, duration, scale, x, y]) => {
+        tl.set(selector, { opacity: 1, scale, x, y }, start);
+        tl.fromTo(selector, { opacity: 0 }, { opacity: 1, duration: 0.16, ease: "power2.out" }, start);
+        tl.to(selector, { scale: scale + 0.07, x: x * 0.4, y: y * 0.4, duration, ease: "none" }, start);
+        tl.to(selector, { opacity: 0, duration: 0.22, ease: "power2.in" }, start + duration - 0.22);
+      });
+
+      tl.fromTo("#tag-01", { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.22, ease: "power3.out" }, 0.18);
+      tl.fromTo("#copy-01", { opacity: 0, y: 110, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.28, ease: "power3.out" }, 0.34);
+      tl.to(["#tag-01", "#copy-01"], { opacity: 0, x: -80, duration: 0.2, ease: "power2.in" }, 2.55);
+
+      tl.fromTo("#tag-02", { opacity: 0, x: -68 }, { opacity: 1, x: 0, duration: 0.24, ease: "power3.out" }, 9.65);
+      tl.to("#tag-02", { opacity: 0, x: -48, duration: 0.2, ease: "power2.in" }, 14.0);
+      tl.fromTo("#copy-02", { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 0.28, ease: "power3.out" }, 17.55);
+      tl.to("#copy-02", { opacity: 0, y: -60, duration: 0.22, ease: "power2.in" }, 21.75);
+      tl.fromTo("#copy-03", { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: 0.28, ease: "power3.out" }, 31.7);
+      tl.to("#copy-03", { opacity: 0, y: -50, duration: 0.24, ease: "power2.in" }, 35.75);
+
+      tl.fromTo("#whoop-hud", { opacity: 0, x: 80 }, { opacity: 1, x: 0, duration: 0.34, ease: "power3.out" }, 39.8);
+      tl.fromTo("#zone-strip", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.28, ease: "power3.out" }, 40.4);
+      tl.to(["#whoop-hud", "#zone-strip"], { opacity: 0, x: 40, duration: 0.28, ease: "power2.in" }, 45.18);
+
+      tl.fromTo("#finish", { opacity: 0, y: 90 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 55.25);
+      tl.to("#finish h1", { scale: 1.03, duration: 4.2, ease: "none" }, 55.45);
+
+      ["#flash-01", "#flash-03", "#flash-05", "#flash-07"].forEach((selector) => {
+        const start = Number(document.querySelector(selector).dataset.start);
+        tl.fromTo(selector, { opacity: 0 }, { opacity: 0.78, duration: 0.05, ease: "power2.out" }, start);
+        tl.to(selector, { opacity: 0, duration: 0.18, ease: "power2.in" }, start + 0.05);
+      });
+
+      ["#flash-02", "#flash-04", "#flash-06", "#flash-08"].forEach((selector) => {
+        const start = Number(document.querySelector(selector).dataset.start);
+        tl.fromTo(selector, { opacity: 0, x: -560 }, { opacity: 1, x: 520, duration: 0.28, ease: "power4.out" }, start);
+        tl.to(selector, { opacity: 0, duration: 0.08, ease: "power2.in" }, start + 0.28);
+      });
+
+      [
+        ["#speed-01", 0.0],
+        ["#speed-02", 9.25],
+        ["#speed-03", 23.85],
+        ["#speed-04", 39.45],
+        ["#speed-05", 45.1],
+        ["#speed-06", 52.0]
+      ].forEach(([selector, start]) => {
+        tl.fromTo(selector, { opacity: 0, x: -160 }, { opacity: 0.75, x: 120, duration: 0.18, ease: "power2.out" }, start);
+        tl.to(selector, { opacity: 0, duration: 0.2, ease: "power2.in" }, start + 0.18);
+      });
+
+      tl.to("#flow-whoop-60s", { filter: "brightness(0)", duration: 0.35, ease: "power2.in" }, 59.65);
+
+      window.__timelines["flow-whoop-60s"] = tl;
+    </script>
+  </body>
+</html>

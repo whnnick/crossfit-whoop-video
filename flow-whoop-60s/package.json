@@ -1,0 +1,11 @@
+{
+  "name": "flow-whoop-60s",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "beat": "node scripts/generate-beat.mjs",
+    "clips": "node scripts/prepare-clips.mjs",
+    "check": "npx hyperframes lint && npx hyperframes validate && npx hyperframes inspect --samples 15",
+    "render": "npx hyperframes render --output renders/flow-whoop-60s-vertical-4k.mp4 --quality high"
+  }
+}

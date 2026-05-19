@@ -4,5 +4,11 @@
 *.MP4
 *.m4v
 *.M4V
+*.wav
+*.WAV
+*.mp3
+*.MP3
+*.aac
+*.AAC
+**/renders/work-*/
 .DS_Store
-

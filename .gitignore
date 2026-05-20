@@ -10,5 +10,6 @@
 *.MP3
 *.aac
 *.AAC
+**/assets/overlays/
 **/renders/work-*/
 .DS_Store

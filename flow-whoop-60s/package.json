@@ -4,8 +4,11 @@
   "private": true,
   "scripts": {
     "beat": "node scripts/generate-beat.mjs",
+    "ambient": "node scripts/extract-ambient.mjs",
     "clips": "node scripts/prepare-clips.mjs",
+    "overlays": "node scripts/generate-overlays.mjs",
     "check": "npx hyperframes lint && npx hyperframes validate && npx hyperframes inspect --samples 15",
-    "render": "npx hyperframes render --output renders/flow-whoop-60s-vertical-4k.mp4 --quality high"
+    "render": "npx hyperframes render --output renders/flow-whoop-60s-vertical-4k.mp4 --quality high",
+    "render:v2": "node scripts/render-v2-ffmpeg.mjs"
   }
 }

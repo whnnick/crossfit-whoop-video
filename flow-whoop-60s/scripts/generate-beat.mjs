@@ -5,6 +5,8 @@ const channels = 2;
 const duration = 60;
 const samples = sampleRate * duration;
 const data = new Int16Array(samples * channels);
+const bpm = 96;
+const beatLength = 60 / bpm;
 const transitionHits = [0, 2.85, 9.25, 17.15, 24.0, 31.1, 39.55, 45.2, 52.0, 56.7];
 
 function frac(value) {
@@ -16,15 +18,15 @@ function noise(seed) {
   return frac(x) * 2 - 1;
 }
 
-function env(time, start, length) {
+function decay(time, start, length, power = 3) {
   if (time < start || time > start + length) return 0;
-  const x = (time - start) / length;
-  return Math.pow(1 - x, 3);
+  return Math.pow(1 - (time - start) / length, power);
 }
 
-function ramp(time, start, length) {
+function attackRelease(time, start, length) {
   if (time < start || time > start + length) return 0;
-  return (time - start) / length;
+  const x = (time - start) / length;
+  return Math.sin(Math.PI * x);
 }
 
 function clip(value) {
@@ -33,41 +35,51 @@ function clip(value) {
 
 for (let i = 0; i < samples; i += 1) {
   const t = i / sampleRate;
-  const bar = t % 2;
-  const half = t % 0.5;
-  const quarter = t % 0.25;
+  const beat = t % beatLength;
+  const twoBeat = t % (beatLength * 2);
+  const eightBeat = t % (beatLength * 8);
 
-  const kick = Math.sin(2 * Math.PI * (48 + 28 * env(t, t - half, 0.18)) * t) * Math.exp(-half * 18) * (half < 0.18 ? 0.95 : 0);
-  const snareWindow = Math.abs(bar - 1.0) < 0.07 ? 1 - Math.abs(bar - 1.0) / 0.07 : 0;
-  const snare = noise(i) * snareWindow * 0.34;
-  const hat = noise(i * 2.1) * Math.exp(-quarter * 34) * (quarter < 0.055 ? 0.14 : 0);
-  const bassStep = Math.floor(t * 2) % 8;
-  const bassFreq = [55, 55, 65.4, 49, 55, 73.4, 65.4, 49][bassStep];
-  const bass = Math.sin(2 * Math.PI * bassFreq * t) * 0.26;
-  const pulse = Math.sin(2 * Math.PI * 110 * t) * 0.08 * (half < 0.09 ? 1 : 0);
+  const sectionLift = t < 9 ? 0.64 : t < 24 ? 0.76 : t < 39 ? 0.82 : t < 52 ? 0.92 : 0.74;
+  const kickEnv = decay(t, t - beat, 0.28, 4);
+  const kickFreq = 42 + 34 * kickEnv;
+  const kick = Math.sin(2 * Math.PI * kickFreq * t) * kickEnv * 0.72;
 
-  let riser = 0;
-  for (const start of [0.0, 27.0, 43.0, 54.0]) {
-    const r = ramp(t, start, 3.0);
-    riser += noise(i * 0.57) * r * r * 0.12;
-    riser += Math.sin(2 * Math.PI * (240 + r * 940) * t) * r * 0.06;
-  }
+  const lowPulseEnv = twoBeat < 0.18 ? Math.exp(-twoBeat * 6.5) : 0;
+  const lowPulse = Math.sin(2 * Math.PI * 64 * t) * lowPulseEnv * 0.2;
+
+  const tomA = Math.sin(2 * Math.PI * 87 * t) * decay(t, t - (eightBeat - beatLength * 3), 0.36, 3) * 0.2;
+  const tomB = Math.sin(2 * Math.PI * 73 * t) * decay(t, t - (eightBeat - beatLength * 7), 0.4, 3) * 0.22;
+
+  const clapWindow = Math.abs(twoBeat - beatLength) < 0.035 ? 1 - Math.abs(twoBeat - beatLength) / 0.035 : 0;
+  const clap = noise(i * 1.7) * clapWindow * 0.12;
+
+  const hatWindow = beat < 0.035 ? Math.exp(-beat * 30) : 0;
+  const hat = noise(i * 2.3) * hatWindow * 0.035;
+
+  const drone = Math.sin(2 * Math.PI * 55 * t) * 0.08 + Math.sin(2 * Math.PI * 110 * t) * 0.035;
+  const pad = Math.sin(2 * Math.PI * 146.83 * t) * 0.025 * attackRelease(t, 0, duration);
 
   let impact = 0;
   for (const hit of transitionHits) {
-    impact += Math.sin(2 * Math.PI * 58 * t) * env(t, hit, 0.38) * 1.1;
-    impact += noise(i * 1.37) * env(t, hit, 0.18) * 0.28;
+    impact += Math.sin(2 * Math.PI * 48 * t) * decay(t, hit, 0.42, 3) * 0.54;
+    impact += noise(i * 0.91) * decay(t, hit, 0.22, 4) * 0.11;
   }
 
-  const arrangement = t < 3 ? 0.85 : t < 17 ? 0.92 : t < 39 ? 0.98 : t < 52 ? 1.08 : 0.92;
-  const fadeIn = Math.min(1, t / 0.35);
-  const fadeOut = Math.min(1, (duration - t) / 1.2);
-  const master = 0.62 * fadeIn * fadeOut;
-  const sample = clip((kick + snare + hat + bass + pulse + riser + impact) * arrangement * master);
-  const side = Math.sin(2 * Math.PI * 0.17 * t) * 0.08;
+  let riser = 0;
+  for (const start of [36.8, 52.8]) {
+    const r = attackRelease(t, start, 2.6);
+    riser += noise(i * 0.31) * r * 0.045;
+    riser += Math.sin(2 * Math.PI * (180 + 280 * r) * t) * r * 0.035;
+  }
 
-  data[i * channels] = Math.round(clip(sample * (1 - side)) * 32767);
-  data[i * channels + 1] = Math.round(clip(sample * (1 + side)) * 32767);
+  const fadeIn = Math.min(1, t / 0.55);
+  const fadeOut = Math.min(1, (duration - t) / 1.4);
+  const master = 0.58 * sectionLift * fadeIn * fadeOut;
+  const sample = clip((kick + lowPulse + tomA + tomB + clap + hat + drone + pad + impact + riser) * master);
+  const pan = Math.sin(2 * Math.PI * 0.09 * t) * 0.05;
+
+  data[i * channels] = Math.round(clip(sample * (1 - pan)) * 32767);
+  data[i * channels + 1] = Math.round(clip(sample * (1 + pan)) * 32767);
 }
 
 const byteRate = sampleRate * channels * 2;
@@ -93,5 +105,5 @@ for (let i = 0; i < data.length; i += 1) {
   buffer.writeInt16LE(data[i], 44 + i * 2);
 }
 
-writeFileSync("assets/flow-sport-beat.wav", buffer);
-console.log("Wrote assets/flow-sport-beat.wav");
+writeFileSync("assets/flow-sport-bed.wav", buffer);
+console.log("Wrote assets/flow-sport-bed.wav");

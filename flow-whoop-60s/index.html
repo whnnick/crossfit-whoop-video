@@ -131,16 +131,19 @@
       }
 
       .hud {
-        z-index: 30;
-        top: 1510px;
-        right: 96px;
-        width: 560px;
-        min-height: 720px;
+        z-index: 34;
+        top: 1220px;
+        right: 76px;
+        width: 760px;
+        min-height: 820px;
         opacity: 0;
-        border-left: 5px solid #c7ff00;
-        padding: 34px 34px 32px;
-        background: linear-gradient(135deg, rgba(5, 7, 6, 0.82), rgba(5, 7, 6, 0.44));
-        box-shadow: 0 28px 72px rgba(0, 0, 0, 0.34);
+        border: 2px solid rgba(199, 255, 0, 0.72);
+        border-left: 12px solid #c7ff00;
+        padding: 42px 44px 38px;
+        background: linear-gradient(135deg, rgba(5, 7, 6, 0.94), rgba(5, 7, 6, 0.7));
+        box-shadow:
+          0 34px 96px rgba(0, 0, 0, 0.56),
+          0 0 44px rgba(199, 255, 0, 0.18);
         backdrop-filter: blur(10px);
       }
 
@@ -152,24 +155,35 @@
       }
 
       .hud-kicker {
-        font-size: 30px;
+        font-size: 36px;
         color: #c7ff00;
       }
 
       .hud-title {
+        margin-top: 22px;
+        font-family: Arial Black, Impact, sans-serif;
+        font-size: 166px;
+        line-height: 0.74;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        color: #f4f1e8;
+        text-shadow: 0 0 28px rgba(199, 255, 0, 0.18);
+      }
+
+      .hud-subtitle {
         margin-top: 18px;
         font-family: Arial Black, Impact, sans-serif;
-        font-size: 94px;
-        line-height: 0.84;
-        letter-spacing: 0;
+        font-size: 54px;
+        line-height: 0.92;
+        color: #c7ff00;
         text-transform: uppercase;
       }
 
       .metric-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 24px 18px;
-        margin-top: 38px;
+        gap: 28px 22px;
+        margin-top: 42px;
       }
 
       .metric {
@@ -181,7 +195,7 @@
       .metric b {
         display: block;
         font-family: Arial Black, Impact, sans-serif;
-        font-size: 54px;
+        font-size: 68px;
         line-height: 0.95;
       }
 
@@ -189,32 +203,83 @@
         display: block;
         margin-top: 9px;
         font-family: SFMono-Regular, Menlo, Consolas, monospace;
-        font-size: 23px;
+        font-size: 25px;
         color: rgba(244, 241, 232, 0.72);
         text-transform: uppercase;
+      }
+
+      .data-pop {
+        z-index: 33;
+        width: 620px;
+        min-height: 218px;
+        opacity: 0;
+        padding: 28px 34px 30px;
+        background: rgba(5, 7, 6, 0.9);
+        border: 2px solid rgba(244, 241, 232, 0.18);
+        border-left: 10px solid #c7ff00;
+        box-shadow: 0 28px 80px rgba(0, 0, 0, 0.48);
+      }
+
+      .data-pop .mono {
+        font-size: 28px;
+        color: #c7ff00;
+      }
+
+      .data-pop strong {
+        display: block;
+        margin-top: 18px;
+        font-family: Arial Black, Impact, sans-serif;
+        font-size: 104px;
+        line-height: 0.84;
+        letter-spacing: 0;
+        color: #f4f1e8;
+      }
+
+      .data-pop span {
+        display: block;
+        margin-top: 12px;
+        font-family: SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 27px;
+        color: rgba(244, 241, 232, 0.78);
+        text-transform: uppercase;
+      }
+
+      #whoop-hr-pop {
+        right: 96px;
+        bottom: 690px;
+      }
+
+      #whoop-recovery-pop {
+        left: 96px;
+        top: 690px;
+      }
+
+      #whoop-fatigue-pop {
+        right: 96px;
+        top: 900px;
       }
 
       .zone-strip {
         z-index: 31;
         left: 92px;
         right: 92px;
-        bottom: 180px;
-        height: 118px;
+        bottom: 160px;
+        height: 154px;
         opacity: 0;
         display: grid;
-        grid-template-columns: 230px 1fr 190px;
+        grid-template-columns: 280px 1fr 230px;
         align-items: center;
-        gap: 26px;
-        padding: 0 32px;
-        background: rgba(5, 7, 6, 0.7);
-        border-top: 1px solid rgba(244, 241, 232, 0.18);
-        border-bottom: 1px solid rgba(244, 241, 232, 0.18);
+        gap: 32px;
+        padding: 0 38px;
+        background: rgba(5, 7, 6, 0.86);
+        border-top: 2px solid rgba(199, 255, 0, 0.44);
+        border-bottom: 2px solid rgba(244, 241, 232, 0.18);
       }
 
       .bar {
         display: grid;
         grid-template-columns: 14fr 42fr 13fr 15fr 7fr;
-        height: 18px;
+        height: 26px;
         overflow: hidden;
         background: rgba(244, 241, 232, 0.16);
       }
@@ -307,19 +372,6 @@
         text-transform: uppercase;
       }
 
-      .corner {
-        z-index: 32;
-        right: 94px;
-        top: 116px;
-        opacity: 0.76;
-        display: grid;
-        gap: 10px;
-        justify-items: end;
-        font-family: SFMono-Regular, Menlo, Consolas, monospace;
-        font-size: 28px;
-        color: rgba(244, 241, 232, 0.82);
-        text-transform: uppercase;
-      }
     </style>
   </head>
   <body>
@@ -334,7 +386,8 @@
       <video id="shot-08" class="clip shot active-grade" data-start="45.1" data-duration="7.2" data-track-index="1" src="assets/shot-08.mp4" muted playsinline></video>
       <video id="shot-09" class="clip shot" data-start="52" data-duration="8" data-track-index="0" src="assets/shot-09.mp4" muted playsinline></video>
 
-      <audio id="beat" data-start="0" data-duration="60" data-track-index="10" src="assets/flow-sport-beat.wav" data-volume="0.92"></audio>
+      <audio id="bed" data-start="0" data-duration="60" data-track-index="10" src="assets/flow-sport-bed.wav" data-volume="0.66"></audio>
+      <audio id="ambient" data-start="0" data-duration="60" data-track-index="11" src="assets/flow-ambient.wav" data-volume="0.72"></audio>
 
       <div class="layer grade"></div>
       <div class="layer vignette"></div>
@@ -354,9 +407,28 @@
       <div id="copy-02" class="clip big-copy small" data-start="17.55" data-duration="4.7" data-track-index="23">EVERY REP<br />COUNTS</div>
       <div id="copy-03" class="clip big-copy small" data-start="31.7" data-duration="4.4" data-track-index="24">FATIGUE<br />IS DATA</div>
 
-      <section id="whoop-hud" class="clip hud" data-start="39.8" data-duration="5.8" data-track-index="25">
-        <div class="hud-kicker">WHOOP / MAY 06</div>
-        <div class="hud-title">Strain<br />14.6</div>
+      <section id="whoop-hr-pop" class="clip data-pop" data-start="12.1" data-duration="2.8" data-track-index="40">
+        <div class="mono">WHOOP LIVE</div>
+        <strong>170</strong>
+        <span>max hr captured</span>
+      </section>
+
+      <section id="whoop-recovery-pop" class="clip data-pop" data-start="25.7" data-duration="2.8" data-track-index="41">
+        <div class="mono">BODY STATUS</div>
+        <strong>38%</strong>
+        <span>recovery before session</span>
+      </section>
+
+      <section id="whoop-fatigue-pop" class="clip data-pop" data-start="33.5" data-duration="2.65" data-track-index="42">
+        <div class="mono">SLEEP LOAD</div>
+        <strong>49%</strong>
+        <span>sleep performance</span>
+      </section>
+
+      <section id="whoop-hud" class="clip hud" data-start="39.75" data-duration="5.85" data-track-index="43">
+        <div class="hud-kicker">WHOOP DATA DROP / MAY 06</div>
+        <div class="hud-title">14.6</div>
+        <div class="hud-subtitle">strain score</div>
         <div class="metric-grid">
           <div class="metric"><b>170</b><span>max hr</span></div>
           <div class="metric"><b>126</b><span>avg hr</span></div>
@@ -367,7 +439,7 @@
         </div>
       </section>
 
-      <section id="zone-strip" class="clip zone-strip" data-start="40.4" data-duration="5.0" data-track-index="26">
+      <section id="zone-strip" class="clip zone-strip" data-start="40.35" data-duration="5.05" data-track-index="44">
         <div class="mono">HR Zones</div>
         <div class="bar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
         <div class="mono">Z4 05:04</div>
@@ -376,11 +448,6 @@
       <div id="finish" class="clip finish" data-start="55.25" data-duration="4.75" data-track-index="27">
         <div class="mono">WORK CAPACITY / VERIFIED</div>
         <h1>BREAK<br />THROUGH</h1>
-      </div>
-
-      <div class="corner">
-        <div>2160x3840</div>
-        <div>30 FPS</div>
       </div>
 
       <div id="flash-01" class="clip transition flash" data-start="2.82" data-duration="0.28" data-track-index="30"></div>
@@ -427,9 +494,18 @@
       tl.fromTo("#copy-03", { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: 0.28, ease: "power3.out" }, 31.7);
       tl.to("#copy-03", { opacity: 0, y: -50, duration: 0.24, ease: "power2.in" }, 35.75);
 
-      tl.fromTo("#whoop-hud", { opacity: 0, x: 80 }, { opacity: 1, x: 0, duration: 0.34, ease: "power3.out" }, 39.8);
-      tl.fromTo("#zone-strip", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.28, ease: "power3.out" }, 40.4);
-      tl.to(["#whoop-hud", "#zone-strip"], { opacity: 0, x: 40, duration: 0.28, ease: "power2.in" }, 45.18);
+      [
+        ["#whoop-hr-pop", 12.1, 14.55, 80],
+        ["#whoop-recovery-pop", 25.7, 28.15, -80],
+        ["#whoop-fatigue-pop", 33.5, 35.82, 80]
+      ].forEach(([selector, start, end, x]) => {
+        tl.fromTo(selector, { opacity: 0, x, scale: 0.96 }, { opacity: 1, x: 0, scale: 1, duration: 0.28, ease: "power3.out" }, start);
+        tl.to(selector, { opacity: 0, x: x * 0.45, duration: 0.22, ease: "power2.in" }, end);
+      });
+
+      tl.fromTo("#whoop-hud", { opacity: 0, x: 110, scale: 0.96 }, { opacity: 1, x: 0, scale: 1, duration: 0.36, ease: "power3.out" }, 39.75);
+      tl.fromTo("#zone-strip", { opacity: 0, y: 54 }, { opacity: 1, y: 0, duration: 0.28, ease: "power3.out" }, 40.35);
+      tl.to(["#whoop-hud", "#zone-strip"], { opacity: 0, x: 44, duration: 0.28, ease: "power2.in" }, 45.2);
 
       tl.fromTo("#finish", { opacity: 0, y: 90 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 55.25);
       tl.to("#finish h1", { scale: 1.03, duration: 4.2, ease: "none" }, 55.45);

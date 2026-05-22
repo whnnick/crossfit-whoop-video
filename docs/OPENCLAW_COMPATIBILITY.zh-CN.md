@@ -36,9 +36,12 @@ openclaw gateway restart
 skills/crossfit-whoop-video/
 ```
 
+这不会把 OpenClaw 变成一个独立的视频剪辑软件界面；它的作用是给 agent 提供调用本地视频工具链的工作流说明。
+
 ## 注意事项
 
 - `agents/openai.yaml` 里的 Codex UI 元数据可能不会被 OpenClaw 使用。
 - Codex plugin 的 UI 字段可能会被 OpenClaw 忽略。
 - 视频生成仍依赖本地工具，例如 `ffmpeg`、`ffprobe`、Node.js 和项目脚本。
+- 已经启用 HyperFrames 或等价插件能力的 Codex 用户，通常可以先尝试提示词流程，不必先手动安装完整本地工具链。
 - Apple Watch 数据通过导出文件支持，不是直接访问 Apple 云端数据。

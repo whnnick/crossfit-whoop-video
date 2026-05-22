@@ -2,6 +2,8 @@
 
 Codex plugin bundle for creating vertical CrossFit, gym, HYROX, and sports-training videos with cinematic editing guidance and selective biometric HUD overlays.
 
+This bundle is a workflow/skill package for agents. It is not a standalone video editor UI. In Codex, use it with an enabled video capability such as HyperFrames. In OpenClaw, use it with a local machine that has the required video toolchain.
+
 ## Contents
 
 - `.codex-plugin/plugin.json`: Codex plugin manifest.
@@ -23,7 +25,7 @@ Then install or enable the local plugin from Codex's plugin UI if your Codex bui
 
 ## Install As An OpenClaw Compatible Bundle
 
-OpenClaw can install compatible Codex bundles that contain `.codex-plugin/plugin.json`.
+OpenClaw can install compatible Codex bundles that contain `.codex-plugin/plugin.json`. OpenClaw still needs local rendering tools such as `ffmpeg`, Node.js, and a browser-capable renderer for real video output.
 
 ```bash
 openclaw plugins install ./plugins/crossfit-whoop-video

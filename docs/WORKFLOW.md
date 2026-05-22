@@ -23,7 +23,7 @@ npm run check / npm run template:render
 renders/*.mp4
 ```
 
-For agent-driven edits, Codex or OpenClaw sits above this pipeline: it reads the brief, inspects source files, chooses shots, updates project files, runs checks, and reports the result.
+For agent-driven edits, Codex or OpenClaw sits above this pipeline: it reads the brief, inspects source files, chooses shots, updates project files, runs checks, and reports the result. Codex users with HyperFrames or equivalent video capability enabled can usually start from the prompt workflow before setting up the full local toolchain.
 
 ## Local Template Chain
 
@@ -44,14 +44,14 @@ Use this chain when a human edits the template directly:
 
 Use this chain when Codex should help edit:
 
-1. Install the skill from `skills/crossfit-whoop-video/`.
+1. Enable HyperFrames or an equivalent video capability in Codex.
 2. Attach videos in Codex or provide absolute local paths.
-3. Prompt Codex with `$crossfit-whoop-video`.
-4. Codex reads the skill and references.
+3. Prompt Codex with the desired edit and, when installed, `$crossfit-whoop-video`.
+4. Codex reads the skill/repository guidance when available.
 5. Codex inspects available footage and clarifies missing requirements when needed.
 6. Codex chooses a story arc, shot order, HUD windows, audio strategy, and output target.
 7. Codex updates the project or creates a new project folder.
-8. Codex runs dry-run/check/render commands when feasible.
+8. Codex runs dry-run/check/render commands when feasible in the active environment.
 9. Codex verifies duration, resolution, fps, audio, required shots, and Git safety.
 
 ## OpenClaw Chain
@@ -134,8 +134,8 @@ A good user path should feel like this:
 
 1. User opens README.
 2. User sees the Chinese or English start point immediately.
-3. User checks environment.
-4. User chooses local, Codex, or OpenClaw mode.
-5. User follows a prompt/template.
+3. Codex users see the fastest prompt-based workflow first.
+4. OpenClaw and local users see where environment setup is required.
+5. User follows a prompt, skill/plugin workflow, or template configuration.
 6. User gets a render or a clear dry-run result.
 7. User does not accidentally publish private media or health data.

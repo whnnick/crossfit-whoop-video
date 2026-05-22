@@ -23,7 +23,7 @@ npm run check / npm run template:render
 renders/*.mp4
 ```
 
-如果使用 Codex 或 OpenClaw，agent 位于这条流水线之上：它读取需求、检查素材、选择镜头、更新项目文件、运行检查，并汇报结果。
+如果使用 Codex 或 OpenClaw，agent 位于这条流水线之上：它读取需求、检查素材、选择镜头、更新项目文件、运行检查，并汇报结果。已经启用 HyperFrames 或等价视频能力的 Codex 用户，通常可以先走提示词流程，不必先配置完整本地工具链。
 
 ## 本地模板链路
 
@@ -44,14 +44,14 @@ renders/*.mp4
 
 适合让 Codex 帮你剪：
 
-1. 安装 `skills/crossfit-whoop-video/`。
+1. 在 Codex 里启用 HyperFrames 或等价视频能力。
 2. 在 Codex 里上传视频，或提供绝对本地路径。
-3. 在提示词里使用 `$crossfit-whoop-video`。
-4. Codex 读取 skill 和 references。
+3. 用提示词描述目标；如果已安装 skill，可以使用 `$crossfit-whoop-video`。
+4. Codex 在可用时读取 skill 或仓库说明。
 5. Codex 检查素材；需求不清楚时先确认。
 6. Codex 设计故事线、镜头顺序、HUD 出现窗口、音频策略和输出目标。
 7. Codex 更新项目，或创建新项目目录。
-8. Codex 在可行时运行 dry-run/check/render。
+8. Codex 在当前环境可行时运行 dry-run/check/render。
 9. Codex 验证时长、分辨率、fps、音频、必选镜头和 Git 安全状态。
 
 ## OpenClaw 链路
@@ -134,8 +134,8 @@ git status --short --ignored
 
 1. 用户打开 README。
 2. 用户立刻能找到中文或英文入口。
-3. 用户先检查环境。
-4. 用户选择本地、Codex 或 OpenClaw 模式。
-5. 用户套用提示词或模板配置。
+3. Codex 用户优先看到最快的提示词使用方式。
+4. OpenClaw 和本地用户能看到什么时候需要配置环境。
+5. 用户套用提示词、skill/plugin 流程或模板配置。
 6. 用户得到渲染结果或明确的 dry-run 结果。
 7. 用户不会误把私人视频或健康数据发布到开源仓库。

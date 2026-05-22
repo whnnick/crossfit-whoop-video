@@ -1,6 +1,10 @@
 # Environment Requirements
 
-This project is a local video-generation workflow. It does not ship a cloud renderer. The user needs a working local video environment before rendering real footage.
+This page is mainly for OpenClaw users, local template users, contributors, and Codex setups that do not already provide video rendering tools.
+
+If you are using Codex with the HyperFrames plugin or an equivalent video capability already enabled, you usually can start by attaching footage and prompting Codex. You do not need to manually install every tool on this page before trying the Codex workflow.
+
+For OpenClaw, local rendering, and development, this repository is a local video-generation workflow. It does not ship a cloud renderer, so the machine that renders real footage needs a working local video environment.
 
 ## Required Tools
 

@@ -30,11 +30,12 @@ openclaw plugins inspect crossfit-whoop-video
 openclaw gateway restart
 ```
 
-OpenClaw should detect it as a compatible bundle. The `skills/crossfit-whoop-video/` directory inside the plugin is the useful payload.
+OpenClaw should detect it as a compatible bundle. The `skills/crossfit-whoop-video/` directory inside the plugin is the useful payload. This does not turn OpenClaw into a standalone video editor UI; it gives the agent workflow guidance for calling local video tools.
 
 ## Caveats
 
 - Codex UI metadata in `agents/openai.yaml` may not be used by OpenClaw.
 - Codex plugin UI fields may be ignored by OpenClaw.
 - Video generation still depends on local tools such as `ffmpeg`, `ffprobe`, Node.js, and project scripts.
+- Codex users with HyperFrames or equivalent plugin support may not need to install this full local toolchain manually before trying the prompt-based workflow.
 - Apple Watch is supported through exports, not direct Apple cloud access.

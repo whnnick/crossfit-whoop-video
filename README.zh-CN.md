@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <a href="docs/ENVIRONMENT.zh-CN.md">基础环境</a> |
-  <a href="docs/WORKFLOW.zh-CN.md">工作链路</a> |
   <a href="docs/CODEX_USAGE.zh-CN.md">Codex / OpenClaw 用法</a> |
+  <a href="docs/WORKFLOW.zh-CN.md">工作链路</a> |
+  <a href="docs/ENVIRONMENT.zh-CN.md">基础环境</a> |
   <a href="docs/TUTORIAL.zh-CN.md">教程</a> |
   <a href="README.md">English</a>
 </p>
@@ -32,11 +32,11 @@
 
 | 你想做什么 | 阅读这里 |
 | --- | --- |
-| 安装 `ffmpeg`、Node.js、Chrome 等基础工具 | [基础环境要求](docs/ENVIRONMENT.zh-CN.md) |
+| 最快方式：在 Codex 里启用 HyperFrames，给素材并输入提示词 | [Codex 快速流程](docs/CODEX_USAGE.zh-CN.md#codex-最快方式) |
+| 在 OpenClaw 里作为本地 agent 能力使用 | [OpenClaw 使用方式](docs/CODEX_USAGE.zh-CN.md#openclaw-使用方式) |
+| 自己运行通用视频模板 | [本地模板方式](docs/CODEX_USAGE.zh-CN.md#本地模板方式) |
+| 为 OpenClaw、本地渲染或二次开发安装基础工具 | [基础环境要求](docs/ENVIRONMENT.zh-CN.md) |
 | 理解完整剪辑和生成链路 | [项目完整工作链路](docs/WORKFLOW.zh-CN.md) |
-| 在 Codex、OpenClaw 中使用，或查看上传视频和提示词范例 | [Codex / OpenClaw 使用指南](docs/CODEX_USAGE.zh-CN.md) |
-| 跑通第一个模板视频 | [完整模板教程](docs/TUTORIAL.zh-CN.md) |
-| 确认 OpenClaw 兼容性 | [OpenClaw 兼容说明](docs/OPENCLAW_COMPATIBILITY.zh-CN.md) |
 
 ## 效果预览
 
@@ -54,6 +54,37 @@
 - `docs/OPENCLAW_COMPATIBILITY.md`：OpenClaw 兼容说明。
 
 仓库不会包含你的私人视频、渲染成片、`.env`、WHOOP token 或真实 WHOOP 数据。
+
+## 最快方式：在 Codex 中使用
+
+对大多数 Codex 用户来说，这个项目首先是一套可通过提示词调用的剪辑工作流，不是手动安装清单。你只需要在 Codex 里启用 HyperFrames 插件或等价的视频生成能力，上传训练视频或粘贴本地路径，然后让 Codex 按这套方法剪辑。
+
+```text
+使用 crossfit-whoop-video 的工作流，把我上传的 CrossFit 素材剪成 50 秒竖屏 4K 运动广告。风格要电影感、高燃。WHOOP 风格数据只在开头、高强度段落和结尾总结出现。
+```
+
+如果当前 Codex 插件/环境已经提供视频渲染能力，Codex 用户通常不需要在开始前手动安装 `ffmpeg`、Node.js 或 Chrome。
+
+## OpenClaw 使用方式
+
+OpenClaw 更接近本地 agent 部署环境。建议安装普通 skill 或兼容 plugin bundle，并确认运行 OpenClaw 的机器具备本地视频工具链。
+
+```bash
+openclaw skills install ./skills/crossfit-whoop-video --as crossfit-whoop-video
+```
+
+详细说明见 [Codex / OpenClaw 使用指南](docs/CODEX_USAGE.zh-CN.md) 和 [OpenClaw 兼容说明](docs/OPENCLAW_COMPATIBILITY.zh-CN.md)。
+
+## 本地模板方式
+
+如果你想自己 clone 仓库、编辑 `template.config.json`、配置 WHOOP 数据并运行 HyperFrames/ffmpeg 流水线，可以使用本地模板。
+
+```bash
+cd crossfit-whoop-ad
+npm run dry-run
+```
+
+详细说明见 [基础环境要求](docs/ENVIRONMENT.zh-CN.md) 和 [完整模板教程](docs/TUTORIAL.zh-CN.md)。
 
 ## 中文文档索引
 
@@ -124,7 +155,7 @@
 
 `SKILL.md`、`AGENTS.md`、`CLAUDE.md` 属于 agent 运行指令文件，不作为普通用户说明文档逐字翻译，避免影响 Codex/OpenClaw 等工具读取 workflow。
 
-## 最常用方式：作为普通视频模板
+## 开发者方式：作为普通视频模板
 
 适合你或其他用户克隆仓库后自己放素材、填配置、渲染视频。
 
@@ -190,37 +221,7 @@ npm run template:render
 
 默认输出在 `crossfit-whoop-ad/renders/`，渲染结果默认不会提交到 Git。
 
-## 作为 Codex Skill 使用
-
-适合你以后直接把新素材给 Codex，然后让 Codex 按这套剪辑逻辑处理。
-
-安装到本机 Codex skills 目录：
-
-```bash
-mkdir -p ~/.codex/skills
-cp -R skills/crossfit-whoop-video ~/.codex/skills/
-```
-
-之后可以这样对 Codex 说：
-
-```text
-使用 $crossfit-whoop-video，把这几段 CrossFit 素材剪成 50 秒竖屏 4K 运动广告，WHOOP 数据只在关键节点动态显示。
-```
-
-Skill 本身不是剪辑软件，它是给 Codex 的工作方法说明。Codex 会根据 skill 里的方法，调用 HyperFrames、ffmpeg、脚本和本地素材完成剪辑。
-
-## 作为 Codex Plugin 使用
-
-如果你的 Codex 环境支持本地插件，可以复制插件目录：
-
-```bash
-mkdir -p ~/plugins
-cp -R plugins/crossfit-whoop-video ~/plugins/
-```
-
-这个插件目前主要打包了同一个 `crossfit-whoop-video` skill。不同 Codex 或兼容客户端的插件安装路径可能不同，具体以客户端文档为准。
-
-更完整的“本地怎么用、Codex 怎么用、OpenClaw 怎么用、怎么上传视频、提示词怎么写”见：
+更完整的“Codex 怎么用、OpenClaw 怎么部署、本地模板怎么跑、视频怎么提供、提示词怎么写”见：
 
 ```text
 docs/CODEX_USAGE.zh-CN.md
@@ -228,7 +229,7 @@ docs/CODEX_USAGE.zh-CN.md
 
 ## OpenClaw 兼容性
 
-OpenClaw 大概率可以使用 skill 方式兼容，因为 skill 本质上是 Markdown 工作流说明加脚本/模板引用。插件方式是否兼容，取决于 OpenClaw 当前版本是否支持 Codex plugin bundle 格式。
+OpenClaw 更适合把这个项目作为本地 agent 能力使用。普通 skill 方式最稳；plugin bundle 是否可用取决于当前 OpenClaw 版本对 Codex bundle 的支持。真实视频输出仍需要 OpenClaw 所在机器具备本地视频工具链。
 
 详细说明见：
 
@@ -274,7 +275,7 @@ git ls-files
 
 1. 把新视频素材放在本机某个文件夹。
 2. 告诉 Codex 素材路径、目标时长、风格、必须保留的镜头。
-3. 让 Codex 使用 `$crossfit-whoop-video`。
+3. 让 Codex 使用 `crossfit-whoop-video` 工作流；如果已安装 skill，也可以使用 `$crossfit-whoop-video`。
 4. Codex 根据素材分析、分镜、转场、WHOOP HUD、音乐和输出规格生成项目或成片。
 
 示例：

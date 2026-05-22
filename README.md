@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <a href="docs/ENVIRONMENT.md">Environment</a> |
-  <a href="docs/WORKFLOW.md">Workflow</a> |
   <a href="docs/CODEX_USAGE.md">Codex / OpenClaw usage</a> |
+  <a href="docs/WORKFLOW.md">Workflow</a> |
+  <a href="docs/ENVIRONMENT.md">Environment</a> |
   <a href="docs/TUTORIAL.md">Tutorial</a> |
   <a href="README.zh-CN.md">中文文档</a>
 </p>
@@ -30,11 +30,11 @@
 
 | Need | Read this |
 | --- | --- |
-| Install local tools such as `ffmpeg`, Node.js, and Chrome | [Environment requirements](docs/ENVIRONMENT.md) |
-| Understand the full editing pipeline | [End-to-end workflow](docs/WORKFLOW.md) |
-| Use this project with Codex, OpenClaw, uploaded footage, or prompt examples | [Codex / OpenClaw usage](docs/CODEX_USAGE.md) |
-| Render your first template video | [Full template tutorial](docs/TUTORIAL.md) |
-| Check OpenClaw compatibility | [OpenClaw compatibility](docs/OPENCLAW_COMPATIBILITY.md) |
+| Fastest path: use Codex with HyperFrames enabled, attached footage, and a prompt | [Codex quick workflow](docs/CODEX_USAGE.md#codex-fast-path) |
+| Use OpenClaw as a local agent deployment | [OpenClaw workflow](docs/CODEX_USAGE.md#openclaw-workflow) |
+| Run the reusable template yourself | [Local template workflow](docs/CODEX_USAGE.md#local-template-workflow) |
+| Install local tools for OpenClaw, local rendering, or development | [Environment requirements](docs/ENVIRONMENT.md) |
+| Understand the full pipeline | [End-to-end workflow](docs/WORKFLOW.md) |
 
 ## Preview
 
@@ -42,43 +42,42 @@ This animated preview is synthetic. It demonstrates the intended vertical sports
 
 ![Animated CrossFit biometric HUD preview](docs/assets/crossfit-whoop-hud-preview.svg)
 
-## Project Modes
+## Fastest Path: Codex
 
-This repository now supports two use patterns:
-
-- `crossfit-whoop-ad/`: a normal HyperFrames video template project.
-- `skills/crossfit-whoop-video/`: a Codex skill that teaches Codex how to plan and execute CrossFit/WHOOP-style edits.
-- `plugins/crossfit-whoop-video/`: a Codex plugin bundle that packages the skill for plugin-based installs.
-
-For the normal template project, the intended use is:
-
-1. Clone the repository.
-2. Add your own footage.
-3. Fill in your own WHOOP Developer credentials.
-4. Edit `template.config.json`.
-5. Render a new video.
-
-For the Codex skill, copy or symlink `skills/crossfit-whoop-video/` into your Codex skills directory, then ask Codex to use `$crossfit-whoop-video`.
-
-Example:
-
-```bash
-mkdir -p ~/.codex/skills
-cp -R skills/crossfit-whoop-video ~/.codex/skills/
-```
-
-Then prompt Codex:
+For most Codex users, this project is a promptable workflow, not a manual installation checklist. Enable the HyperFrames plugin or equivalent video capability in Codex, attach workout footage or paste local file paths, then ask Codex to create the edit.
 
 ```text
-Use $crossfit-whoop-video to cut this CrossFit footage into a 50 second vertical 4K sports ad with selective WHOOP overlays.
+Use the crossfit-whoop-video workflow to cut the attached CrossFit footage into a 50 second vertical 4K sports ad. Keep it cinematic and energetic. Show WHOOP-style data only in the opening, peak effort, and ending summary.
 ```
 
-For the Codex plugin bundle:
+Codex can use the guidance in this repository to inspect footage, choose complete action shots, build the story arc, create selective HUD overlays, render when the environment supports it, and verify the output. Codex users usually do not need to manually install `ffmpeg`, Node.js, or Chrome before starting if the active Codex plugin/environment already provides video rendering tools.
+
+## OpenClaw Path
+
+OpenClaw is more like a local agent deployment. Install the plain skill or compatible plugin bundle, then make sure the OpenClaw machine has the local video toolchain needed for real rendering.
 
 ```bash
-mkdir -p ~/plugins
-cp -R plugins/crossfit-whoop-video ~/plugins/
+openclaw skills install ./skills/crossfit-whoop-video --as crossfit-whoop-video
 ```
+
+See [Codex / OpenClaw usage](docs/CODEX_USAGE.md) and [OpenClaw compatibility](docs/OPENCLAW_COMPATIBILITY.md).
+
+## Local Template Path
+
+Use this when you want to clone the repository, edit `template.config.json`, configure WHOOP data yourself, and run the HyperFrames/ffmpeg pipeline locally.
+
+```bash
+cd crossfit-whoop-ad
+npm run dry-run
+```
+
+See [Environment requirements](docs/ENVIRONMENT.md) and [Full template tutorial](docs/TUTORIAL.md).
+
+## Project Modes
+
+- `crossfit-whoop-ad/`: reusable HyperFrames video template for local rendering.
+- `skills/crossfit-whoop-video/`: skill instructions that teach Codex/OpenClaw how to plan and execute CrossFit/WHOOP-style edits.
+- `plugins/crossfit-whoop-video/`: Codex plugin bundle that packages the same skill for plugin-capable environments.
 
 ## What This Repository Contains
 
@@ -163,7 +162,9 @@ This repository intentionally excludes:
 
 Those files may contain private data, credentials, or large media assets.
 
-## Setup
+## Local Template Setup
+
+This section is for local template users and contributors. Codex users with HyperFrames or equivalent video capability enabled can usually start from the [Codex fast path](docs/CODEX_USAGE.md#codex-fast-path).
 
 ```bash
 cd crossfit-whoop-ad

@@ -41,9 +41,11 @@
 
 ## 效果预览
 
-下面是合成动态预览图，用来展示竖屏运动广告和 WHOOP 风格 HUD 的方向。它不使用你的真实训练画面、真实 WHOOP 数据、token 或本地路径。
+下面是合成动态预览图，用来展示竖屏运动广告和多种 WHOOP 风格 HUD 的方向。它们不使用你的真实训练画面、真实 WHOOP 数据、token 或本地路径。
 
 ![CrossFit biometric HUD 动态预览](docs/assets/crossfit-whoop-hud-preview.svg)
+
+![WHOOP HUD 多样式动态预览](docs/assets/whoop-hud-style-showcase.svg)
 
 ## 项目里有什么
 
@@ -86,6 +88,12 @@ npm run dry-run
 ```
 
 详细说明见 [基础环境要求](docs/ENVIRONMENT.zh-CN.md) 和 [完整模板教程](docs/TUTORIAL.zh-CN.md)。
+
+## WHOOP HUD 样式
+
+项目内置了机器可读的 HUD 预设目录：`skills/crossfit-whoop-video/assets/whoop-hud-templates.json`，plugin bundle 里也有同步版本。里面包含你之前沉淀的 `01`、`02`、`04` 等可复用样式，也新增了全息矩阵、速度 BPM 爆发、恢复环、冲击标题等更科技感的样式。
+
+用户也可以直接通过 prompt 自定义 HUD。Codex/OpenClaw 应该先选择最接近的预设模板，再根据提示词调整氛围、位置、数据密度、动效强度、颜色、指标和出现窗口。
 
 ## 中文文档索引
 

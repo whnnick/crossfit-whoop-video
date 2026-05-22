@@ -39,9 +39,11 @@
 
 ## Preview
 
-This animated preview is synthetic. It demonstrates the intended vertical sports-ad HUD direction without using private training footage, real WHOOP data, tokens, or local file paths.
+These animated previews are synthetic. They demonstrate the intended vertical sports-ad HUD direction and multiple reusable HUD styles without using private training footage, real WHOOP data, tokens, or local file paths.
 
 ![Animated CrossFit biometric HUD preview](docs/assets/crossfit-whoop-hud-preview.svg)
+
+![WHOOP HUD style showcase](docs/assets/whoop-hud-style-showcase.svg)
 
 ## Fastest Path: Codex
 
@@ -80,12 +82,19 @@ See [Environment requirements](docs/ENVIRONMENT.md) and [Full template tutorial]
 - `skills/crossfit-whoop-video/`: skill instructions that teach Codex/OpenClaw how to plan and execute CrossFit/WHOOP-style edits.
 - `plugins/crossfit-whoop-video/`: Codex plugin bundle that packages the same skill for plugin-capable environments.
 
+## WHOOP HUD Styles
+
+The project includes a machine-readable HUD preset catalog at `skills/crossfit-whoop-video/assets/whoop-hud-templates.json`, mirrored inside the plugin bundle. It includes prior reusable styles such as `01`, `02`, and `04`, plus newer futuristic options like holographic matrix, speed-tunnel BPM, recovery orbit, and data-stomp title treatments.
+
+Users can also customize HUD styling by prompt. Codex/OpenClaw should start from the closest preset, then adapt mood, placement, density, motion intensity, colors, metrics, and timing windows.
+
 ## What This Repository Contains
 
 - A HyperFrames composition under `crossfit-whoop-ad/`
 - A reusable Codex skill under `skills/crossfit-whoop-video/`
 - A Codex plugin bundle under `plugins/crossfit-whoop-video/`
 - A reusable template config: `crossfit-whoop-ad/template.config.json`
+- A reusable WHOOP HUD preset catalog with prompt-custom style rules
 - WHOOP OAuth and data-fetch scripts
 - Motion-ad visual treatment: speed lines, pulse rings, scan effects, impact flashes, and transition wipes
 

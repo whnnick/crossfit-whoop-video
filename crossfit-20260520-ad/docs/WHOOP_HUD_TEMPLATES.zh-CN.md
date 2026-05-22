@@ -1,46 +1,46 @@
 # WHOOP HUD 模板指南
 
-当前推荐方向是 5 月 19 日 WHOOP 风格的更明亮版本：电影感、高对比、WHOOP 绿、玻璃面板、大数字和短促动态数据 hit。
+模板目录位于 `templates/whoop-hud-templates.json`。现在里面包含之前剪辑中沉淀出来的预制样式，也包含未来通过 prompt 自定义样式的规则。
 
-更新 `scripts/generate-overlays.mjs` 时，可参考 `templates/whoop-hud-templates.json` 中的模板。
+## 现有预制模板
+
+- `style_01_broadcast_bright`（`01`）：5 月 19 日风格的开头 HUD，比原参考更明亮。
+- `style_02_glass_side_hud`（`02`）：右侧大型玻璃面板，动态心率数据。
+- `style_03_compact_telemetry`（`03`）：小角标遥测卡，适合不遮挡动作的场景。
+- `style_04_summary_card`（`04`）：结尾多指标总结卡。
+- `style_05_redline_peak`（`05`）：红/绿峰值强度短警报。
+- `style_06_minimal_ticker`（`06`）：低遮挡底部数据条。
+
+## 新增未来感样式
+
+- `style_07_holographic_matrix`：围绕运动员的悬浮全息面板。
+- `style_08_speed_tunnel_hr`：带径向速度线的动态 BPM 爆发。
+- `style_09_recovery_orbit`：恢复/睡眠环形动画。
+- `style_10_data_stomp_title`：带微型数据芯片的电影感冲击标题。
 
 ## 推荐组合
 
-- 开头：`broadcast_bright`
-- 中段：`glass_side_hud` 或 `compact_telemetry`
-- 峰值时刻：`redline_peak`
-- 结尾：`summary_card`
+- 开头：`01`
+- 中段：`02` 或 `03`
+- 峰值/转场：`05` 或 `08`
+- 恢复/背景：`09`
+- 结尾：`04`
 
-## 模板说明
+## Prompt 自定义
 
-`broadcast_bright`
+用户可以直接用自然语言要求自定义 HUD。处理时先从最接近的预制模板开始，再调整：
 
-- 最接近 5 月 19 日参考风格。
-- 大标题、底部数据条、WHOOP 绿进度条。
-- 适合开头附近 3-6 秒。
+- 亮度和对比度
+- 强调色
+- 数据密度
+- 位置和安全区域
+- 动效强度
+- 指标和出现窗口
 
-`glass_side_hud`
+示例：
 
-- 右侧竖向玻璃面板。
-- 大心率数字和进度条。
-- 适合墙球、引体或自行车高强度段落。
+```text
+WHOOP 效果以 01 + 02 + 04 为基础，但开头更亮，增加全息扫描线，只在峰值墙球段加入一个大号动态 BPM 爆发。
+```
 
-`summary_card`
-
-- 底部大型卡片，展示 4-6 个关键指标。
-- 适合最后 4-8 秒。
-
-`compact_telemetry`
-
-- 小角标卡片。
-- 适合动作需要保持干净、不被遮挡时。
-
-`redline_peak`
-
-- 高对比红/绿峰值警报。
-- 只适合 1-2 秒短促使用。
-
-`minimal_ticker`
-
-- 只有底部窄条。
-- 适合视频本身运动已经很强，不适合大面板时。
+更新 `scripts/generate-overlays.mjs` 时，以 JSON 目录作为样式来源。不要把私密数据或一次性用户素材路径硬编码进模板文档。

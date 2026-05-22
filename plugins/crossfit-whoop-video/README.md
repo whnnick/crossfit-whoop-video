@@ -9,7 +9,7 @@ This bundle is a workflow/skill package for agents. It is not a standalone video
 - `.codex-plugin/plugin.json`: Codex plugin manifest.
 - `skills/crossfit-whoop-video/`: bundled Codex skill.
 - `skills/crossfit-whoop-video/references/`: editing, WHOOP HUD, and device-data guidance.
-- `skills/crossfit-whoop-video/assets/`: reusable HUD and device-source catalogs.
+- `skills/crossfit-whoop-video/assets/`: reusable HUD preset and device-source catalogs, including prompt-custom HUD style rules.
 - `skills/crossfit-whoop-video/scripts/check-video-env.sh`: local video tooling check.
 
 ## Install As A Codex Plugin
@@ -49,6 +49,12 @@ Prompt:
 
 ```text
 Use $crossfit-whoop-video to cut this workout footage into a vertical 4K training ad with biometric HUD overlays.
+```
+
+Custom HUD prompt:
+
+```text
+Use preset 01 + 02 + 04 as the base WHOOP look, then make the peak section more futuristic with a short speed-tunnel BPM burst.
 ```
 
 ## Device Data

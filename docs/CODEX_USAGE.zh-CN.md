@@ -32,7 +32,7 @@
 使用 crossfit-whoop-video 的工作流，把我上传的训练素材剪成 50 秒竖屏 4K 运动广告。风格要电影感、高燃。WHOOP 风格 HUD 只在开头、高强度段落和结尾总结出现。保留部分训练环境声，并用 ffprobe 验证最终输出。
 ```
 
-skill/plugin 里的说明会帮助 Codex 做剪辑判断：完整动作镜头、训练故事线、HUD 出现窗口、音乐和环境声平衡、安全检查和输出验证。它不是剪映式 GUI，也不包含私人素材或真实 WHOOP 凭据。
+skill/plugin 里的说明会帮助 Codex 做剪辑判断：完整动作镜头、训练故事线、HUD 出现窗口、音乐和环境声平衡、安全检查和输出验证。它也包含 `01`、`02`、`04` 等内置 HUD 预设，以及通过 prompt 自定义样式的规则。它不是剪映式 GUI，也不包含私人素材或真实 WHOOP 凭据。
 
 ## Codex Skill 方式
 
@@ -162,6 +162,12 @@ npm run template:render
 
 ```text
 使用 $crossfit-whoop-video。把这个 MP4 里的声音作为背景音乐，保留训练视频里的部分环境声，根据鼓点剪辑。WHOOP HUD 只出现 3-4 次。
+```
+
+自定义 HUD 样式：
+
+```text
+使用 $crossfit-whoop-video。WHOOP 效果以 01 + 02 + 04 为基础，但开头更亮，中段增加全息矩阵科技感，只在峰值发力点加入 1.5 秒速度 BPM 爆发。
 ```
 
 带本地路径：

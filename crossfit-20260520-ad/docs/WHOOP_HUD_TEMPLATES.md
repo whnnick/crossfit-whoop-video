@@ -1,46 +1,46 @@
 # WHOOP HUD Template Guide
 
-The current preferred direction is a brighter version of the May 19 WHOOP style: cinematic, high contrast, WHOOP green, glass panels, large numbers, and short animated data hits.
+The template catalog lives at `templates/whoop-hud-templates.json`. It now contains reusable presets from the prior edits plus prompt-customization rules for future edits.
 
-Use templates in `templates/whoop-hud-templates.json` as a style reference when updating `scripts/generate-overlays.mjs`.
+## Existing Presets
+
+- `style_01_broadcast_bright` (`01`): May 19-style opening HUD, brighter than the original dark reference.
+- `style_02_glass_side_hud` (`02`): large right-side glass panel with dynamic heart-rate data.
+- `style_03_compact_telemetry` (`03`): small corner telemetry chip for action-safe moments.
+- `style_04_summary_card` (`04`): closing scorecard with multiple workout metrics.
+- `style_05_redline_peak` (`05`): short red/green peak-effort alert.
+- `style_06_minimal_ticker` (`06`): low-obstruction bottom ticker.
+
+## New Futuristic Options
+
+- `style_07_holographic_matrix`: floating holographic panels around the athlete.
+- `style_08_speed_tunnel_hr`: kinetic BPM burst with radial speed lines.
+- `style_09_recovery_orbit`: animated recovery/sleep rings.
+- `style_10_data_stomp_title`: cinematic title hit with micro data chips.
 
 ## Recommended Mix
 
-- Opening: `broadcast_bright`
-- Mid-section: `glass_side_hud` or `compact_telemetry`
-- Peak moment: `redline_peak`
-- Closing: `summary_card`
+- Opening: `01`
+- Mid-section: `02` or `03`
+- Peak/transition: `05` or `08`
+- Recovery/context: `09`
+- Closing: `04`
 
-## Template Notes
+## Prompt Customization
 
-`broadcast_bright`
+Users can request custom HUD styling in plain language. Start from the closest preset, then adapt:
 
-- Closest to the May 19 reference.
-- Big headline, bottom data strip, WHOOP green progress bar.
-- Best for 3-6 seconds near the start.
+- brightness and contrast
+- accent colors
+- data density
+- placement and safe zones
+- animation intensity
+- metrics and timing windows
 
-`glass_side_hud`
+Example:
 
-- Tall right-side glass panel.
-- Large heart-rate number and progress bar.
-- Best during wall ball, pull-up, or bike intensity.
+```text
+Use 01 + 02 + 04 as the base WHOOP look, but make the opening brighter, add more holographic scan lines, and use a large dynamic BPM burst only during the peak wall-ball section.
+```
 
-`summary_card`
-
-- Large bottom card with 4-6 key metrics.
-- Best for the last 4-8 seconds.
-
-`compact_telemetry`
-
-- Small corner card.
-- Best when the action must stay clean and unobstructed.
-
-`redline_peak`
-
-- High-contrast red/green peak alert.
-- Best for 1-2 seconds only.
-
-`minimal_ticker`
-
-- Bottom strip only.
-- Best when the video already has strong motion and large panels would be too much.
+When updating `scripts/generate-overlays.mjs`, use the JSON catalog as the style source of truth. Do not hard-code private data or one-off user footage paths into the template docs.

@@ -32,7 +32,7 @@ Example prompt:
 Use the crossfit-whoop-video workflow to edit the attached workout footage into a 50 second vertical 4K sports ad. Keep it cinematic and energetic. Show WHOOP-style HUD data only in the opening, peak effort, and ending summary. Preserve some gym ambience and verify the final output with ffprobe.
 ```
 
-The skill/plugin guidance helps Codex make editing decisions: complete action shots, training arc, selective HUD windows, music/ambient balance, safety checks, and output verification. It is not a CapCut-style GUI and does not include private footage or real WHOOP credentials.
+The skill/plugin guidance helps Codex make editing decisions: complete action shots, training arc, selective HUD windows, music/ambient balance, safety checks, and output verification. It also includes built-in HUD presets such as `01`, `02`, and `04`, plus prompt-custom style rules. It is not a CapCut-style GUI and does not include private footage or real WHOOP credentials.
 
 ## Codex Skill Workflow
 
@@ -162,6 +162,12 @@ With music:
 
 ```text
 Use $crossfit-whoop-video. Use this MP4's audio as the music bed, preserve some gym ambience from the training videos, and cut the video to match the beat. WHOOP HUD should appear only 3-4 times.
+```
+
+With custom HUD styling:
+
+```text
+Use $crossfit-whoop-video. Use preset 01 + 02 + 04 as the base WHOOP look, but make the opening brighter, add a holographic matrix feel in the middle, and use a 1.5 second speed-tunnel BPM burst only at the peak effort moment.
 ```
 
 With local paths:

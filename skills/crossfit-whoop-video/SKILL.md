@@ -32,6 +32,7 @@ Use this skill to turn workout footage into a vertical short with a clear traini
 4. Render with a reproducible pipeline:
    - pre-cut clips from source media
    - mix music, ambient gym audio, and SFX
+   - choose a built-in WHOOP HUD preset or derive a prompt-custom HUD style
    - generate WHOOP overlay PNG/video assets
    - compose final video
    - verify output with `ffprobe` and sampled frames
@@ -57,12 +58,20 @@ Use this skill to turn workout footage into a vertical short with a clear traini
   - middle: 1-4 short heart-rate/data hits near high intensity
   - ending: 4-8 seconds for a summary card
 
+## HUD Style Rules
+
+- Prefer built-in presets from `assets/whoop-hud-templates.json` when the user asks for a known style.
+- Preserve legacy numeric aliases: `01` maps to `style_01_broadcast_bright`, `02` maps to `style_02_glass_side_hud`, and `04` maps to `style_04_summary_card`.
+- When the user asks for a custom style by prompt, start from the closest preset and adapt mood, placement, density, colors, animation intensity, and metric list.
+- If the user asks for "more futuristic", "more tech", or "cooler", consider `style_07_holographic_matrix`, `style_08_speed_tunnel_hr`, `style_09_recovery_orbit`, or `style_10_data_stomp_title`.
+- Keep large HUD panels out of required action areas unless the user explicitly prioritizes data over visibility.
+
 ## References
 
 Load only what is needed:
 
 - `references/editing-methodology.md`: detailed repeatable editing process and QA checklist.
-- `references/whoop-hud-templates.md`: HUD template selection guide.
+- `references/whoop-hud-templates.md`: HUD preset selection and prompt-customization guide.
 - `references/device-data-sources.md`: supported device/export sources and metric mapping.
 - `assets/whoop-hud-templates.json`: machine-readable HUD template catalog.
 - `assets/device-data-sources.json`: machine-readable data source adapters.

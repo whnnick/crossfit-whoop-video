@@ -9,7 +9,7 @@
 - `.codex-plugin/plugin.json`：Codex plugin manifest。
 - `skills/crossfit-whoop-video/`：内置 Codex skill。
 - `skills/crossfit-whoop-video/references/`：剪辑、WHOOP HUD 和设备数据说明。
-- `skills/crossfit-whoop-video/assets/`：可复用 HUD 和设备数据源目录。
+- `skills/crossfit-whoop-video/assets/`：可复用 HUD 预设和设备数据源目录，包含 prompt 自定义 HUD 样式规则。
 - `skills/crossfit-whoop-video/scripts/check-video-env.sh`：本地视频工具检查脚本。
 
 ## 作为 Codex Plugin 安装
@@ -59,6 +59,12 @@ Use $crossfit-whoop-video to cut this workout footage into a vertical 4K trainin
 
 ```text
 使用 $crossfit-whoop-video，把这段训练素材剪成竖屏 4K 运动广告，并加入选择性生物数据 HUD。
+```
+
+自定义 HUD 提示词：
+
+```text
+WHOOP 效果以 01 + 02 + 04 为基础，峰值段做得更未来感，加入短促速度 BPM 爆发。
 ```
 
 ## 设备数据

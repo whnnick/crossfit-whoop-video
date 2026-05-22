@@ -1,65 +1,145 @@
 {
-  "version": 1,
+  "version": 2,
+  "promptCustomization": {
+    "enabled": true,
+    "defaultPreset": "style_01_broadcast_bright",
+    "instructions": [
+      "Start from the closest preset, then adapt color, density, position, size, and motion from the user's prompt.",
+      "Keep WHOOP-style HUDs selective and short-lived unless the user explicitly asks for persistent telemetry.",
+      "Do not fabricate unavailable metrics. If the data source lacks a metric, omit it or label it as manual/unavailable.",
+      "Avoid covering the athlete's face, torso, ball path, bar path, or other required action area."
+    ],
+    "promptFields": [
+      "preset id or reference style",
+      "mood: cinematic, bright, aggressive, minimal, futuristic, broadcast",
+      "placement: top-left, right-side, lower-third, bottom ticker, full-screen burst",
+      "data density: minimal, balanced, rich",
+      "motion intensity: subtle, medium, high-impact",
+      "colors and accent behavior",
+      "metrics to show",
+      "moments where the HUD should appear"
+    ]
+  },
   "templates": [
     {
-      "id": "broadcast_bright",
+      "id": "style_01_broadcast_bright",
+      "aliases": ["01", "broadcast_bright", "may19_bright"],
       "role": "opening",
       "durationSeconds": [3, 6],
-      "layout": "large headline + bottom data strip",
+      "layout": "large headline plus bottom data strip",
       "visualStyle": "brighter cinematic WHOOP green, light scan grid, subtle vignette",
       "motion": ["number roll", "scan-line sweep", "progress bar grow", "soft beat flash"],
       "safeZones": ["lower third", "left headline area"],
-      "metrics": ["heart_rate", "strain", "recovery"]
+      "metrics": ["heart_rate", "strain", "recovery"],
+      "customizable": true
     },
     {
-      "id": "glass_side_hud",
+      "id": "style_02_glass_side_hud",
+      "aliases": ["02", "glass_side_hud", "large_hr_panel"],
       "role": "mid-intensity",
       "durationSeconds": [2, 4],
       "layout": "right-side translucent glass panel",
       "visualStyle": "cyan heart-rate number, WHOOP green load bar, thin white dividers",
       "motion": ["heart-rate tick", "bar grow", "panel slide-in", "micro pulse"],
       "safeZones": ["right side", "upper right"],
-      "metrics": ["heart_rate", "calories", "strain", "duration"]
+      "metrics": ["heart_rate", "calories", "strain", "duration"],
+      "customizable": true
     },
     {
-      "id": "summary_card",
-      "role": "ending",
-      "durationSeconds": [4, 8],
-      "layout": "large bottom card with metric grid",
-      "visualStyle": "glass card, green top accent, clear bold numbers",
-      "motion": ["tiles reveal sequentially", "numbers count up", "final glow"],
-      "safeZones": ["bottom half", "full-width lower panel"],
-      "metrics": ["duration", "calories", "avg_heart_rate", "max_heart_rate", "recovery", "sleep"]
-    },
-    {
-      "id": "compact_telemetry",
+      "id": "style_03_compact_telemetry",
+      "aliases": ["03", "compact_telemetry", "corner_chip"],
       "role": "action-safe insert",
       "durationSeconds": [1.5, 3],
       "layout": "small corner chip with two stacked metrics",
       "visualStyle": "minimal glass, thin green border, no headline",
       "motion": ["quick slide-in", "number flicker", "slide-out"],
       "safeZones": ["top left", "top right"],
-      "metrics": ["heart_rate", "strain"]
+      "metrics": ["heart_rate", "strain"],
+      "customizable": true
     },
     {
-      "id": "redline_peak",
+      "id": "style_04_summary_card",
+      "aliases": ["04", "summary_card", "closing_scorecard"],
+      "role": "ending",
+      "durationSeconds": [4, 8],
+      "layout": "large bottom card with metric grid",
+      "visualStyle": "glass card, green top accent, clear bold numbers",
+      "motion": ["tiles reveal sequentially", "numbers count up", "final glow"],
+      "safeZones": ["bottom half", "full-width lower panel"],
+      "metrics": ["duration", "calories", "avg_heart_rate", "max_heart_rate", "recovery", "sleep"],
+      "customizable": true
+    },
+    {
+      "id": "style_05_redline_peak",
+      "aliases": ["05", "redline_peak", "peak_alert"],
       "role": "peak alert",
       "durationSeconds": [1, 2],
-      "layout": "short alert band + large peak number",
-      "visualStyle": "WHOOP green plus restrained red accent",
+      "layout": "short alert band plus large peak number",
+      "visualStyle": "WHOOP green with restrained red impact accent",
       "motion": ["impact flash", "peak number punch-in", "short shake"],
       "safeZones": ["side band", "bottom strip"],
-      "metrics": ["max_heart_rate", "zone"]
+      "metrics": ["max_heart_rate", "zone"],
+      "customizable": true
     },
     {
-      "id": "minimal_ticker",
+      "id": "style_06_minimal_ticker",
+      "aliases": ["06", "minimal_ticker", "bottom_strip"],
       "role": "low-obstruction data",
       "durationSeconds": [3, 8],
       "layout": "bottom ticker strip",
       "visualStyle": "black translucent strip, compact monospace labels",
       "motion": ["ticker crawl", "small numeric updates"],
       "safeZones": ["bottom edge"],
-      "metrics": ["heart_rate", "strain", "recovery"]
+      "metrics": ["heart_rate", "strain", "recovery"],
+      "customizable": true
+    },
+    {
+      "id": "style_07_holographic_matrix",
+      "aliases": ["07", "holographic_matrix", "futuristic_grid"],
+      "role": "premium tech reveal",
+      "durationSeconds": [2, 5],
+      "layout": "floating grid panels around subject with center-safe gap",
+      "visualStyle": "transparent holographic grid, WHOOP green/cyan data, thin orbit lines",
+      "motion": ["grid build-in", "metric node pulse", "diagonal scan", "soft parallax drift"],
+      "safeZones": ["left edge", "right edge", "top corners"],
+      "metrics": ["heart_rate", "strain", "recovery", "calories"],
+      "customizable": true
+    },
+    {
+      "id": "style_08_speed_tunnel_hr",
+      "aliases": ["08", "speed_tunnel_hr", "kinetic_bpm"],
+      "role": "high-speed transition data",
+      "durationSeconds": [1, 3],
+      "layout": "radial speed lines plus oversized BPM hit",
+      "visualStyle": "motion-blur streaks, large WHOOP green BPM, red/orange impact edges",
+      "motion": ["radial streak burst", "BPM slam", "micro shake", "fade to clear frame"],
+      "safeZones": ["center text only when subject is not central", "side burst"],
+      "metrics": ["heart_rate", "max_heart_rate", "zone"],
+      "customizable": true
+    },
+    {
+      "id": "style_09_recovery_orbit",
+      "aliases": ["09", "recovery_orbit", "sleep_recovery_ring"],
+      "role": "recovery or sleep context",
+      "durationSeconds": [3, 6],
+      "layout": "orbital rings with small metric satellites",
+      "visualStyle": "bright recovery rings, soft glass labels, calm cyan/green palette",
+      "motion": ["ring draw-on", "satellite metric reveal", "breathing glow"],
+      "safeZones": ["upper left", "upper right", "lower third"],
+      "metrics": ["recovery", "sleep", "hrv", "resting_heart_rate"],
+      "customizable": true
+    },
+    {
+      "id": "style_10_data_stomp_title",
+      "aliases": ["10", "data_stomp_title", "impact_title"],
+      "role": "hook or section title",
+      "durationSeconds": [0.8, 2.5],
+      "layout": "full-width title hit with embedded micro metrics",
+      "visualStyle": "bold cinematic title, scan texture, green data chips, brief white flash",
+      "motion": ["title stomp", "chip pop", "glitch wipe", "flash out"],
+      "safeZones": ["between action beats", "transition frames"],
+      "metrics": ["strain", "heart_rate", "duration"],
+      "customizable": true
     }
   ]
 }

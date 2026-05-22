@@ -29,6 +29,49 @@
 - [Skill 剪辑方法论](skills/crossfit-whoop-video/references/editing-methodology.zh-CN.md)
 - [Skill WHOOP HUD 模板说明](skills/crossfit-whoop-video/references/whoop-hud-templates.zh-CN.md)
 
+## 文档结构
+
+本仓库按 GitHub 开源项目常见方式组织文档：根目录 README 负责快速理解和快速开始，`docs/` 放通用教程，具体项目目录放自己的 README/DESIGN，所有面向用户的英文说明都有对应 `*.zh-CN.md` 中文版。
+
+```text
+.
+├── README.md                         # 英文项目概览和快速开始
+├── README.zh-CN.md                   # 中文项目概览、快速开始和文档索引
+├── LICENSE                           # 开源许可证
+├── docs/
+│   ├── TUTORIAL.md                   # 完整模板使用教程
+│   ├── TUTORIAL.zh-CN.md
+│   ├── OPENCLAW_COMPATIBILITY.md     # OpenClaw 兼容说明
+│   └── OPENCLAW_COMPATIBILITY.zh-CN.md
+├── crossfit-whoop-ad/
+│   ├── README-TEMPLATE.md            # 通用模板工作流
+│   ├── README-TEMPLATE.zh-CN.md
+│   ├── DESIGN.md                     # 通用模板视觉设计
+│   └── DESIGN.zh-CN.md
+├── crossfit-20260520-ad/
+│   ├── README.md                     # 示例项目流水线说明
+│   ├── README.zh-CN.md
+│   ├── DESIGN.md                     # 示例项目视觉设计
+│   ├── DESIGN.zh-CN.md
+│   └── docs/
+│       ├── VIDEO_EDITING_METHODOLOGY.md
+│       ├── VIDEO_EDITING_METHODOLOGY.zh-CN.md
+│       ├── WHOOP_HUD_TEMPLATES.md
+│       └── WHOOP_HUD_TEMPLATES.zh-CN.md
+├── skills/crossfit-whoop-video/
+│   ├── SKILL.md                      # 给 agent 读取的 skill 入口
+│   └── references/                   # skill 的人类可读参考文档
+├── plugins/crossfit-whoop-video/
+│   ├── README.md                     # 插件安装和使用说明
+│   ├── README.zh-CN.md
+│   └── skills/crossfit-whoop-video/  # 插件内置的 skill
+└── flow-whoop-60s/
+    ├── DESIGN.md                     # 早期 Flow 视频视觉设计
+    └── DESIGN.zh-CN.md
+```
+
+`SKILL.md`、`AGENTS.md`、`CLAUDE.md` 属于 agent 运行指令文件，不作为普通用户说明文档逐字翻译，避免影响 Codex/OpenClaw 等工具读取 workflow。
+
 ## 最常用方式：作为普通视频模板
 
 适合你或其他用户克隆仓库后自己放素材、填配置、渲染视频。

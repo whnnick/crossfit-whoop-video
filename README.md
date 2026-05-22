@@ -53,6 +53,49 @@ OpenClaw compatibility notes are in [docs/OPENCLAW_COMPATIBILITY.md](docs/OPENCL
 - WHOOP OAuth and data-fetch scripts
 - Motion-ad visual treatment: speed lines, pulse rings, scan effects, impact flashes, and transition wipes
 
+## Documentation Structure
+
+This repository follows a GitHub-friendly documentation layout: the root README gives the quick start, `docs/` holds general guides, each project folder has local README/design notes, and every user-facing English document has a matching `*.zh-CN.md` Chinese version.
+
+```text
+.
+├── README.md                         # English overview and quick start
+├── README.zh-CN.md                   # Chinese overview, quick start, and doc index
+├── LICENSE                           # Open-source license
+├── docs/
+│   ├── TUTORIAL.md                   # End-to-end template tutorial
+│   ├── TUTORIAL.zh-CN.md
+│   ├── OPENCLAW_COMPATIBILITY.md     # OpenClaw compatibility notes
+│   └── OPENCLAW_COMPATIBILITY.zh-CN.md
+├── crossfit-whoop-ad/
+│   ├── README-TEMPLATE.md            # Reusable template workflow
+│   ├── README-TEMPLATE.zh-CN.md
+│   ├── DESIGN.md                     # Template visual direction
+│   └── DESIGN.zh-CN.md
+├── crossfit-20260520-ad/
+│   ├── README.md                     # Example project pipeline
+│   ├── README.zh-CN.md
+│   ├── DESIGN.md                     # Example project visual direction
+│   ├── DESIGN.zh-CN.md
+│   └── docs/
+│       ├── VIDEO_EDITING_METHODOLOGY.md
+│       ├── VIDEO_EDITING_METHODOLOGY.zh-CN.md
+│       ├── WHOOP_HUD_TEMPLATES.md
+│       └── WHOOP_HUD_TEMPLATES.zh-CN.md
+├── skills/crossfit-whoop-video/
+│   ├── SKILL.md                      # Agent-readable skill entrypoint
+│   └── references/                   # Human-readable skill references
+├── plugins/crossfit-whoop-video/
+│   ├── README.md                     # Plugin install/use notes
+│   ├── README.zh-CN.md
+│   └── skills/crossfit-whoop-video/  # Bundled skill payload
+└── flow-whoop-60s/
+    ├── DESIGN.md                     # Earlier Flow video visual direction
+    └── DESIGN.zh-CN.md
+```
+
+`SKILL.md`, `AGENTS.md`, and `CLAUDE.md` are kept as agent-facing instruction files. They are not translated one-to-one because changing their wording can affect how coding agents interpret the workflow.
+
 ## Device Data Sources
 
 The workflow supports biometric data in these practical ways:

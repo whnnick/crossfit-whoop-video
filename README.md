@@ -50,6 +50,8 @@ cp -R plugins/crossfit-whoop-video ~/plugins/
 
 OpenClaw compatibility notes are in [docs/OPENCLAW_COMPATIBILITY.md](docs/OPENCLAW_COMPATIBILITY.md).
 
+For local, Codex, OpenClaw, upload, and prompt workflows, see [docs/CODEX_USAGE.md](docs/CODEX_USAGE.md).
+
 ## What This Repository Contains
 
 - A HyperFrames composition under `crossfit-whoop-ad/`
@@ -70,6 +72,8 @@ This repository follows a GitHub-friendly documentation layout: the root README 
 ├── LICENSE                           # Open-source license
 ├── docs/assets/                      # Safe synthetic preview assets
 ├── docs/
+│   ├── CODEX_USAGE.md                # Local/Codex/OpenClaw usage and prompt examples
+│   ├── CODEX_USAGE.zh-CN.md
 │   ├── TUTORIAL.md                   # End-to-end template tutorial
 │   ├── TUTORIAL.zh-CN.md
 │   ├── OPENCLAW_COMPATIBILITY.md     # OpenClaw compatibility notes

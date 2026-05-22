@@ -22,6 +22,7 @@
 ## 中文文档索引
 
 - [使用教程](docs/TUTORIAL.zh-CN.md)
+- [完整使用指南：本地、Codex、OpenClaw、上传视频和提示词](docs/CODEX_USAGE.zh-CN.md)
 - [OpenClaw 兼容说明](docs/OPENCLAW_COMPATIBILITY.zh-CN.md)
 - [通用模板说明](crossfit-whoop-ad/README-TEMPLATE.zh-CN.md)
 - [通用模板视觉设计](crossfit-whoop-ad/DESIGN.zh-CN.md)
@@ -46,6 +47,8 @@
 ├── LICENSE                           # 开源许可证
 ├── docs/assets/                      # 安全的合成预览素材
 ├── docs/
+│   ├── CODEX_USAGE.md                # 本地/Codex/OpenClaw 使用和提示词范例
+│   ├── CODEX_USAGE.zh-CN.md
 │   ├── TUTORIAL.md                   # 完整模板使用教程
 │   ├── TUTORIAL.zh-CN.md
 │   ├── OPENCLAW_COMPATIBILITY.md     # OpenClaw 兼容说明
@@ -174,6 +177,12 @@ cp -R plugins/crossfit-whoop-video ~/plugins/
 ```
 
 这个插件目前主要打包了同一个 `crossfit-whoop-video` skill。不同 Codex 或兼容客户端的插件安装路径可能不同，具体以客户端文档为准。
+
+更完整的“本地怎么用、Codex 怎么用、OpenClaw 怎么用、怎么上传视频、提示词怎么写”见：
+
+```text
+docs/CODEX_USAGE.zh-CN.md
+```
 
 ## OpenClaw 兼容性
 

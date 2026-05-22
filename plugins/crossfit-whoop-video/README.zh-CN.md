@@ -1,0 +1,71 @@
+# CrossFit WHOOP Video Plugin
+
+这是一个 Codex plugin bundle，用于创建竖屏 CrossFit、健身房、HYROX 和运动训练视频，包含电影感剪辑指导和选择性生物数据 HUD。
+
+## 内容
+
+- `.codex-plugin/plugin.json`：Codex plugin manifest。
+- `skills/crossfit-whoop-video/`：内置 Codex skill。
+- `skills/crossfit-whoop-video/references/`：剪辑、WHOOP HUD 和设备数据说明。
+- `skills/crossfit-whoop-video/assets/`：可复用 HUD 和设备数据源目录。
+- `skills/crossfit-whoop-video/scripts/check-video-env.sh`：本地视频工具检查脚本。
+
+## 作为 Codex Plugin 安装
+
+克隆仓库后：
+
+```bash
+mkdir -p ~/plugins
+cp -R plugins/crossfit-whoop-video ~/plugins/
+```
+
+如果你的 Codex 版本支持本地插件，可以在 Codex 插件界面里安装或启用它。
+
+## 作为 OpenClaw 兼容 Bundle 安装
+
+OpenClaw 可以安装包含 `.codex-plugin/plugin.json` 的兼容 Codex bundle。
+
+```bash
+openclaw plugins install ./plugins/crossfit-whoop-video
+openclaw plugins list
+openclaw plugins inspect crossfit-whoop-video
+openclaw gateway restart
+```
+
+真正有用的内容是内置 skill：
+
+```text
+skills/crossfit-whoop-video/
+```
+
+## 作为普通 Codex Skill 安装
+
+如果只需要 skill：
+
+```bash
+mkdir -p ~/.codex/skills
+cp -R plugins/crossfit-whoop-video/skills/crossfit-whoop-video ~/.codex/skills/
+```
+
+提示词示例：
+
+```text
+Use $crossfit-whoop-video to cut this workout footage into a vertical 4K training ad with biometric HUD overlays.
+```
+
+也可以中文说：
+
+```text
+使用 $crossfit-whoop-video，把这段训练素材剪成竖屏 4K 运动广告，并加入选择性生物数据 HUD。
+```
+
+## 设备数据
+
+当前说明覆盖：
+
+- WHOOP API 或导出数据
+- Apple Watch，通过 Apple Health XML、FIT、TCX 或 CSV 导出
+- Garmin/Strava 风格 FIT、TCX、GPX 或 CSV 导出
+- 明确标注来源的手动指标
+
+不要提交原始训练导出、视频、token、`.env` 或私有 API 响应。

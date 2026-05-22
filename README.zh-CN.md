@@ -13,6 +13,22 @@
 
 仓库不会包含你的私人视频、渲染成片、`.env`、WHOOP token 或真实 WHOOP 数据。
 
+## 中文文档索引
+
+- [使用教程](docs/TUTORIAL.zh-CN.md)
+- [OpenClaw 兼容说明](docs/OPENCLAW_COMPATIBILITY.zh-CN.md)
+- [通用模板说明](crossfit-whoop-ad/README-TEMPLATE.zh-CN.md)
+- [通用模板视觉设计](crossfit-whoop-ad/DESIGN.zh-CN.md)
+- [2026-05-20 项目说明](crossfit-20260520-ad/README.zh-CN.md)
+- [2026-05-20 视觉设计](crossfit-20260520-ad/DESIGN.zh-CN.md)
+- [剪辑方法论](crossfit-20260520-ad/docs/VIDEO_EDITING_METHODOLOGY.zh-CN.md)
+- [WHOOP HUD 模板指南](crossfit-20260520-ad/docs/WHOOP_HUD_TEMPLATES.zh-CN.md)
+- [Flow 60s 视觉设计](flow-whoop-60s/DESIGN.zh-CN.md)
+- [Plugin 中文说明](plugins/crossfit-whoop-video/README.zh-CN.md)
+- [Skill 设备数据源说明](skills/crossfit-whoop-video/references/device-data-sources.zh-CN.md)
+- [Skill 剪辑方法论](skills/crossfit-whoop-video/references/editing-methodology.zh-CN.md)
+- [Skill WHOOP HUD 模板说明](skills/crossfit-whoop-video/references/whoop-hud-templates.zh-CN.md)
+
 ## 最常用方式：作为普通视频模板
 
 适合你或其他用户克隆仓库后自己放素材、填配置、渲染视频。

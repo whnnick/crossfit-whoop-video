@@ -1,6 +1,16 @@
 # CrossFit WHOOP Video 中文文档
 
+**中文用户从这里开始。** 本仓库所有面向用户的英文说明都提供对应 `*.zh-CN.md` 中文版；后续文档更新应保持中英文同步。
+
 这是一个可复用的竖屏运动短片项目，目标是把 CrossFit 或其他训练素材剪成 9:16、4K、运动广告风格的视频，并叠加 WHOOP 风格的数据 HUD。项目同时提供普通 HyperFrames 模板、Codex Skill 和 Codex Plugin 三种使用方式。
+
+## 从这里开始
+
+- 基础环境要求：[docs/ENVIRONMENT.zh-CN.md](docs/ENVIRONMENT.zh-CN.md)
+- 项目完整工作链路：[docs/WORKFLOW.zh-CN.md](docs/WORKFLOW.zh-CN.md)
+- 本地、Codex、OpenClaw、上传视频和提示词：[docs/CODEX_USAGE.zh-CN.md](docs/CODEX_USAGE.zh-CN.md)
+- 完整模板教程：[docs/TUTORIAL.zh-CN.md](docs/TUTORIAL.zh-CN.md)
+- OpenClaw 兼容说明：[docs/OPENCLAW_COMPATIBILITY.zh-CN.md](docs/OPENCLAW_COMPATIBILITY.zh-CN.md)
 
 ## 效果预览
 
@@ -21,6 +31,8 @@
 
 ## 中文文档索引
 
+- [基础环境要求](docs/ENVIRONMENT.zh-CN.md)
+- [项目完整工作链路](docs/WORKFLOW.zh-CN.md)
 - [使用教程](docs/TUTORIAL.zh-CN.md)
 - [完整使用指南：本地、Codex、OpenClaw、上传视频和提示词](docs/CODEX_USAGE.zh-CN.md)
 - [OpenClaw 兼容说明](docs/OPENCLAW_COMPATIBILITY.zh-CN.md)
@@ -47,6 +59,10 @@
 ├── LICENSE                           # 开源许可证
 ├── docs/assets/                      # 安全的合成预览素材
 ├── docs/
+│   ├── ENVIRONMENT.md                # 基础环境和工具要求
+│   ├── ENVIRONMENT.zh-CN.md
+│   ├── WORKFLOW.md                   # 项目完整工作链路
+│   ├── WORKFLOW.zh-CN.md
 │   ├── CODEX_USAGE.md                # 本地/Codex/OpenClaw 使用和提示词范例
 │   ├── CODEX_USAGE.zh-CN.md
 │   ├── TUTORIAL.md                   # 完整模板使用教程

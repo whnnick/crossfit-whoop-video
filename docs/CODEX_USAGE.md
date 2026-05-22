@@ -2,6 +2,11 @@
 
 This guide explains how a user should use the project after cloning it.
 
+Before choosing a workflow, check:
+
+- Environment requirements: [ENVIRONMENT.md](ENVIRONMENT.md)
+- End-to-end project workflow: [WORKFLOW.md](WORKFLOW.md)
+
 ## Quick Decision
 
 - Use `crossfit-whoop-ad/` locally when you want a normal template project and will edit `template.config.json` yourself.

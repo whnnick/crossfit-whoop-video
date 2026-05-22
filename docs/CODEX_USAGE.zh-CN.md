@@ -2,6 +2,11 @@
 
 这份文档回答一个核心问题：用户 clone 这个开源项目以后，到底怎么用。
 
+选择使用方式前，建议先看：
+
+- 基础环境要求：[ENVIRONMENT.zh-CN.md](ENVIRONMENT.zh-CN.md)
+- 项目完整工作链路：[WORKFLOW.zh-CN.md](WORKFLOW.zh-CN.md)
+
 ## 先选使用方式
 
 - 本地模板：想自己改配置、自己运行脚本，用 `crossfit-whoop-ad/`。

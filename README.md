@@ -2,7 +2,15 @@
 
 A reusable HyperFrames template for vertical 4K CrossFit-style training ads with WHOOP-inspired biometric overlays, motion effects, and optional real WHOOP API data.
 
-中文文档见 [README.zh-CN.md](README.zh-CN.md). User-facing documentation also has matching `*.zh-CN.md` versions.
+**Chinese users:** start here: [README.zh-CN.md](README.zh-CN.md). Every user-facing English guide has a matching `*.zh-CN.md` Chinese version.
+
+## Start Here
+
+- Environment requirements: [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md)
+- How the project works end to end: [docs/WORKFLOW.md](docs/WORKFLOW.md)
+- Local, Codex, OpenClaw, upload, and prompt workflows: [docs/CODEX_USAGE.md](docs/CODEX_USAGE.md)
+- Full template tutorial: [docs/TUTORIAL.md](docs/TUTORIAL.md)
+- OpenClaw compatibility: [docs/OPENCLAW_COMPATIBILITY.md](docs/OPENCLAW_COMPATIBILITY.md)
 
 ## Preview
 
@@ -48,10 +56,6 @@ mkdir -p ~/plugins
 cp -R plugins/crossfit-whoop-video ~/plugins/
 ```
 
-OpenClaw compatibility notes are in [docs/OPENCLAW_COMPATIBILITY.md](docs/OPENCLAW_COMPATIBILITY.md).
-
-For local, Codex, OpenClaw, upload, and prompt workflows, see [docs/CODEX_USAGE.md](docs/CODEX_USAGE.md).
-
 ## What This Repository Contains
 
 - A HyperFrames composition under `crossfit-whoop-ad/`
@@ -72,6 +76,10 @@ This repository follows a GitHub-friendly documentation layout: the root README 
 ├── LICENSE                           # Open-source license
 ├── docs/assets/                      # Safe synthetic preview assets
 ├── docs/
+│   ├── ENVIRONMENT.md                # Required local tools and setup checks
+│   ├── ENVIRONMENT.zh-CN.md
+│   ├── WORKFLOW.md                   # End-to-end project pipeline
+│   ├── WORKFLOW.zh-CN.md
 │   ├── CODEX_USAGE.md                # Local/Codex/OpenClaw usage and prompt examples
 │   ├── CODEX_USAGE.zh-CN.md
 │   ├── TUTORIAL.md                   # End-to-end template tutorial

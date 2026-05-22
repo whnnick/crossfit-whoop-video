@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <a href="plugins/crossfit-whoop-video/.codex-plugin/plugin.json"><img alt="Version: 1.0.8" src="https://img.shields.io/badge/version-1.0.8-111827"></a>
+  <a href="CHANGELOG.md"><img alt="Version: 1.0.9" src="https://img.shields.io/badge/version-1.0.9-111827"></a>
   <a href="docs/ENVIRONMENT.md"><img alt="Environment: ffmpeg, Node.js, HyperFrames" src="https://img.shields.io/badge/environment-ffmpeg%20%7C%20Node.js%20%7C%20HyperFrames-1677ff"></a>
   <a href="docs/CODEX_USAGE.md"><img alt="Agents: Codex, OpenClaw" src="https://img.shields.io/badge/agents-Codex%20%7C%20OpenClaw-7c3aed"></a>
   <a href="docs/WORKFLOW.md"><img alt="Workflow: 9:16 4K sports video" src="https://img.shields.io/badge/output-9%3A16%204K%20sports%20video-00a36c"></a>
@@ -34,6 +34,7 @@
 | I use Codex and want to install/use the skill | [Codex user workflow](docs/CODEX_USAGE.md#codex-user-workflow) |
 | I use OpenClaw and want to install/use the skill or plugin | [OpenClaw user workflow](docs/CODEX_USAGE.md#openclaw-user-workflow) |
 | I am a developer and want to run or modify the template locally | [Advanced local template workflow](docs/CODEX_USAGE.md#advanced-local-template-workflow) |
+| I want to see what changed between versions | [Changelog](CHANGELOG.md) |
 | Install local tools for OpenClaw, local rendering, or development | [Environment requirements](docs/ENVIRONMENT.md) |
 | Understand the full pipeline | [End-to-end workflow](docs/WORKFLOW.md) |
 
@@ -106,6 +107,8 @@ This repository follows a GitHub-friendly documentation layout: the root README 
 .
 ├── README.md                         # English overview and quick start
 ├── README.zh-CN.md                   # Chinese overview, quick start, and doc index
+├── CHANGELOG.md                      # English release notes
+├── CHANGELOG.zh-CN.md                # Chinese release notes
 ├── LICENSE                           # Open-source license
 ├── docs/assets/                      # Safe synthetic preview assets
 ├── docs/
@@ -147,6 +150,10 @@ This repository follows a GitHub-friendly documentation layout: the root README 
 ```
 
 `SKILL.md`, `AGENTS.md`, and `CLAUDE.md` are kept as agent-facing instruction files. They are not translated one-to-one because changing their wording can affect how coding agents interpret the workflow.
+
+## Release Rule
+
+Every user-facing update must bump the project version and add a matching entry to [CHANGELOG.md](CHANGELOG.md) and [CHANGELOG.zh-CN.md](CHANGELOG.zh-CN.md).
 
 ## Device Data Sources
 

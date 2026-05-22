@@ -2,6 +2,8 @@
 
 This guide is for regular Codex/OpenClaw users. The intended experience is: ask the agent to install this skill/plugin, provide workout footage, copy a prompt, and get a guided edit. The local template section is for advanced developers.
 
+Version history is tracked in [../CHANGELOG.md](../CHANGELOG.md). Every release should update both the version number and the changelog.
+
 Before local rendering or OpenClaw deployment, also read:
 
 - Environment requirements: [ENVIRONMENT.md](ENVIRONMENT.md)

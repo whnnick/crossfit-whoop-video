@@ -2,6 +2,8 @@
 
 这份文档面向普通 Codex/OpenClaw 用户。目标体验是：让 agent 帮你安装这个 skill/plugin，提供训练素材，复制提示词，然后得到按这套方法生成的剪辑。后面的本地模板部分是给更高阶开发者看的。
 
+版本历史记录在 [../CHANGELOG.zh-CN.md](../CHANGELOG.zh-CN.md)。每次发布都应同时更新版本号和更新日志。
+
 如果要做本地渲染或 OpenClaw 部署，再阅读：
 
 - 基础环境要求：[ENVIRONMENT.zh-CN.md](ENVIRONMENT.zh-CN.md)

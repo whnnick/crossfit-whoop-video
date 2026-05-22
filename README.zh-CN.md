@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <a href="plugins/crossfit-whoop-video/.codex-plugin/plugin.json"><img alt="版本: 1.0.8" src="https://img.shields.io/badge/version-1.0.8-111827"></a>
+  <a href="CHANGELOG.zh-CN.md"><img alt="版本: 1.0.9" src="https://img.shields.io/badge/version-1.0.9-111827"></a>
   <a href="docs/ENVIRONMENT.zh-CN.md"><img alt="环境: ffmpeg, Node.js, HyperFrames" src="https://img.shields.io/badge/environment-ffmpeg%20%7C%20Node.js%20%7C%20HyperFrames-1677ff"></a>
   <a href="docs/CODEX_USAGE.zh-CN.md"><img alt="Agent: Codex, OpenClaw" src="https://img.shields.io/badge/agents-Codex%20%7C%20OpenClaw-7c3aed"></a>
   <a href="docs/WORKFLOW.zh-CN.md"><img alt="输出: 9:16 4K sports video" src="https://img.shields.io/badge/output-9%3A16%204K%20sports%20video-00a36c"></a>
@@ -36,6 +36,7 @@
 | 我用 Codex，想安装并直接使用这个 skill/plugin | [Codex 普通用户流程](docs/CODEX_USAGE.zh-CN.md#codex-普通用户流程) |
 | 我用 OpenClaw，想安装并直接使用这个 skill/plugin | [OpenClaw 普通用户流程](docs/CODEX_USAGE.zh-CN.md#openclaw-普通用户流程) |
 | 我是开发者，想本地运行或改模板 | [高级用法：本地模板方式](docs/CODEX_USAGE.zh-CN.md#高级用法本地模板方式) |
+| 我想看每个版本更新了什么 | [更新日志](CHANGELOG.zh-CN.md) |
 | 为 OpenClaw、本地渲染或二次开发安装基础工具 | [基础环境要求](docs/ENVIRONMENT.zh-CN.md) |
 | 理解完整剪辑和生成链路 | [项目完整工作链路](docs/WORKFLOW.zh-CN.md) |
 
@@ -113,6 +114,7 @@ npm run dry-run
 - [Skill 设备数据源说明](skills/crossfit-whoop-video/references/device-data-sources.zh-CN.md)
 - [Skill 剪辑方法论](skills/crossfit-whoop-video/references/editing-methodology.zh-CN.md)
 - [Skill WHOOP HUD 模板说明](skills/crossfit-whoop-video/references/whoop-hud-templates.zh-CN.md)
+- [更新日志](CHANGELOG.zh-CN.md)
 
 ## 文档结构
 
@@ -122,6 +124,8 @@ npm run dry-run
 .
 ├── README.md                         # 英文项目概览和快速开始
 ├── README.zh-CN.md                   # 中文项目概览、快速开始和文档索引
+├── CHANGELOG.md                      # 英文更新日志
+├── CHANGELOG.zh-CN.md                # 中文更新日志
 ├── LICENSE                           # 开源许可证
 ├── docs/assets/                      # 安全的合成预览素材
 ├── docs/
@@ -163,6 +167,10 @@ npm run dry-run
 ```
 
 `SKILL.md`、`AGENTS.md`、`CLAUDE.md` 属于 agent 运行指令文件，不作为普通用户说明文档逐字翻译，避免影响 Codex/OpenClaw 等工具读取 workflow。
+
+## 发布规则
+
+每次面向用户的更新都必须同步提升项目版本号，并在 [CHANGELOG.md](CHANGELOG.md) 和 [CHANGELOG.zh-CN.md](CHANGELOG.zh-CN.md) 中记录对应更新。
 
 ## 开发者方式：作为普通视频模板
 

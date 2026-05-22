@@ -18,6 +18,7 @@
 </p>
 
 <p align="center">
+  <a href="plugins/crossfit-whoop-video/.codex-plugin/plugin.json"><img alt="Version: 1.0.8" src="https://img.shields.io/badge/version-1.0.8-111827"></a>
   <a href="docs/ENVIRONMENT.md"><img alt="Environment: ffmpeg, Node.js, HyperFrames" src="https://img.shields.io/badge/environment-ffmpeg%20%7C%20Node.js%20%7C%20HyperFrames-1677ff"></a>
   <a href="docs/CODEX_USAGE.md"><img alt="Agents: Codex, OpenClaw" src="https://img.shields.io/badge/agents-Codex%20%7C%20OpenClaw-7c3aed"></a>
   <a href="docs/WORKFLOW.md"><img alt="Workflow: 9:16 4K sports video" src="https://img.shields.io/badge/output-9%3A16%204K%20sports%20video-00a36c"></a>

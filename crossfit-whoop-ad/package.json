@@ -1,5 +1,6 @@
 {
   "name": "crossfit-whoop-ad",
+  "version": "1.0.8",
   "private": true,
   "type": "module",
   "scripts": {

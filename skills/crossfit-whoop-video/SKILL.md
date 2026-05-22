@@ -50,6 +50,7 @@ Use this skill to turn workout footage into a vertical short with a clear traini
 ## WHOOP Data Rules
 
 - Use real WHOOP API/export data when the user requests real data.
+- If the repository includes `crossfit-whoop-ad/`, use its WHOOP OAuth/data-fetch scripts when credentials are configured.
 - Do not fabricate missing metrics. If a metric is unavailable, omit it or label it as unavailable.
 - Never commit or expose WHOOP tokens, client secrets, `.env`, or private API responses.
 - For Apple Watch, use user-provided exports such as Apple Health export XML or third-party FIT/TCX/CSV files. Do not claim direct Apple cloud access unless the project includes a real iOS HealthKit app/export bridge.
@@ -93,6 +94,17 @@ npm run overlays
 npm run render
 ffprobe -v error -show_entries stream=index,codec_type,codec_name,width,height,r_frame_rate -show_entries format=duration -of default=noprint_wrappers=1 path/to/output.mp4
 ```
+
+Fetch real WHOOP data when the template project and credentials are available:
+
+```bash
+cd crossfit-whoop-ad
+cp .env.example .env
+npm run whoop:auth
+npm run whoop:fetch
+```
+
+Keep `.env`, `.whoop-token.json`, `assets/whoop-data.json`, and `assets/whoop-data.js` private and ignored.
 
 ## Delivery Checklist
 

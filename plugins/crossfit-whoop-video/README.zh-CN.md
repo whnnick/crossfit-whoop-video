@@ -9,7 +9,7 @@
 - `.codex-plugin/plugin.json`：Codex plugin manifest。
 - `skills/crossfit-whoop-video/`：内置 Codex skill。
 - `skills/crossfit-whoop-video/references/`：剪辑、WHOOP HUD 和设备数据说明。
-- `skills/crossfit-whoop-video/assets/`：可复用 HUD 预设和设备数据源目录，包含 prompt 自定义 HUD 样式规则。
+- `skills/crossfit-whoop-video/assets/`：可复用 HUD 预设和设备数据源目录，包含 10 个 WHOOP HUD 预设和 prompt 自定义 HUD 样式规则。
 - `skills/crossfit-whoop-video/scripts/check-video-env.sh`：本地视频工具检查脚本。
 
 ## 作为 Codex Plugin 安装

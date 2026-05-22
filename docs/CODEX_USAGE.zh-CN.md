@@ -12,7 +12,7 @@
 | 用户类型 | 推荐方式 |
 | --- | --- |
 | Codex 用户 | 使用 Codex 快速方式。启用 HyperFrames 或等价视频能力，上传素材或粘贴本地路径，然后输入提示词。 |
-| OpenClaw 用户 | 在 OpenClaw 里安装 skill/plugin，并确认本地机器有 `ffmpeg`、Node.js 等工具链。 |
+| OpenClaw 用户 | 在 OpenClaw 里安装 skill/plugin，并确认本地机器有 `ffmpeg`、Node.js 等工具链。配置凭据后，可以通过同一套本地 `whoop:auth` / `whoop:fetch` 脚本读取 WHOOP API 数据。 |
 | 本地开发者 | 使用 `crossfit-whoop-ad/`，编辑 `template.config.json`，按需配置 WHOOP，然后运行 npm 脚本。 |
 
 ## Codex 最快方式
@@ -32,7 +32,7 @@
 使用 crossfit-whoop-video 的工作流，把我上传的训练素材剪成 50 秒竖屏 4K 运动广告。风格要电影感、高燃。WHOOP 风格 HUD 只在开头、高强度段落和结尾总结出现。保留部分训练环境声，并用 ffprobe 验证最终输出。
 ```
 
-skill/plugin 里的说明会帮助 Codex 做剪辑判断：完整动作镜头、训练故事线、HUD 出现窗口、音乐和环境声平衡、安全检查和输出验证。它也包含 `01`、`02`、`04` 等内置 HUD 预设，以及通过 prompt 自定义样式的规则。它不是剪映式 GUI，也不包含私人素材或真实 WHOOP 凭据。
+skill/plugin 里的说明会帮助 Codex 做剪辑判断：完整动作镜头、训练故事线、HUD 出现窗口、音乐和环境声平衡、安全检查和输出验证。它也包含 10 个内置 HUD 预设，包括 `01`、`02`、`04` 等，以及通过 prompt 自定义样式的规则。它不是剪映式 GUI，也不包含私人素材或真实 WHOOP 凭据。
 
 ## Codex Skill 方式
 
@@ -92,6 +92,19 @@ OpenClaw 提示词示例：
 ```text
 使用 crossfit-whoop-video，把这些本地视频剪成 50 秒竖屏 4K CrossFit 广告。使用电影感节奏、完整动作镜头和选择性生物数据 HUD，并确保私人素材不进入 Git。
 ```
+
+### OpenClaw 读取 WHOOP 数据
+
+skill 可以指导 OpenClaw 使用真实 WHOOP 数据，但 OpenClaw 本身不会凭空读取 WHOOP。它需要克隆后的仓库、本地环境变量，以及模板项目使用的同一套 OAuth 流程。
+
+```bash
+cd crossfit-whoop-ad
+cp .env.example .env
+npm run whoop:auth
+npm run whoop:fetch
+```
+
+生成的 `.env`、`.whoop-token.json`、`assets/whoop-data.json` 和 `assets/whoop-data.js` 都是本地私有文件，不能提交到 Git。
 
 ## 本地模板方式
 
@@ -168,6 +181,12 @@ npm run template:render
 
 ```text
 使用 $crossfit-whoop-video。WHOOP 效果以 01 + 02 + 04 为基础，但开头更亮，中段增加全息矩阵科技感，只在峰值发力点加入 1.5 秒速度 BPM 爆发。
+```
+
+使用真实 WHOOP 数据：
+
+```text
+使用 $crossfit-whoop-video。使用已经拉取到 crossfit-whoop-ad/assets/whoop-data.js 的真实 WHOOP 数据。如果某个指标缺失，不要编造，直接省略。
 ```
 
 带本地路径：

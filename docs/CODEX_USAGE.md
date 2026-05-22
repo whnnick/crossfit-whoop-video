@@ -12,7 +12,7 @@ Before local rendering or OpenClaw deployment, also read:
 | User type | Recommended path |
 | --- | --- |
 | Codex user | Use the Codex fast path. Enable HyperFrames or equivalent video capability, attach footage or paste local paths, then prompt Codex. |
-| OpenClaw user | Install the skill/plugin in OpenClaw and make sure the local machine has `ffmpeg`, Node.js, and related tools. |
+| OpenClaw user | Install the skill/plugin in OpenClaw and make sure the local machine has `ffmpeg`, Node.js, and related tools. WHOOP API data is available through the same local `whoop:auth` / `whoop:fetch` scripts when credentials are configured. |
 | Local developer | Use `crossfit-whoop-ad/`, edit `template.config.json`, configure WHOOP if needed, and run npm scripts. |
 
 ## Codex Fast Path
@@ -32,7 +32,7 @@ Example prompt:
 Use the crossfit-whoop-video workflow to edit the attached workout footage into a 50 second vertical 4K sports ad. Keep it cinematic and energetic. Show WHOOP-style HUD data only in the opening, peak effort, and ending summary. Preserve some gym ambience and verify the final output with ffprobe.
 ```
 
-The skill/plugin guidance helps Codex make editing decisions: complete action shots, training arc, selective HUD windows, music/ambient balance, safety checks, and output verification. It also includes built-in HUD presets such as `01`, `02`, and `04`, plus prompt-custom style rules. It is not a CapCut-style GUI and does not include private footage or real WHOOP credentials.
+The skill/plugin guidance helps Codex make editing decisions: complete action shots, training arc, selective HUD windows, music/ambient balance, safety checks, and output verification. It also includes 10 built-in HUD presets such as `01`, `02`, and `04`, plus prompt-custom style rules. It is not a CapCut-style GUI and does not include private footage or real WHOOP credentials.
 
 ## Codex Skill Workflow
 
@@ -92,6 +92,19 @@ Example OpenClaw prompt:
 ```text
 Use crossfit-whoop-video to edit these local videos into a 50 second vertical 4K CrossFit ad. Use cinematic pacing, complete action shots, selective biometric HUD overlays, and keep private footage out of Git.
 ```
+
+### WHOOP Data In OpenClaw
+
+The skill can guide OpenClaw to use real WHOOP data through the repository's local scripts. OpenClaw does not fetch WHOOP data by itself; it needs the cloned repository, local environment variables, and the same OAuth flow used by the template project.
+
+```bash
+cd crossfit-whoop-ad
+cp .env.example .env
+npm run whoop:auth
+npm run whoop:fetch
+```
+
+The generated `.env`, `.whoop-token.json`, `assets/whoop-data.json`, and `assets/whoop-data.js` files are private local files and must stay out of Git.
 
 ## Local Template Workflow
 
@@ -168,6 +181,12 @@ With custom HUD styling:
 
 ```text
 Use $crossfit-whoop-video. Use preset 01 + 02 + 04 as the base WHOOP look, but make the opening brighter, add a holographic matrix feel in the middle, and use a 1.5 second speed-tunnel BPM burst only at the peak effort moment.
+```
+
+With real WHOOP data:
+
+```text
+Use $crossfit-whoop-video. Use the real WHOOP data already fetched into crossfit-whoop-ad/assets/whoop-data.js. If a requested metric is missing, omit it instead of inventing it.
 ```
 
 With local paths:

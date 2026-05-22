@@ -91,7 +91,7 @@ npm run dry-run
 
 ## WHOOP HUD 样式
 
-项目内置了机器可读的 HUD 预设目录：`skills/crossfit-whoop-video/assets/whoop-hud-templates.json`，plugin bundle 里也有同步版本。里面包含你之前沉淀的 `01`、`02`、`04` 等可复用样式，也新增了全息矩阵、速度 BPM 爆发、恢复环、冲击标题等更科技感的样式。
+项目内置了 10 个 WHOOP 风格 HUD 预设，机器可读目录位于 `skills/crossfit-whoop-video/assets/whoop-hud-templates.json`，plugin bundle 里也有同步版本。里面包含你之前沉淀的 `01`、`02`、`04` 等可复用样式，也新增了全息矩阵、速度 BPM 爆发、恢复环、冲击标题等更科技感的样式。
 
 用户也可以直接通过 prompt 自定义 HUD。Codex/OpenClaw 应该先选择最接近的预设模板，再根据提示词调整氛围、位置、数据密度、动效强度、颜色、指标和出现窗口。
 

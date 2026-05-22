@@ -84,7 +84,7 @@ See [Environment requirements](docs/ENVIRONMENT.md) and [Full template tutorial]
 
 ## WHOOP HUD Styles
 
-The project includes a machine-readable HUD preset catalog at `skills/crossfit-whoop-video/assets/whoop-hud-templates.json`, mirrored inside the plugin bundle. It includes prior reusable styles such as `01`, `02`, and `04`, plus newer futuristic options like holographic matrix, speed-tunnel BPM, recovery orbit, and data-stomp title treatments.
+The project includes 10 built-in WHOOP-style HUD presets in `skills/crossfit-whoop-video/assets/whoop-hud-templates.json`, mirrored inside the plugin bundle. It includes prior reusable styles such as `01`, `02`, and `04`, plus newer futuristic options like holographic matrix, speed-tunnel BPM, recovery orbit, and data-stomp title treatments.
 
 Users can also customize HUD styling by prompt. Codex/OpenClaw should start from the closest preset, then adapt mood, placement, density, motion intensity, colors, metrics, and timing windows.
 

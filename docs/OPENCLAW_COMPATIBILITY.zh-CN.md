@@ -38,6 +38,19 @@ skills/crossfit-whoop-video/
 
 这不会把 OpenClaw 变成一个独立的视频剪辑软件界面；它的作用是给 agent 提供调用本地视频工具链的工作流说明。
 
+## WHOOP 数据
+
+OpenClaw skill 可以指导 agent 走仓库里的 WHOOP OAuth 和数据拉取流程，但需要本地仓库和你自己的凭据。它使用的是模板项目同一套命令：
+
+```bash
+cd crossfit-whoop-ad
+cp .env.example .env
+npm run whoop:auth
+npm run whoop:fetch
+```
+
+生成的 `.env`、`.whoop-token.json`、`assets/whoop-data.json` 和 `assets/whoop-data.js` 必须保持 ignored，并只保存在本地。
+
 ## 注意事项
 
 - `agents/openai.yaml` 里的 Codex UI 元数据可能不会被 OpenClaw 使用。

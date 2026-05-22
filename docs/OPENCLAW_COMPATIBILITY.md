@@ -32,6 +32,19 @@ openclaw gateway restart
 
 OpenClaw should detect it as a compatible bundle. The `skills/crossfit-whoop-video/` directory inside the plugin is the useful payload. This does not turn OpenClaw into a standalone video editor UI; it gives the agent workflow guidance for calling local video tools.
 
+## WHOOP Data
+
+The OpenClaw skill can guide an agent through the repository's WHOOP OAuth/data-fetch workflow, but OpenClaw needs the local repository and credentials. It should use the same template commands:
+
+```bash
+cd crossfit-whoop-ad
+cp .env.example .env
+npm run whoop:auth
+npm run whoop:fetch
+```
+
+Private outputs such as `.env`, `.whoop-token.json`, `assets/whoop-data.json`, and `assets/whoop-data.js` must stay ignored and local.
+
 ## Caveats
 
 - Codex UI metadata in `agents/openai.yaml` may not be used by OpenClaw.

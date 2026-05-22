@@ -9,7 +9,7 @@ This bundle is a workflow/skill package for agents. It is not a standalone video
 - `.codex-plugin/plugin.json`: Codex plugin manifest.
 - `skills/crossfit-whoop-video/`: bundled Codex skill.
 - `skills/crossfit-whoop-video/references/`: editing, WHOOP HUD, and device-data guidance.
-- `skills/crossfit-whoop-video/assets/`: reusable HUD preset and device-source catalogs, including prompt-custom HUD style rules.
+- `skills/crossfit-whoop-video/assets/`: reusable HUD preset and device-source catalogs, including 10 WHOOP HUD presets and prompt-custom HUD style rules.
 - `skills/crossfit-whoop-video/scripts/check-video-env.sh`: local video tooling check.
 
 ## Install As A Codex Plugin

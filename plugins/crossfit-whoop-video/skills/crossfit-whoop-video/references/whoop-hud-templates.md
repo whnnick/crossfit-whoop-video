@@ -1,6 +1,6 @@
 # WHOOP HUD Templates
 
-Use `assets/whoop-hud-templates.json` for the machine-readable catalog. The catalog contains reusable built-in presets plus prompt customization rules.
+Use `assets/whoop-hud-templates.json` for the machine-readable catalog. The catalog contains 10 reusable built-in presets plus prompt customization rules.
 
 ## Built-In Presets
 

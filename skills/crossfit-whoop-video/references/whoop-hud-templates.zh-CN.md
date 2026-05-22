@@ -1,6 +1,6 @@
 # WHOOP HUD 模板
 
-机器可读目录见 `assets/whoop-hud-templates.json`。这个目录包含可复用预制模板，也包含通过 prompt 自定义样式的规则。
+机器可读目录见 `assets/whoop-hud-templates.json`。这个目录包含 10 个可复用预制模板，也包含通过 prompt 自定义样式的规则。
 
 ## 内置预制模板
 

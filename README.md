@@ -31,9 +31,9 @@
 
 | Need | Read this |
 | --- | --- |
-| Fastest path: use Codex with HyperFrames enabled, attached footage, and a prompt | [Codex quick workflow](docs/CODEX_USAGE.md#codex-fast-path) |
-| Use OpenClaw as a local agent deployment | [OpenClaw workflow](docs/CODEX_USAGE.md#openclaw-workflow) |
-| Run the reusable template yourself | [Local template workflow](docs/CODEX_USAGE.md#local-template-workflow) |
+| I use Codex and want to install/use the skill | [Codex user workflow](docs/CODEX_USAGE.md#codex-user-workflow) |
+| I use OpenClaw and want to install/use the skill or plugin | [OpenClaw user workflow](docs/CODEX_USAGE.md#openclaw-user-workflow) |
+| I am a developer and want to run or modify the template locally | [Advanced local template workflow](docs/CODEX_USAGE.md#advanced-local-template-workflow) |
 | Install local tools for OpenClaw, local rendering, or development | [Environment requirements](docs/ENVIRONMENT.md) |
 | Understand the full pipeline | [End-to-end workflow](docs/WORKFLOW.md) |
 
@@ -47,7 +47,7 @@ These animated previews are synthetic. They demonstrate the intended vertical sp
 
 ## Fastest Path: Codex
 
-For most Codex users, this project is a promptable workflow, not a manual installation checklist. Enable the HyperFrames plugin or equivalent video capability in Codex, attach workout footage or paste local file paths, then ask Codex to create the edit.
+For most Codex users, the intended flow is simple: ask Codex to install this skill/plugin from the repository, enable HyperFrames or equivalent video capability, attach workout footage or paste local file paths, then ask Codex to create the edit.
 
 ```text
 Use the crossfit-whoop-video workflow to cut the attached CrossFit footage into a 50 second vertical 4K sports ad. Keep it cinematic and energetic. Show WHOOP-style data only in the opening, peak effort, and ending summary.
@@ -57,7 +57,7 @@ Codex can use the guidance in this repository to inspect footage, choose complet
 
 ## OpenClaw Path
 
-OpenClaw is more like a local agent deployment. Install the plain skill or compatible plugin bundle, then make sure the OpenClaw machine has the local video toolchain needed for real rendering.
+For OpenClaw users, install the plain skill or compatible plugin bundle, then ask OpenClaw to use `crossfit-whoop-video` on local footage paths. OpenClaw still needs the local video toolchain for real rendering.
 
 ```bash
 openclaw skills install ./skills/crossfit-whoop-video --as crossfit-whoop-video
@@ -174,7 +174,7 @@ Those files may contain private data, credentials, or large media assets.
 
 ## Local Template Setup
 
-This section is for local template users and contributors. Codex users with HyperFrames or equivalent video capability enabled can usually start from the [Codex fast path](docs/CODEX_USAGE.md#codex-fast-path).
+This section is for local template users and contributors. Codex users with HyperFrames or equivalent video capability enabled can usually start from the [user workflows](docs/CODEX_USAGE.md#user-workflows).
 
 ```bash
 cd crossfit-whoop-ad

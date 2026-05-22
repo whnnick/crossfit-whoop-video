@@ -1,21 +1,44 @@
 # Codex, OpenClaw, and Local Usage
 
-This guide explains the practical ways to use this project. The fastest path is Codex-first: enable the video plugin/capability, provide footage, and prompt Codex to create the edit.
+This guide is for regular Codex/OpenClaw users. The intended experience is: ask the agent to install this skill/plugin, provide workout footage, copy a prompt, and get a guided edit. The local template section is for advanced developers.
 
 Before local rendering or OpenClaw deployment, also read:
 
 - Environment requirements: [ENVIRONMENT.md](ENVIRONMENT.md)
 - End-to-end workflow: [WORKFLOW.md](WORKFLOW.md)
 
+## User Workflows
+
+### Codex User Workflow
+
+1. In Codex, ask: `Please install the crossfit-whoop-video skill/plugin from https://github.com/whnnick/crossfit-whoop-video`.
+2. Enable HyperFrames or equivalent video generation capability.
+3. Attach workout videos, or paste local video paths.
+4. Copy the prompt below and ask Codex to use the `crossfit-whoop-video` workflow.
+
+```text
+Use the crossfit-whoop-video workflow to edit my workout footage into an approximately 50 second 9:16 vertical 4K sports ad. Make it cinematic, energetic, and tightly paced. Show WHOOP-style data only at key moments, not as a full-video overlay. Prefer complete action shots, preserve some gym ambience, and verify final duration, resolution, audio, and private-file safety.
+```
+
+### OpenClaw User Workflow
+
+1. In OpenClaw, ask it to install the `crossfit-whoop-video` skill/plugin from this repository, or install it manually from the repo checkout.
+2. Make sure the OpenClaw machine has the local video toolchain.
+3. Provide local media paths and use the prompt below.
+
+```text
+Use crossfit-whoop-video to edit these local workout videos into an approximately 50 second vertical 4K sports ad. Use cinematic pacing, complete action shots, selective WHOOP-style HUD overlays, and make sure raw footage, renders, .env, tokens, and health exports do not enter Git.
+```
+
 ## Quick Decision
 
 | User type | Recommended path |
 | --- | --- |
-| Codex user | Use the Codex fast path. Enable HyperFrames or equivalent video capability, attach footage or paste local paths, then prompt Codex. |
-| OpenClaw user | Install the skill/plugin in OpenClaw and make sure the local machine has `ffmpeg`, Node.js, and related tools. WHOOP API data is available through the same local `whoop:auth` / `whoop:fetch` scripts when credentials are configured. |
-| Local developer | Use `crossfit-whoop-ad/`, edit `template.config.json`, configure WHOOP if needed, and run npm scripts. |
+| Codex user | Ask Codex to install the skill/plugin, enable HyperFrames or equivalent video capability, attach footage or paste local paths, then prompt Codex. |
+| OpenClaw user | Ask OpenClaw to install the skill/plugin, make sure the local machine has `ffmpeg`, Node.js, and related tools, then provide footage paths. WHOOP API data is available through the same local `whoop:auth` / `whoop:fetch` scripts when credentials are configured. |
+| Advanced/local developer | Use `crossfit-whoop-ad/`, edit `template.config.json`, configure WHOOP if needed, and run npm scripts. |
 
-## Codex Fast Path
+## Codex User Workflow
 
 For Codex users, this repository is primarily a reusable editing method. If Codex already has the HyperFrames plugin or another video-rendering capability enabled, you usually do not need to manually install `ffmpeg`, Node.js, Chrome, or the local template before asking for an edit.
 
@@ -34,7 +57,7 @@ Use the crossfit-whoop-video workflow to edit the attached workout footage into 
 
 The skill/plugin guidance helps Codex make editing decisions: complete action shots, training arc, selective HUD windows, music/ambient balance, safety checks, and output verification. It also includes 10 built-in HUD presets such as `01`, `02`, and `04`, plus prompt-custom style rules. It is not a CapCut-style GUI and does not include private footage or real WHOOP credentials.
 
-## Codex Skill Workflow
+## Codex Skill Installation
 
 Use this when your Codex setup supports local skills and you want the workflow available by name.
 
@@ -51,6 +74,8 @@ Then prompt Codex with the skill name:
 Use $crossfit-whoop-video to cut these workout clips into a 50 second vertical 4K CrossFit ad. Keep it cinematic and energetic. Show WHOOP-style data only in the opening, peak effort, and ending summary.
 ```
 
+This is useful when you expect to reuse the workflow often. After installing it, you can simply ask Codex to use `$crossfit-whoop-video` instead of restating the full editing rules each time.
+
 ## Codex Plugin Workflow
 
 Use this only if your Codex build supports local plugin bundles.
@@ -62,7 +87,7 @@ cp -R plugins/crossfit-whoop-video ~/plugins/
 
 Then enable the plugin in Codex's plugin UI. The plugin packages the same skill and workflow guidance. If plugin support is unclear, use the Codex fast path or plain skill workflow instead.
 
-## OpenClaw Workflow
+## OpenClaw User Workflow
 
 OpenClaw is closer to a local agent deployment. It can use the same skill guidance, but real rendering depends on the OpenClaw machine having local video tools such as `ffmpeg`, `ffprobe`, Node.js, npm/npx, and a browser-capable rendering environment.
 
@@ -106,9 +131,9 @@ npm run whoop:fetch
 
 The generated `.env`, `.whoop-token.json`, `assets/whoop-data.json`, and `assets/whoop-data.js` files are private local files and must stay out of Git.
 
-## Local Template Workflow
+## Advanced: Local Template Workflow
 
-Use this when you want to run the template yourself without relying on Codex to make editing decisions.
+Use this when you want to run the template yourself without relying on Codex to make editing decisions. Regular Codex users usually do not need to start here.
 
 ```bash
 git clone https://github.com/whnnick/crossfit-whoop-video.git

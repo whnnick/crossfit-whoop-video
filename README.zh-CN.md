@@ -33,9 +33,9 @@
 
 | 你想做什么 | 阅读这里 |
 | --- | --- |
-| 最快方式：在 Codex 里启用 HyperFrames，给素材并输入提示词 | [Codex 快速流程](docs/CODEX_USAGE.zh-CN.md#codex-最快方式) |
-| 在 OpenClaw 里作为本地 agent 能力使用 | [OpenClaw 使用方式](docs/CODEX_USAGE.zh-CN.md#openclaw-使用方式) |
-| 自己运行通用视频模板 | [本地模板方式](docs/CODEX_USAGE.zh-CN.md#本地模板方式) |
+| 我用 Codex，想安装并直接使用这个 skill/plugin | [Codex 普通用户流程](docs/CODEX_USAGE.zh-CN.md#codex-普通用户流程) |
+| 我用 OpenClaw，想安装并直接使用这个 skill/plugin | [OpenClaw 普通用户流程](docs/CODEX_USAGE.zh-CN.md#openclaw-普通用户流程) |
+| 我是开发者，想本地运行或改模板 | [高级用法：本地模板方式](docs/CODEX_USAGE.zh-CN.md#高级用法本地模板方式) |
 | 为 OpenClaw、本地渲染或二次开发安装基础工具 | [基础环境要求](docs/ENVIRONMENT.zh-CN.md) |
 | 理解完整剪辑和生成链路 | [项目完整工作链路](docs/WORKFLOW.zh-CN.md) |
 
@@ -60,7 +60,7 @@
 
 ## 最快方式：在 Codex 中使用
 
-对大多数 Codex 用户来说，这个项目首先是一套可通过提示词调用的剪辑工作流，不是手动安装清单。你只需要在 Codex 里启用 HyperFrames 插件或等价的视频生成能力，上传训练视频或粘贴本地路径，然后让 Codex 按这套方法剪辑。
+对大多数 Codex 用户来说，目标很简单：让 Codex 帮你安装这个 skill/plugin，启用 HyperFrames 或等价的视频生成能力，上传训练视频或粘贴本地路径，然后让 Codex 按这套方法剪辑。
 
 ```text
 使用 crossfit-whoop-video 的工作流，把我上传的 CrossFit 素材剪成 50 秒竖屏 4K 运动广告。风格要电影感、高燃。WHOOP 风格数据只在开头、高强度段落和结尾总结出现。
@@ -70,7 +70,7 @@
 
 ## OpenClaw 使用方式
 
-OpenClaw 更接近本地 agent 部署环境。建议安装普通 skill 或兼容 plugin bundle，并确认运行 OpenClaw 的机器具备本地视频工具链。
+OpenClaw 用户的目标也是“安装后直接用”。建议安装普通 skill 或兼容 plugin bundle，然后让 OpenClaw 使用 `crossfit-whoop-video` 处理本地素材路径。真实渲染仍需要 OpenClaw 所在机器具备本地视频工具链。
 
 ```bash
 openclaw skills install ./skills/crossfit-whoop-video --as crossfit-whoop-video

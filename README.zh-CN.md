@@ -2,6 +2,12 @@
 
 这是一个可复用的竖屏运动短片项目，目标是把 CrossFit 或其他训练素材剪成 9:16、4K、运动广告风格的视频，并叠加 WHOOP 风格的数据 HUD。项目同时提供普通 HyperFrames 模板、Codex Skill 和 Codex Plugin 三种使用方式。
 
+## 效果预览
+
+下面是合成动态预览图，用来展示竖屏运动广告和 WHOOP 风格 HUD 的方向。它不使用你的真实训练画面、真实 WHOOP 数据、token 或本地路径。
+
+![CrossFit biometric HUD 动态预览](docs/assets/crossfit-whoop-hud-preview.svg)
+
 ## 项目里有什么
 
 - `crossfit-whoop-ad/`：通用 HyperFrames 视频模板，适合直接换素材、换数据、重新渲染。
@@ -38,6 +44,7 @@
 ├── README.md                         # 英文项目概览和快速开始
 ├── README.zh-CN.md                   # 中文项目概览、快速开始和文档索引
 ├── LICENSE                           # 开源许可证
+├── docs/assets/                      # 安全的合成预览素材
 ├── docs/
 │   ├── TUTORIAL.md                   # 完整模板使用教程
 │   ├── TUTORIAL.zh-CN.md

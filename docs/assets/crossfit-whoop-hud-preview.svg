@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Animated CrossFit biometric HUD preview</title>
+  <desc id="desc">Synthetic animated preview showing a vertical sports video frame with biometric HUD overlays. No real athlete footage or private health data is used.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#151a16"/>
+      <stop offset="0.45" stop-color="#273029"/>
+      <stop offset="1" stop-color="#070908"/>
+    </linearGradient>
+    <linearGradient id="frame" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#465247"/>
+      <stop offset="0.46" stop-color="#222a24"/>
+      <stop offset="1" stop-color="#0b0e0c"/>
+    </linearGradient>
+    <linearGradient id="hud" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#182018" stop-opacity="0.84"/>
+      <stop offset="1" stop-color="#020402" stop-opacity="0.66"/>
+    </linearGradient>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity="0.38"/>
+    </filter>
+    <style>
+      .label { font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 1.8px; fill: #f4f1e8; }
+      .small { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 1px; fill: #aeb7ad; }
+      .mono { font-family: Menlo, Consolas, monospace; font-weight: 800; fill: #c7ff00; }
+      .white { fill: #f4f1e8; }
+      .muted { fill: #9ea89c; }
+      .cyan { fill: #16d7ff; }
+      .red { fill: #ff3b1f; }
+      .line { stroke: #c7ff00; stroke-width: 2; stroke-linecap: round; }
+      .scan { animation: scan 2.2s linear infinite; }
+      .pulse { animation: pulse 1.18s ease-in-out infinite; transform-origin: center; }
+      .breathe { animation: breathe 2.4s ease-in-out infinite; transform-origin: center; }
+      .shake { animation: shake 1.8s ease-in-out infinite; transform-origin: center; }
+      .barA { animation: barA 2.8s ease-in-out infinite; transform-origin: left center; }
+      .barB { animation: barB 2.2s ease-in-out infinite; transform-origin: left center; }
+      .cardIn { animation: cardIn 4.8s ease-in-out infinite; }
+      .flash { animation: flash 3.6s ease-in-out infinite; }
+      @keyframes scan { 0% { transform: translateX(-250px); opacity: 0; } 12% { opacity: .85; } 45% { opacity: .85; } 60%,100% { transform: translateX(500px); opacity: 0; } }
+      @keyframes pulse { 0%,100% { opacity: .35; transform: scale(0.96); } 50% { opacity: 1; transform: scale(1.04); } }
+      @keyframes breathe { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-8px) scale(1.018); } }
+      @keyframes shake { 0%,90%,100% { transform: translate(0,0) rotate(0); } 92% { transform: translate(4px,-3px) rotate(.45deg); } 95% { transform: translate(-3px,2px) rotate(-.35deg); } 98% { transform: translate(2px,1px) rotate(.2deg); } }
+      @keyframes barA { 0%,100% { transform: scaleX(.52); } 45% { transform: scaleX(.94); } 70% { transform: scaleX(.76); } }
+      @keyframes barB { 0%,100% { transform: scaleX(.38); } 50% { transform: scaleX(.83); } }
+      @keyframes cardIn { 0%,12%,100% { opacity: .55; transform: translateY(8px); } 25%,80% { opacity: 1; transform: translateY(0); } }
+      @keyframes flash { 0%,84%,100% { opacity: 0; } 86% { opacity: .7; } 90% { opacity: 0; } }
+    </style>
+  </defs>
+
+  <rect width="960" height="540" fill="url(#bg)"/>
+  <g opacity="0.22">
+    <path d="M0 410 C120 350 180 475 310 400 S510 330 640 390 840 455 960 375" fill="none" stroke="#c7ff00" stroke-width="2"/>
+    <path d="M0 122 L960 84" stroke="#16d7ff" stroke-width="1"/>
+    <path d="M0 455 L960 510" stroke="#ff3b1f" stroke-width="1"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="326" y="30" width="308" height="480" rx="26" fill="#050706"/>
+    <rect x="340" y="44" width="280" height="452" rx="20" fill="url(#frame)"/>
+    <g clip-path="inset(44 340 44 340 round 20)">
+      <rect x="340" y="44" width="280" height="452" fill="#111611"/>
+      <g opacity="0.42">
+        <rect x="340" y="44" width="280" height="452" fill="url(#frame)"/>
+        <path d="M350 390 C390 340 414 332 470 350 C530 368 562 330 610 300 L620 496 L340 496 Z" fill="#354136"/>
+        <path d="M340 260 C408 228 474 250 532 216 C574 190 600 170 620 160 L620 496 L340 496 Z" fill="#1b211d" opacity=".9"/>
+      </g>
+      <g class="shake">
+        <circle cx="474" cy="157" r="24" fill="#f4f1e8" opacity=".9"/>
+        <path d="M448 190 C468 173 498 174 515 194 L540 266 C545 282 530 294 516 285 L493 228 L482 292 L514 390 C520 408 494 418 485 399 L456 321 L430 392 C423 411 397 403 403 383 L435 289 L426 230 L402 276 C394 293 370 285 376 267 L411 199 C418 188 432 184 448 190 Z" fill="#d7ded4"/>
+        <circle cx="533" cy="104" r="15" fill="#c7ff00" class="pulse" filter="url(#softGlow)"/>
+        <path d="M480 126 C500 100 529 93 552 106" stroke="#c7ff00" stroke-width="8" fill="none" stroke-linecap="round"/>
+      </g>
+      <g opacity=".7">
+        <rect x="340" y="45" width="280" height="34" fill="#f4f1e8" opacity=".08"/>
+        <rect x="340" y="462" width="280" height="34" fill="#000" opacity=".28"/>
+      </g>
+      <rect class="flash" x="340" y="44" width="280" height="452" fill="#f4f1e8"/>
+    </g>
+  </g>
+
+  <g transform="translate(78 72)" class="cardIn">
+    <rect width="242" height="114" rx="18" fill="url(#hud)" stroke="#c7ff00" stroke-opacity=".42"/>
+    <text x="18" y="30" class="label">SESSION START</text>
+    <text x="18" y="72" class="mono" font-size="42">12.8</text>
+    <text x="138" y="71" class="small">DAY STRAIN</text>
+    <rect x="18" y="92" width="190" height="6" rx="3" fill="#2f392f"/>
+    <rect class="barA" x="18" y="92" width="190" height="6" rx="3" fill="#c7ff00"/>
+    <rect class="scan" x="0" y="0" width="70" height="114" fill="#c7ff00" opacity=".13"/>
+  </g>
+
+  <g transform="translate(638 74)">
+    <rect width="244" height="210" rx="20" fill="url(#hud)" stroke="#f4f1e8" stroke-opacity=".16"/>
+    <text x="20" y="34" class="label">LIVE OUTPUT</text>
+    <text x="20" y="92" class="mono pulse" font-size="58">168</text>
+    <text x="140" y="86" class="small">BPM</text>
+    <text x="20" y="125" class="small">ZONE 4 / THRESHOLD</text>
+    <rect x="20" y="150" width="196" height="10" rx="5" fill="#2f392f"/>
+    <rect class="barB" x="20" y="150" width="196" height="10" rx="5" fill="#ff3b1f"/>
+    <path class="line" d="M20 184 L47 174 L72 188 L104 166 L136 176 L170 158 L216 164" fill="none"/>
+  </g>
+
+  <g transform="translate(630 326)" class="breathe">
+    <rect width="252" height="118" rx="20" fill="url(#hud)" stroke="#c7ff00" stroke-opacity=".36"/>
+    <text x="20" y="32" class="label">RECOVERY</text>
+    <text x="20" y="84" class="mono" font-size="50">76%</text>
+    <circle cx="196" cy="66" r="30" fill="none" stroke="#2f392f" stroke-width="10"/>
+    <circle cx="196" cy="66" r="30" fill="none" stroke="#c7ff00" stroke-width="10" stroke-linecap="round" stroke-dasharray="145 188" transform="rotate(-90 196 66)"/>
+  </g>
+
+  <g transform="translate(110 402)">
+    <rect width="742" height="52" rx="18" fill="#050706" opacity=".78" stroke="#f4f1e8" stroke-opacity=".16"/>
+    <text x="24" y="33" class="small">VERTICAL 4K SPORTS AD</text>
+    <text x="250" y="33" class="mono" font-size="18">HUD: SELECTIVE</text>
+    <text x="506" y="33" class="small">NO REAL FOOTAGE / NO PRIVATE DATA</text>
+  </g>
+</svg>

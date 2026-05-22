@@ -4,6 +4,12 @@ A reusable HyperFrames template for vertical 4K CrossFit-style training ads with
 
 中文文档见 [README.zh-CN.md](README.zh-CN.md). User-facing documentation also has matching `*.zh-CN.md` versions.
 
+## Preview
+
+This animated preview is synthetic. It demonstrates the intended vertical sports-ad HUD direction without using private training footage, real WHOOP data, tokens, or local file paths.
+
+![Animated CrossFit biometric HUD preview](docs/assets/crossfit-whoop-hud-preview.svg)
+
 ## Project Modes
 
 This repository now supports two use patterns:
@@ -62,6 +68,7 @@ This repository follows a GitHub-friendly documentation layout: the root README 
 ├── README.md                         # English overview and quick start
 ├── README.zh-CN.md                   # Chinese overview, quick start, and doc index
 ├── LICENSE                           # Open-source license
+├── docs/assets/                      # Safe synthetic preview assets
 ├── docs/
 │   ├── TUTORIAL.md                   # End-to-end template tutorial
 │   ├── TUTORIAL.zh-CN.md

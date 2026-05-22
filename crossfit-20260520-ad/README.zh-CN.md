@@ -24,6 +24,14 @@
 
 ## 常用命令
 
+干净开源 checkout 只检查源码：
+
+```bash
+npm run check:source
+```
+
+添加所需私人源素材到 `assets/source/` 后，运行完整渲染流水线：
+
 ```bash
 npm run clean
 npm run all

@@ -12,6 +12,7 @@
     "render": "node scripts/render-final.mjs",
     "clean": "rm -rf assets/clips assets/base-cut.mp4 assets/ambient.wav assets/music-bed.wav assets/sfx.wav assets/overlays previews/.DS_Store",
     "all": "npm run clips && npm run music && npm run ambient && npm run sfx && npm run overlays && npm run render",
+    "check:source": "node --check scripts/timeline.mjs && node --check scripts/prepare-clips.mjs && node --check scripts/select-music.mjs && node --check scripts/extract-ambient.mjs && node --check scripts/generate-sfx.mjs && node --check scripts/generate-overlays.mjs && node --check scripts/render-final.mjs",
     "check": "npx hyperframes lint && npx hyperframes validate"
   }
 }

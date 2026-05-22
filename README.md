@@ -134,6 +134,16 @@ cd crossfit-whoop-ad
 cp .env.example .env
 ```
 
+Run a source-only dry-run before adding private footage:
+
+```bash
+npm run dry-run
+```
+
+The dry-run uses a committed synthetic silent audio placeholder. Replace `media.audio.src` in `template.config.json` with your own footage or music before rendering a real edit.
+
+The committed media files under `crossfit-whoop-ad/assets/` are synthetic placeholders for open-source validation only. They are not real training footage or real WHOOP exports.
+
 Fill in your own WHOOP Developer credentials in `.env`, then configure your WHOOP Developer app redirect URL:
 
 ```text
@@ -199,3 +209,4 @@ For a full walkthrough, see [docs/TUTORIAL.md](docs/TUTORIAL.md).
 - WHOOP API data is processed workout/recovery/cycle data, not a continuous raw real-time heart-rate stream.
 - WHOOP is a trademark of WHOOP, Inc. This template is not affiliated with or endorsed by WHOOP.
 - Do not commit personal training footage, rendered videos, credentials, tokens, or exported WHOOP data.
+- `crossfit-20260520-ad/` and `flow-whoop-60s/` are source examples from prior edits. Their full `npm run check`/render commands require generated media assets that are intentionally not committed; use their `npm run check:source` command for clean-checkout validation.

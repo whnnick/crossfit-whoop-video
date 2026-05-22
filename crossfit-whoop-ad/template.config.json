@@ -27,7 +27,7 @@
       "enabled": true
     },
     "audio": {
-      "src": "assets/training-b.mov",
+      "src": "assets/silence.wav",
       "source": "",
       "mediaStart": 8,
       "volume": 0.78

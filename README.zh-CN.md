@@ -87,7 +87,12 @@
 git clone https://github.com/whnnick/crossfit-whoop-video.git
 cd crossfit-whoop-video/crossfit-whoop-ad
 cp .env.example .env
+npm run dry-run
 ```
+
+`dry-run` 使用仓库里提交的合成静音音频占位文件。正式渲染前，请在 `template.config.json` 里把 `media.audio.src` 换成你自己的素材音频或音乐。
+
+`crossfit-whoop-ad/assets/` 里提交的媒体文件都是为了开源验证准备的合成占位素材，不是真实训练视频，也不是真实 WHOOP 导出数据。
 
 在 `.env` 里填自己的 WHOOP Developer 信息：
 
@@ -228,6 +233,8 @@ git ls-files
 ```
 
 如果只想使用模板，不想用 Codex，也可以直接改 `template.config.json` 后运行 npm 脚本。
+
+`crossfit-20260520-ad/` 和 `flow-whoop-60s/` 是之前剪辑的源码示例。它们的完整 `npm run check`/渲染命令需要已生成的媒体资产，这些资产不会提交到开源仓库；干净 checkout 验证时请使用各自的 `npm run check:source`。
 
 ## 许可证和声明
 

@@ -24,6 +24,14 @@ Regenerated files:
 
 ## Common Commands
 
+Source-only check for a clean open-source checkout:
+
+```bash
+npm run check:source
+```
+
+Full render pipeline after adding the required private source media under `assets/source/`:
+
 ```bash
 npm run clean
 npm run all

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "npx --yes hyperframes@0.6.22 preview",
     "check": "npx --yes hyperframes@0.6.22 lint && npx --yes hyperframes@0.6.22 validate && npx --yes hyperframes@0.6.22 inspect",
+    "dry-run": "npm run template:apply && npm run check",
     "render": "npx --yes hyperframes@0.6.22 render",
     "publish": "npx --yes hyperframes@0.6.22 publish",
     "whoop:auth": "node scripts/whoop-auth.mjs",

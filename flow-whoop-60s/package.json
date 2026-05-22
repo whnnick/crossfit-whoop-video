@@ -7,6 +7,7 @@
     "ambient": "node scripts/extract-ambient.mjs",
     "clips": "node scripts/prepare-clips.mjs",
     "overlays": "node scripts/generate-overlays.mjs",
+    "check:source": "node --check scripts/generate-beat.mjs && node --check scripts/extract-ambient.mjs && node --check scripts/generate-overlays.mjs && node --check scripts/prepare-clips.mjs && node --check scripts/render-v2-ffmpeg.mjs",
     "check": "npx hyperframes lint && npx hyperframes validate && npx hyperframes inspect --samples 15",
     "render": "npx hyperframes render --output renders/flow-whoop-60s-vertical-4k.mp4 --quality high",
     "render:v2": "node scripts/render-v2-ffmpeg.mjs"

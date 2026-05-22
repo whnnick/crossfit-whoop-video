@@ -1,16 +1,40 @@
-# CrossFit WHOOP Ad Template
+<p align="center">
+  <a href="README.md"><strong>English</strong></a> |
+  <a href="README.zh-CN.md"><strong>简体中文</strong></a>
+</p>
 
-A reusable HyperFrames template for vertical 4K CrossFit-style training ads with WHOOP-inspired biometric overlays, motion effects, and optional real WHOOP API data.
+<h1 align="center">CrossFit WHOOP Video</h1>
 
-**Chinese users:** start here: [README.zh-CN.md](README.zh-CN.md). Every user-facing English guide has a matching `*.zh-CN.md` Chinese version.
+<p align="center">
+  Vertical 4K sports-ad video workflow for CrossFit footage, biometric HUDs, and agent-assisted editing.
+</p>
+
+<p align="center">
+  <a href="docs/ENVIRONMENT.md">Environment</a> |
+  <a href="docs/WORKFLOW.md">Workflow</a> |
+  <a href="docs/CODEX_USAGE.md">Codex / OpenClaw usage</a> |
+  <a href="docs/TUTORIAL.md">Tutorial</a> |
+  <a href="README.zh-CN.md">中文文档</a>
+</p>
+
+<p align="center">
+  <a href="docs/ENVIRONMENT.md"><img alt="Environment: ffmpeg, Node.js, HyperFrames" src="https://img.shields.io/badge/environment-ffmpeg%20%7C%20Node.js%20%7C%20HyperFrames-1677ff"></a>
+  <a href="docs/CODEX_USAGE.md"><img alt="Agents: Codex, OpenClaw" src="https://img.shields.io/badge/agents-Codex%20%7C%20OpenClaw-7c3aed"></a>
+  <a href="docs/WORKFLOW.md"><img alt="Workflow: 9:16 4K sports video" src="https://img.shields.io/badge/output-9%3A16%204K%20sports%20video-00a36c"></a>
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-f2c94c"></a>
+</p>
+
+> **Chinese users:** start from [README.zh-CN.md](README.zh-CN.md). Every user-facing English guide has a matching `*.zh-CN.md` Chinese version, and documentation changes should be kept in sync.
 
 ## Start Here
 
-- Environment requirements: [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md)
-- How the project works end to end: [docs/WORKFLOW.md](docs/WORKFLOW.md)
-- Local, Codex, OpenClaw, upload, and prompt workflows: [docs/CODEX_USAGE.md](docs/CODEX_USAGE.md)
-- Full template tutorial: [docs/TUTORIAL.md](docs/TUTORIAL.md)
-- OpenClaw compatibility: [docs/OPENCLAW_COMPATIBILITY.md](docs/OPENCLAW_COMPATIBILITY.md)
+| Need | Read this |
+| --- | --- |
+| Install local tools such as `ffmpeg`, Node.js, and Chrome | [Environment requirements](docs/ENVIRONMENT.md) |
+| Understand the full editing pipeline | [End-to-end workflow](docs/WORKFLOW.md) |
+| Use this project with Codex, OpenClaw, uploaded footage, or prompt examples | [Codex / OpenClaw usage](docs/CODEX_USAGE.md) |
+| Render your first template video | [Full template tutorial](docs/TUTORIAL.md) |
+| Check OpenClaw compatibility | [OpenClaw compatibility](docs/OPENCLAW_COMPATIBILITY.md) |
 
 ## Preview
 

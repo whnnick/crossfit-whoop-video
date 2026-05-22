@@ -1,16 +1,42 @@
-# CrossFit WHOOP Video 中文文档
+<p align="center">
+  <a href="README.md"><strong>English</strong></a> |
+  <a href="README.zh-CN.md"><strong>简体中文</strong></a>
+</p>
 
-**中文用户从这里开始。** 本仓库所有面向用户的英文说明都提供对应 `*.zh-CN.md` 中文版；后续文档更新应保持中英文同步。
+<h1 align="center">CrossFit WHOOP Video</h1>
+
+<p align="center">
+  面向 CrossFit 和训练素材的竖屏 4K 运动广告工作流，支持 WHOOP 风格动态数据 HUD、Codex Skill 和 OpenClaw 参考用法。
+</p>
+
+<p align="center">
+  <a href="docs/ENVIRONMENT.zh-CN.md">基础环境</a> |
+  <a href="docs/WORKFLOW.zh-CN.md">工作链路</a> |
+  <a href="docs/CODEX_USAGE.zh-CN.md">Codex / OpenClaw 用法</a> |
+  <a href="docs/TUTORIAL.zh-CN.md">教程</a> |
+  <a href="README.md">English</a>
+</p>
+
+<p align="center">
+  <a href="docs/ENVIRONMENT.zh-CN.md"><img alt="环境: ffmpeg, Node.js, HyperFrames" src="https://img.shields.io/badge/environment-ffmpeg%20%7C%20Node.js%20%7C%20HyperFrames-1677ff"></a>
+  <a href="docs/CODEX_USAGE.zh-CN.md"><img alt="Agent: Codex, OpenClaw" src="https://img.shields.io/badge/agents-Codex%20%7C%20OpenClaw-7c3aed"></a>
+  <a href="docs/WORKFLOW.zh-CN.md"><img alt="输出: 9:16 4K sports video" src="https://img.shields.io/badge/output-9%3A16%204K%20sports%20video-00a36c"></a>
+  <a href="LICENSE"><img alt="许可证: MIT" src="https://img.shields.io/badge/license-MIT-f2c94c"></a>
+</p>
+
+> **中文用户从这里开始。** 本仓库所有面向用户的英文说明都提供对应 `*.zh-CN.md` 中文版；后续文档更新应保持中英文同步。
 
 这是一个可复用的竖屏运动短片项目，目标是把 CrossFit 或其他训练素材剪成 9:16、4K、运动广告风格的视频，并叠加 WHOOP 风格的数据 HUD。项目同时提供普通 HyperFrames 模板、Codex Skill 和 Codex Plugin 三种使用方式。
 
 ## 从这里开始
 
-- 基础环境要求：[docs/ENVIRONMENT.zh-CN.md](docs/ENVIRONMENT.zh-CN.md)
-- 项目完整工作链路：[docs/WORKFLOW.zh-CN.md](docs/WORKFLOW.zh-CN.md)
-- 本地、Codex、OpenClaw、上传视频和提示词：[docs/CODEX_USAGE.zh-CN.md](docs/CODEX_USAGE.zh-CN.md)
-- 完整模板教程：[docs/TUTORIAL.zh-CN.md](docs/TUTORIAL.zh-CN.md)
-- OpenClaw 兼容说明：[docs/OPENCLAW_COMPATIBILITY.zh-CN.md](docs/OPENCLAW_COMPATIBILITY.zh-CN.md)
+| 你想做什么 | 阅读这里 |
+| --- | --- |
+| 安装 `ffmpeg`、Node.js、Chrome 等基础工具 | [基础环境要求](docs/ENVIRONMENT.zh-CN.md) |
+| 理解完整剪辑和生成链路 | [项目完整工作链路](docs/WORKFLOW.zh-CN.md) |
+| 在 Codex、OpenClaw 中使用，或查看上传视频和提示词范例 | [Codex / OpenClaw 使用指南](docs/CODEX_USAGE.zh-CN.md) |
+| 跑通第一个模板视频 | [完整模板教程](docs/TUTORIAL.zh-CN.md) |
+| 确认 OpenClaw 兼容性 | [OpenClaw 兼容说明](docs/OPENCLAW_COMPATIBILITY.zh-CN.md) |
 
 ## 效果预览
 

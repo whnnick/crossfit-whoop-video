@@ -2,6 +2,8 @@
 
 A reusable HyperFrames template for vertical 4K CrossFit-style training ads with WHOOP-inspired biometric overlays, motion effects, and optional real WHOOP API data.
 
+中文文档见 [README.zh-CN.md](README.zh-CN.md).
+
 ## Project Modes
 
 This repository now supports two use patterns:

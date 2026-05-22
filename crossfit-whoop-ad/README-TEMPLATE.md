@@ -1,6 +1,6 @@
-# Reusable CrossFit WHOOP Ad Template
+# Reusable CrossFit WHOOP Video Template
 
-This project is now a reusable HyperFrames template for 9:16 vertical 4K CrossFit/WHOOP-style training ads.
+This project is now a reusable HyperFrames template for 9:16 vertical 4K CrossFit/WHOOP-style cinematic training videos.
 
 ## Usual Workflow
 
@@ -34,7 +34,7 @@ If you do not want to use a source path and already placed files under `assets/`
 
 - Vertical 4K format: `2160x3840`, 30 seconds.
 - WHOOP API data pipeline.
-- Motion-ad look: dark grade, scan lines, impact flashes, pulse rings, speed lines, and energy wipes.
+- Cinematic performance look: dark grade, scan lines, impact flashes, pulse rings, speed lines, and energy wipes.
 - Compact data treatment that avoids covering the athlete.
 
 ## About AGENTS.md

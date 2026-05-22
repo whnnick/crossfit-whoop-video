@@ -6,7 +6,7 @@
 <h1 align="center">CrossFit WHOOP Video</h1>
 
 <p align="center">
-  Vertical 4K sports-ad video workflow for CrossFit footage, biometric HUDs, and agent-assisted editing.
+  Vertical 4K cinematic sports-video workflow for CrossFit footage, biometric HUDs, and agent-assisted editing.
 </p>
 
 <p align="center">
@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <a href="CHANGELOG.md"><img alt="Version: 1.0.9" src="https://img.shields.io/badge/version-1.0.9-111827"></a>
+  <a href="CHANGELOG.md"><img alt="Version: 1.0.10" src="https://img.shields.io/badge/version-1.0.10-111827"></a>
   <a href="docs/ENVIRONMENT.md"><img alt="Environment: ffmpeg, Node.js, HyperFrames" src="https://img.shields.io/badge/environment-ffmpeg%20%7C%20Node.js%20%7C%20HyperFrames-1677ff"></a>
   <a href="docs/CODEX_USAGE.md"><img alt="Agents: Codex, OpenClaw" src="https://img.shields.io/badge/agents-Codex%20%7C%20OpenClaw-7c3aed"></a>
   <a href="docs/WORKFLOW.md"><img alt="Workflow: 9:16 4K sports video" src="https://img.shields.io/badge/output-9%3A16%204K%20sports%20video-00a36c"></a>
@@ -40,7 +40,7 @@
 
 ## Preview
 
-These animated previews are synthetic. They demonstrate the intended vertical sports-ad HUD direction and multiple reusable HUD styles without using private training footage, real WHOOP data, tokens, or local file paths.
+These animated previews are synthetic. They demonstrate the intended vertical cinematic sports-video HUD direction and multiple reusable HUD styles without using private training footage, real WHOOP data, tokens, or local file paths.
 
 ![Animated CrossFit biometric HUD preview](docs/assets/crossfit-whoop-hud-preview.svg)
 
@@ -51,7 +51,7 @@ These animated previews are synthetic. They demonstrate the intended vertical sp
 For most Codex users, the intended flow is simple: ask Codex to install this skill/plugin from the repository, enable HyperFrames or equivalent video capability, attach workout footage or paste local file paths, then ask Codex to create the edit.
 
 ```text
-Use the crossfit-whoop-video workflow to cut the attached CrossFit footage into a 50 second vertical 4K sports ad. Keep it cinematic and energetic. Show WHOOP-style data only in the opening, peak effort, and ending summary.
+Use the crossfit-whoop-video workflow to cut the attached CrossFit footage into a 50 second vertical 4K cinematic sports video. Keep it energetic and data-driven. Show WHOOP-style data only in the opening, peak effort, and ending summary.
 ```
 
 Codex can use the guidance in this repository to inspect footage, choose complete action shots, build the story arc, create selective HUD overlays, render when the environment supports it, and verify the output. Codex users usually do not need to manually install `ffmpeg`, Node.js, or Chrome before starting if the active Codex plugin/environment already provides video rendering tools.
@@ -97,7 +97,7 @@ Users can also customize HUD styling by prompt. Codex/OpenClaw should start from
 - A reusable template config: `crossfit-whoop-ad/template.config.json`
 - A reusable WHOOP HUD preset catalog with prompt-custom style rules
 - WHOOP OAuth and data-fetch scripts
-- Motion-ad visual treatment: speed lines, pulse rings, scan effects, impact flashes, and transition wipes
+- Cinematic performance visual treatment: speed lines, pulse rings, scan effects, impact flashes, and transition wipes
 
 ## Documentation Structure
 

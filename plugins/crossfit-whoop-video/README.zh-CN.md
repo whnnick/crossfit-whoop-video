@@ -52,13 +52,13 @@ cp -R plugins/crossfit-whoop-video/skills/crossfit-whoop-video ~/.codex/skills/
 提示词示例：
 
 ```text
-Use $crossfit-whoop-video to cut this workout footage into a vertical 4K training ad with biometric HUD overlays.
+Use $crossfit-whoop-video to cut this workout footage into a vertical 4K cinematic training video with biometric HUD overlays.
 ```
 
 也可以中文说：
 
 ```text
-使用 $crossfit-whoop-video，把这段训练素材剪成竖屏 4K 运动广告，并加入选择性生物数据 HUD。
+使用 $crossfit-whoop-video，把这段训练素材剪成竖屏 4K 电影感运动短片，并加入选择性生物数据 HUD。
 ```
 
 自定义 HUD 提示词：

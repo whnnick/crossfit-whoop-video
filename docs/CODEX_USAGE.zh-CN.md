@@ -19,7 +19,7 @@
 4. 复制下面的提示词，让 Codex 按 `crossfit-whoop-video` 工作流剪辑。
 
 ```text
-使用 crossfit-whoop-video 工作流，把我提供的训练视频剪成 50 秒左右的 9:16 竖屏 4K 运动广告。风格要电影感、高燃、节奏紧凑。WHOOP 风格数据只在关键节点出现，不要全程遮挡画面。优先使用完整动作镜头，保留适量训练环境声，最后检查成片时长、分辨率、音频和隐私文件。
+使用 crossfit-whoop-video 工作流，把我提供的训练视频剪成 50 秒左右的 9:16 竖屏 4K 电影感运动短片。风格要高燃、节奏紧凑、有数据科技感。WHOOP 风格数据只在关键节点出现，不要全程遮挡画面。优先使用完整动作镜头，保留适量训练环境声，最后检查成片时长、分辨率、音频和隐私文件。
 ```
 
 ### OpenClaw 普通用户流程
@@ -29,7 +29,7 @@
 3. 提供本地素材路径，并使用下面的提示词。
 
 ```text
-使用 crossfit-whoop-video，把这些本地训练视频剪成 50 秒左右的竖屏 4K 运动广告。使用电影感节奏、完整动作镜头、选择性 WHOOP 风格 HUD，并确保原始素材、渲染成片、.env、token 和健康数据不会进入 Git。
+使用 crossfit-whoop-video，把这些本地训练视频剪成 50 秒左右的竖屏 4K 电影感运动短片。使用完整动作镜头、选择性 WHOOP 风格 HUD，并确保原始素材、渲染成片、.env、token 和健康数据不会进入 Git。
 ```
 
 ## 选择使用方式
@@ -54,7 +54,7 @@
 提示词示例：
 
 ```text
-使用 crossfit-whoop-video 的工作流，把我上传的训练素材剪成 50 秒竖屏 4K 运动广告。风格要电影感、高燃。WHOOP 风格 HUD 只在开头、高强度段落和结尾总结出现。保留部分训练环境声，并用 ffprobe 验证最终输出。
+使用 crossfit-whoop-video 的工作流，把我上传的训练素材剪成 50 秒竖屏 4K 电影感运动短片。风格要高燃、有数据科技感。WHOOP 风格 HUD 只在开头、高强度段落和结尾总结出现。保留部分训练环境声，并用 ffprobe 验证最终输出。
 ```
 
 skill/plugin 里的说明会帮助 Codex 做剪辑判断：完整动作镜头、训练故事线、HUD 出现窗口、音乐和环境声平衡、安全检查和输出验证。它也包含 10 个内置 HUD 预设，包括 `01`、`02`、`04` 等，以及通过 prompt 自定义样式的规则。它不是剪映式 GUI，也不包含私人素材或真实 WHOOP 凭据。
@@ -73,7 +73,7 @@ cp -R skills/crossfit-whoop-video ~/.codex/skills/
 然后在提示词里点名 skill：
 
 ```text
-使用 $crossfit-whoop-video，把这些训练素材剪成 50 秒竖屏 4K CrossFit 广告。风格要电影感、高燃。WHOOP 风格数据只在开头、高强度段落和结尾总结出现。
+使用 $crossfit-whoop-video，把这些训练素材剪成 50 秒竖屏 4K 电影感 CrossFit 运动短片。风格要高燃、有数据科技感。WHOOP 风格数据只在开头、高强度段落和结尾总结出现。
 ```
 
 这一步适合经常复用这个工作流的用户。安装后，以后只要说“使用 `$crossfit-whoop-video`”即可，不需要每次解释完整剪辑规则。
@@ -117,7 +117,7 @@ plugins/crossfit-whoop-video/skills/crossfit-whoop-video/
 OpenClaw 提示词示例：
 
 ```text
-使用 crossfit-whoop-video，把这些本地视频剪成 50 秒竖屏 4K CrossFit 广告。使用电影感节奏、完整动作镜头和选择性生物数据 HUD，并确保私人素材不进入 Git。
+使用 crossfit-whoop-video，把这些本地视频剪成 50 秒竖屏 4K 电影感 CrossFit 运动短片。使用完整动作镜头和选择性生物数据 HUD，并确保私人素材不进入 Git。
 ```
 
 ### OpenClaw 读取 WHOOP 数据
@@ -195,7 +195,7 @@ npm run template:render
 带必选镜头：
 
 ```text
-使用 $crossfit-whoop-video。用这些素材做一支 55 秒竖屏运动广告。必须包含墙球越过目标线的完整动作、拉近的引体向上发力镜头，以及后段一个疲劳搞笑瞬间。至少 80% 动作镜头要是完整动作。
+使用 $crossfit-whoop-video。用这些素材做一支 55 秒竖屏电影感运动短片。必须包含墙球越过目标线的完整动作、拉近的引体向上发力镜头，以及后段一个疲劳搞笑瞬间。至少 80% 动作镜头要是完整动作。
 ```
 
 带音乐：
@@ -229,7 +229,7 @@ npm run template:render
 - 45-60 秒
 - 9:16 竖屏
 - 尽量 4K
-- 电影感 CrossFit 运动广告
+- 电影感 CrossFit 运动短片
 
 安全：
 - 不要提交原始视频、渲染成片、.env、token 或个人健康数据导出

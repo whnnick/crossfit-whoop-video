@@ -1,4 +1,4 @@
-# 教程：用自己的素材生成训练广告
+# 教程：用自己的素材生成电影感训练短片
 
 这份教程说明如何用自己的训练视频和自己的 WHOOP 账号使用模板。
 
@@ -138,7 +138,7 @@ template.config.json
 - `subjectArea: "right"`：人物主要在右侧。
 - `subjectArea: "center"`：人物比较居中。
 - `dataDensity: "minimal"`：只保留很少的数据面板。
-- `dataDensity: "balanced"`：使用当前运动广告风格。
+- `dataDensity: "balanced"`：使用当前电影感运动短片风格。
 
 ## 7. 应用、检查和渲染
 
@@ -151,7 +151,7 @@ npm run template:render
 默认输出由 `template.config.json` 控制：
 
 ```text
-renders/crossfit-whoop-ad-template.mp4
+renders/crossfit-whoop-video-template.mp4
 ```
 
 渲染视频会被 Git 忽略。

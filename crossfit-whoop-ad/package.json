@@ -1,6 +1,6 @@
 {
-  "name": "crossfit-whoop-ad",
-  "version": "1.0.9",
+  "name": "crossfit-whoop-video-template",
+  "version": "1.0.10",
   "private": true,
   "type": "module",
   "scripts": {

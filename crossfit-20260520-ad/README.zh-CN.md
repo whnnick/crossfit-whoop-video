@@ -1,4 +1,4 @@
-# CrossFit WHOOP 广告模板
+# CrossFit WHOOP 视频模板
 
 这个项目用于渲染一支竖屏 4K CrossFit 短片，包含电影感调色、按节奏剪辑的训练素材、选择性出现的 WHOOP HUD、音乐、健身房环境声和转场音效。
 
@@ -57,4 +57,4 @@ npm run render
 - 分辨率：2160 x 3840
 - FPS：30
 - 时长：由 `scripts/timeline.mjs` 里的 `OUTPUT_DURATION` 控制
-- 当前最终文件名：`crossfit-20260520-ad-vertical-4k-whoop-v2-airbike-50s.mp4`
+- 当前最终文件名：`crossfit-20260520-video-vertical-4k-whoop-v2-airbike-50s.mp4`

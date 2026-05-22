@@ -6,7 +6,7 @@
 <h1 align="center">CrossFit WHOOP Video</h1>
 
 <p align="center">
-  面向 CrossFit 和训练素材的竖屏 4K 运动广告工作流，支持 WHOOP 风格动态数据 HUD、Codex Skill 和 OpenClaw 参考用法。
+  面向 CrossFit 和训练素材的竖屏 4K 电影感运动短片工作流，支持 WHOOP 风格动态数据 HUD、Codex Skill 和 OpenClaw 参考用法。
 </p>
 
 <p align="center">
@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <a href="CHANGELOG.zh-CN.md"><img alt="版本: 1.0.9" src="https://img.shields.io/badge/version-1.0.9-111827"></a>
+  <a href="CHANGELOG.zh-CN.md"><img alt="版本: 1.0.10" src="https://img.shields.io/badge/version-1.0.10-111827"></a>
   <a href="docs/ENVIRONMENT.zh-CN.md"><img alt="环境: ffmpeg, Node.js, HyperFrames" src="https://img.shields.io/badge/environment-ffmpeg%20%7C%20Node.js%20%7C%20HyperFrames-1677ff"></a>
   <a href="docs/CODEX_USAGE.zh-CN.md"><img alt="Agent: Codex, OpenClaw" src="https://img.shields.io/badge/agents-Codex%20%7C%20OpenClaw-7c3aed"></a>
   <a href="docs/WORKFLOW.zh-CN.md"><img alt="输出: 9:16 4K sports video" src="https://img.shields.io/badge/output-9%3A16%204K%20sports%20video-00a36c"></a>
@@ -27,7 +27,7 @@
 
 > **中文用户从这里开始。** 本仓库所有面向用户的英文说明都提供对应 `*.zh-CN.md` 中文版；后续文档更新应保持中英文同步。
 
-这是一个可复用的竖屏运动短片项目，目标是把 CrossFit 或其他训练素材剪成 9:16、4K、运动广告风格的视频，并叠加 WHOOP 风格的数据 HUD。项目同时提供普通 HyperFrames 模板、Codex Skill 和 Codex Plugin 三种使用方式。
+这是一个可复用的竖屏运动短片项目，目标是把 CrossFit 或其他训练素材剪成 9:16、4K、电影感运动大片风格的视频，并叠加 WHOOP 风格的数据 HUD。项目同时提供普通 HyperFrames 模板、Codex Skill 和 Codex Plugin 三种使用方式。
 
 ## 从这里开始
 
@@ -42,7 +42,7 @@
 
 ## 效果预览
 
-下面是合成动态预览图，用来展示竖屏运动广告和多种 WHOOP 风格 HUD 的方向。它们不使用你的真实训练画面、真实 WHOOP 数据、token 或本地路径。
+下面是合成动态预览图，用来展示竖屏电影感运动短片和多种 WHOOP 风格 HUD 的方向。它们不使用你的真实训练画面、真实 WHOOP 数据、token 或本地路径。
 
 ![CrossFit biometric HUD 动态预览](docs/assets/crossfit-whoop-hud-preview.svg)
 
@@ -64,7 +64,7 @@
 对大多数 Codex 用户来说，目标很简单：让 Codex 帮你安装这个 skill/plugin，启用 HyperFrames 或等价的视频生成能力，上传训练视频或粘贴本地路径，然后让 Codex 按这套方法剪辑。
 
 ```text
-使用 crossfit-whoop-video 的工作流，把我上传的 CrossFit 素材剪成 50 秒竖屏 4K 运动广告。风格要电影感、高燃。WHOOP 风格数据只在开头、高强度段落和结尾总结出现。
+使用 crossfit-whoop-video 的工作流，把我上传的 CrossFit 素材剪成 50 秒竖屏 4K 电影感运动短片。风格要高燃、有大片感、有数据科技感。WHOOP 风格数据只在开头、高强度段落和结尾总结出现。
 ```
 
 如果当前 Codex 插件/环境已经提供视频渲染能力，Codex 用户通常不需要在开始前手动安装 `ffmpeg`、Node.js 或 Chrome。
@@ -298,7 +298,7 @@ git ls-files
 示例：
 
 ```text
-使用 $crossfit-whoop-video，把 /path/to/video1.mov 和 /path/to/video2.mov 剪成 60 秒竖屏 4K CrossFit 运动广告。节奏要电影感，WHOOP 数据只在开头、中段高强度和结尾总结出现。
+使用 $crossfit-whoop-video，把 /path/to/video1.mov 和 /path/to/video2.mov 剪成 60 秒竖屏 4K CrossFit 电影感运动短片。节奏要高燃、有数据科技感，WHOOP 数据只在开头、中段高强度和结尾总结出现。
 ```
 
 如果只想使用模板，不想用 Codex，也可以直接改 `template.config.json` 后运行 npm 脚本。

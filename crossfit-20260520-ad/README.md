@@ -57,4 +57,4 @@ npm run render
 - Resolution: 2160 x 3840
 - FPS: 30
 - Duration: controlled by `OUTPUT_DURATION` in `scripts/timeline.mjs`
-- Current final render name: `crossfit-20260520-ad-vertical-4k-whoop-v2-airbike-50s.mp4`
+- Current final render name: `crossfit-20260520-video-vertical-4k-whoop-v2-airbike-50s.mp4`

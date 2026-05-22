@@ -1,6 +1,6 @@
 ---
 name: crossfit-whoop-video
-description: Create or refine vertical CrossFit, HYROX, gym, or sports-training videos with cinematic editing, 9:16/4K delivery, ffmpeg/HyperFrames-style pipelines, music and ambient audio mixing, transition SFX, and selective WHOOP-style biometric HUD overlays. Use when the user provides workout footage and asks for a short-form training ad, sports promo, WHOOP data visualization, reusable editing template, or future-proof video workflow.
+description: Create or refine vertical CrossFit, HYROX, gym, or sports-training videos with cinematic editing, 9:16/4K delivery, ffmpeg/HyperFrames-style pipelines, music and ambient audio mixing, transition SFX, and selective WHOOP-style biometric HUD overlays. Use when the user provides workout footage and asks for a cinematic training video, data-tech sports film, WHOOP data visualization, reusable editing template, or future-proof video workflow.
 ---
 
 # CrossFit WHOOP Video
@@ -39,7 +39,7 @@ Use this skill to turn workout footage into a vertical short with a clear traini
 
 ## Editing Rules
 
-- Keep 80% or more of action shots as complete movements when the user requests a polished sports promo.
+- Keep 80% or more of action shots as complete movements when the user requests a polished cinematic sports video.
 - For wall balls, prefer shots where the ball clearly crosses the target line.
 - For pull-ups, crop/zoom so the athlete is the subject.
 - For bike shots, use close kinetic framing where face, arms, and fan/bike motion are readable.

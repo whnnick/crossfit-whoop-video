@@ -1,7 +1,7 @@
 {
   "name": "crossfit-whoop-video",
-  "version": "1.0.9",
-  "description": "Create vertical CrossFit training ads with cinematic editing workflows, WHOOP-style biometric HUDs, and multi-device workout data guidance.",
+  "version": "1.0.10",
+  "description": "Create vertical CrossFit cinematic training videos with WHOOP-style biometric HUDs and multi-device workout data guidance.",
   "author": {
     "name": "CrossFit WHOOP Video Contributors"
   },
@@ -26,7 +26,7 @@
       "Interactive"
     ],
     "defaultPrompt": [
-      "Cut this CrossFit footage into a vertical sports ad.",
+      "Cut this CrossFit footage into a vertical cinematic sports video.",
       "Add selective WHOOP-style HUD overlays to this workout video.",
       "Plan a 50 second gym edit from these clips."
     ],

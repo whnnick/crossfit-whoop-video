@@ -19,7 +19,7 @@ Before local rendering or OpenClaw deployment, also read:
 4. Copy the prompt below and ask Codex to use the `crossfit-whoop-video` workflow.
 
 ```text
-Use the crossfit-whoop-video workflow to edit my workout footage into an approximately 50 second 9:16 vertical 4K sports ad. Make it cinematic, energetic, and tightly paced. Show WHOOP-style data only at key moments, not as a full-video overlay. Prefer complete action shots, preserve some gym ambience, and verify final duration, resolution, audio, and private-file safety.
+Use the crossfit-whoop-video workflow to edit my workout footage into an approximately 50 second 9:16 vertical 4K cinematic sports video. Make it energetic, tightly paced, and data-tech focused. Show WHOOP-style data only at key moments, not as a full-video overlay. Prefer complete action shots, preserve some gym ambience, and verify final duration, resolution, audio, and private-file safety.
 ```
 
 ### OpenClaw User Workflow
@@ -29,7 +29,7 @@ Use the crossfit-whoop-video workflow to edit my workout footage into an approxi
 3. Provide local media paths and use the prompt below.
 
 ```text
-Use crossfit-whoop-video to edit these local workout videos into an approximately 50 second vertical 4K sports ad. Use cinematic pacing, complete action shots, selective WHOOP-style HUD overlays, and make sure raw footage, renders, .env, tokens, and health exports do not enter Git.
+Use crossfit-whoop-video to edit these local workout videos into an approximately 50 second vertical 4K cinematic sports video. Use complete action shots, selective WHOOP-style HUD overlays, and make sure raw footage, renders, .env, tokens, and health exports do not enter Git.
 ```
 
 ## Quick Decision
@@ -54,7 +54,7 @@ Use this flow:
 Example prompt:
 
 ```text
-Use the crossfit-whoop-video workflow to edit the attached workout footage into a 50 second vertical 4K sports ad. Keep it cinematic and energetic. Show WHOOP-style HUD data only in the opening, peak effort, and ending summary. Preserve some gym ambience and verify the final output with ffprobe.
+Use the crossfit-whoop-video workflow to edit the attached workout footage into a 50 second vertical 4K cinematic sports video. Keep it energetic and data-tech focused. Show WHOOP-style HUD data only in the opening, peak effort, and ending summary. Preserve some gym ambience and verify the final output with ffprobe.
 ```
 
 The skill/plugin guidance helps Codex make editing decisions: complete action shots, training arc, selective HUD windows, music/ambient balance, safety checks, and output verification. It also includes 10 built-in HUD presets such as `01`, `02`, and `04`, plus prompt-custom style rules. It is not a CapCut-style GUI and does not include private footage or real WHOOP credentials.
@@ -73,7 +73,7 @@ Restart Codex or open a new conversation if the skill does not appear immediatel
 Then prompt Codex with the skill name:
 
 ```text
-Use $crossfit-whoop-video to cut these workout clips into a 50 second vertical 4K CrossFit ad. Keep it cinematic and energetic. Show WHOOP-style data only in the opening, peak effort, and ending summary.
+Use $crossfit-whoop-video to cut these workout clips into a 50 second vertical 4K cinematic CrossFit video. Keep it energetic and data-tech focused. Show WHOOP-style data only in the opening, peak effort, and ending summary.
 ```
 
 This is useful when you expect to reuse the workflow often. After installing it, you can simply ask Codex to use `$crossfit-whoop-video` instead of restating the full editing rules each time.
@@ -117,7 +117,7 @@ plugins/crossfit-whoop-video/skills/crossfit-whoop-video/
 Example OpenClaw prompt:
 
 ```text
-Use crossfit-whoop-video to edit these local videos into a 50 second vertical 4K CrossFit ad. Use cinematic pacing, complete action shots, selective biometric HUD overlays, and keep private footage out of Git.
+Use crossfit-whoop-video to edit these local videos into a 50 second vertical 4K cinematic CrossFit video. Use complete action shots, selective biometric HUD overlays, and keep private footage out of Git.
 ```
 
 ### WHOOP Data In OpenClaw
@@ -195,7 +195,7 @@ npm run template:render
 With required shots:
 
 ```text
-Use $crossfit-whoop-video. Make a 55 second vertical sports ad from these clips. Include the wall ball rep where the ball clears the target line, the close pull-up effort, and the funny fatigue moment near the end. At least 80% of action shots should show complete movements.
+Use $crossfit-whoop-video. Make a 55 second vertical cinematic sports video from these clips. Include the wall ball rep where the ball clears the target line, the close pull-up effort, and the funny fatigue moment near the end. At least 80% of action shots should show complete movements.
 ```
 
 With music:
@@ -229,7 +229,7 @@ Output:
 - 45-60 seconds
 - 9:16 vertical
 - 4K if practical
-- cinematic CrossFit sports ad
+- cinematic CrossFit sports video
 
 Safety:
 - do not commit raw footage, rendered videos, .env, tokens, or personal health exports

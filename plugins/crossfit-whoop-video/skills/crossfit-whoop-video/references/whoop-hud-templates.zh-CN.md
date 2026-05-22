@@ -4,7 +4,7 @@
 
 ## 内置预制模板
 
-默认电影感运动广告优先使用这些：
+默认电影感运动短片优先使用这些：
 
 - `style_01_broadcast_bright`（`01`、`broadcast_bright`）：开头背景，最接近 5 月 19 日参考风格，但更明亮。
 - `style_02_glass_side_hud`（`02`、`glass_side_hud`）：中段强度数据，右侧半透明面板，大心率数字。

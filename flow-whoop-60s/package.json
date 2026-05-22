@@ -1,6 +1,6 @@
 {
   "name": "flow-whoop-60s",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "private": true,
   "scripts": {
     "beat": "node scripts/generate-beat.mjs",

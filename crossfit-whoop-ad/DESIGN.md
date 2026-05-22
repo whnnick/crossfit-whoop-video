@@ -1,6 +1,6 @@
 ## Style Prompt
 
-A 30-second CrossFit training spot with a premium performance-tech identity: dark gym footage, hard editorial typography, live biometrics, fast scan wipes, compressed contrast, and data overlays that feel like a wearable sensor broadcast. The tone is intense, precise, and commercial, not a dashboard demo.
+A 30-second CrossFit cinematic training video with a premium performance-tech identity: dark gym footage, hard editorial typography, live biometrics, fast scan wipes, compressed contrast, and data overlays that feel like a wearable sensor broadcast. The tone is intense, precise, and filmic, not a dashboard demo.
 
 ## Colors
 

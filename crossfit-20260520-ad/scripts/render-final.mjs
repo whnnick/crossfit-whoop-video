@@ -95,7 +95,7 @@ result = spawnSync(
     "+faststart",
     "-t",
     String(duration),
-    "renders/crossfit-20260520-ad-vertical-4k-whoop-v2-airbike-50s.mp4"
+    "renders/crossfit-20260520-video-vertical-4k-whoop-v2-airbike-50s.mp4"
   ],
   { stdio: "inherit" }
 );

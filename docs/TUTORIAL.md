@@ -138,7 +138,7 @@ Use:
 - `subjectArea: "right"` if the athlete is mostly on the right.
 - `subjectArea: "center"` for balanced footage.
 - `dataDensity: "minimal"` if you want almost no data panels.
-- `dataDensity: "balanced"` for the current ad style.
+- `dataDensity: "balanced"` for the current cinematic sports-video style.
 
 ## 7. Apply, Check, and Render
 
@@ -151,7 +151,7 @@ npm run template:render
 The default output is configured in `template.config.json`:
 
 ```text
-renders/crossfit-whoop-ad-template.mp4
+renders/crossfit-whoop-video-template.mp4
 ```
 
 Rendered videos are ignored by Git.

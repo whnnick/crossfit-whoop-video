@@ -4,7 +4,7 @@ Use `assets/whoop-hud-templates.json` for the machine-readable catalog. The cata
 
 ## Built-In Presets
 
-Use these as the default cinematic sports-ad kit:
+Use these as the default cinematic sports-video kit:
 
 - `style_01_broadcast_bright` (`01`, `broadcast_bright`): opening context, closest to the May 19 reference but brighter.
 - `style_02_glass_side_hud` (`02`, `glass_side_hud`): mid-intensity data, right-side translucent panel with large heart-rate number.

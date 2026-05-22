@@ -1,6 +1,6 @@
-# 可复用 CrossFit WHOOP 广告模板
+# 可复用 CrossFit WHOOP 视频模板
 
-这个项目现在是一个可复用的 HyperFrames 模板，用于生成 9:16 竖屏 4K CrossFit/WHOOP 风格训练广告。
+这个项目现在是一个可复用的 HyperFrames 模板，用于生成 9:16 竖屏 4K CrossFit/WHOOP 风格电影感训练短片。
 
 ## 常用流程
 
@@ -34,7 +34,7 @@ npm run template:render
 
 - 竖屏 4K 格式：`2160x3840`，30 秒。
 - WHOOP API 数据流水线。
-- 运动广告视觉：深色调色、扫描线、冲击闪白、脉冲环、速度线和能量转场。
+- 电影感运动视觉：深色调色、扫描线、冲击闪白、脉冲环、速度线和能量转场。
 - 避免遮挡运动员的紧凑数据展示。
 
 ## 关于 AGENTS.md

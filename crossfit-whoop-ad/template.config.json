@@ -1,12 +1,12 @@
 {
   "version": 1,
-  "name": "crossfit-whoop-vertical-ad",
+  "name": "crossfit-whoop-vertical-video",
   "format": {
     "width": 2160,
     "height": 3840,
     "fps": 30,
     "duration": 30,
-    "output": "renders/crossfit-whoop-ad-template.mp4"
+    "output": "renders/crossfit-whoop-video-template.mp4"
   },
   "media": {
     "videoA": {

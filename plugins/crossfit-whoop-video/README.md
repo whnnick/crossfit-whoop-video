@@ -48,7 +48,7 @@ cp -R plugins/crossfit-whoop-video/skills/crossfit-whoop-video ~/.codex/skills/
 Prompt:
 
 ```text
-Use $crossfit-whoop-video to cut this workout footage into a vertical 4K training ad with biometric HUD overlays.
+Use $crossfit-whoop-video to cut this workout footage into a vertical 4K cinematic training video with biometric HUD overlays.
 ```
 
 Custom HUD prompt:

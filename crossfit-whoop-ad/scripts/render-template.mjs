@@ -5,7 +5,7 @@ import { PROJECT_ROOT } from "./whoop-env.mjs";
 
 const configPath = path.join(PROJECT_ROOT, "template.config.json");
 const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
-const output = config.format?.output || "renders/crossfit-whoop-ad-template.mp4";
+const output = config.format?.output || "renders/crossfit-whoop-video-template.mp4";
 
 await new Promise((resolve, reject) => {
   const apply = spawn(process.execPath, ["scripts/apply-template.mjs"], {

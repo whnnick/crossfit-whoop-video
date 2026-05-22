@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=2160, height=3840" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 2160px;
+        height: 3840px;
+        margin: 0;
+        overflow: hidden;
+        background: #050706;
+        color: #f4f1e8;
+        font-family: Impact, Arial Black, Arial, sans-serif;
+      }
+      #crossfit-20260520-ad {
+        position: relative;
+        width: 2160px;
+        height: 3840px;
+        overflow: hidden;
+        background: #050706;
+      }
+      video,
+      audio,
+      .clip {
+        position: absolute;
+      }
+      video {
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        filter: contrast(1.12) saturate(0.94) brightness(0.76);
+      }
+      .grade,
+      .grain,
+      .vignette {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+      .grade {
+        background:
+          radial-gradient(circle at 12% 18%, rgba(199, 255, 0, 0.14), transparent 26%),
+          radial-gradient(circle at 88% 68%, rgba(255, 59, 31, 0.16), transparent 30%),
+          linear-gradient(90deg, rgba(5, 7, 6, 0.58), transparent 45%, rgba(5, 7, 6, 0.74));
+        z-index: 10;
+      }
+      .grain {
+        opacity: 0.15;
+        z-index: 11;
+        background-image:
+          repeating-radial-gradient(circle at 16% 18%, rgba(244, 241, 232, 0.15) 0 1px, transparent 1px 5px),
+          repeating-linear-gradient(0deg, rgba(244, 241, 232, 0.08) 0 1px, transparent 1px 7px);
+        mix-blend-mode: overlay;
+      }
+      .vignette {
+        z-index: 12;
+        background: radial-gradient(circle at 50% 45%, transparent 45%, rgba(5, 7, 6, 0.74) 100%);
+      }
+      .copy {
+        z-index: 20;
+        left: 92px;
+        bottom: 260px;
+        opacity: 0;
+        font-size: 168px;
+        line-height: 0.86;
+        text-transform: uppercase;
+        text-shadow: 0 24px 80px rgba(0, 0, 0, 0.58);
+      }
+      .mono {
+        z-index: 21;
+        left: 96px;
+        top: 116px;
+        opacity: 0;
+        padding: 14px 18px;
+        border-left: 6px solid #c7ff00;
+        background: rgba(5, 7, 6, 0.78);
+        font-family: Menlo, Consolas, monospace;
+        font-size: 34px;
+        color: #f4f1e8;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="crossfit-20260520-ad" data-composition-id="crossfit-20260520-ad" data-start="0" data-duration="59.97" data-width="2160" data-height="3840">
+      <video id="clip-01" data-start="0" data-duration="4.2" data-track-index="0" src="assets/clips/01-prep.mp4" muted playsinline></video>
+      <video id="clip-02" data-start="4.2" data-duration="4.4" data-track-index="1" src="assets/clips/02-bike-start.mp4" muted playsinline></video>
+      <video id="clip-03" data-start="8.6" data-duration="4.6" data-track-index="0" src="assets/clips/03-bike-power.mp4" muted playsinline></video>
+      <video id="clip-04" data-start="13.2" data-duration="4" data-track-index="1" src="assets/clips/04-bike-fatigue.mp4" muted playsinline></video>
+      <video id="clip-05" data-start="17.2" data-duration="4.2" data-track-index="0" src="assets/clips/05-wallball-setup.mp4" muted playsinline></video>
+      <video id="clip-06" data-start="21.4" data-duration="4.6" data-track-index="1" src="assets/clips/06-wallball-throw.mp4" muted playsinline></video>
+      <video id="clip-07" data-start="26" data-duration="3.8" data-track-index="0" src="assets/clips/07-pullup-close.mp4" muted playsinline></video>
+      <video id="clip-08" data-start="29.8" data-duration="4.5" data-track-index="1" src="assets/clips/08-pullup-effort.mp4" muted playsinline></video>
+      <video id="clip-09" data-start="34.3" data-duration="3.8" data-track-index="0" src="assets/clips/09-wallball-power.mp4" muted playsinline></video>
+      <video id="clip-10" data-start="38.1" data-duration="4.17" data-track-index="1" src="assets/clips/10-fall-comedy.mp4" muted playsinline></video>
+      <video id="clip-11" data-start="42.27" data-duration="3.6" data-track-index="0" src="assets/clips/11-reset.mp4" muted playsinline></video>
+      <video id="clip-12" data-start="45.87" data-duration="4.6" data-track-index="1" src="assets/clips/12-final-wallball.mp4" muted playsinline></video>
+      <video id="clip-13" data-start="50.47" data-duration="5" data-track-index="0" src="assets/clips/13-final-throw.mp4" muted playsinline></video>
+      <video id="clip-14" data-start="55.47" data-duration="4.5" data-track-index="1" src="assets/clips/14-finish.mp4" muted playsinline></video>
+      <audio id="music" data-start="0" data-duration="59.97" data-track-index="3" src="assets/music-bed.wav" data-volume="0.82"></audio>
+      <div class="grade"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+      <div id="tag" class="clip mono" data-start="0.3" data-duration="4.4" data-track-index="10">CROSSFIT / MAY 20</div>
+      <div id="copy-1" class="clip copy" data-start="0.6" data-duration="3.8" data-track-index="11">START<br />COLD</div>
+      <div id="copy-2" class="clip copy" data-start="38.2" data-duration="3.8" data-track-index="12">RESET<br />FAST</div>
+      <div id="copy-3" class="clip copy" data-start="54.2" data-duration="4.8" data-track-index="13">FINISH<br />HOT</div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      for (let i = 1; i <= 14; i += 1) {
+        const id = `#clip-${String(i).padStart(2, "0")}`;
+        const el = document.querySelector(id);
+        const start = Number(el.dataset.start);
+        const duration = Number(el.dataset.duration);
+        tl.set(id, { opacity: 1 }, start);
+        tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "power2.out" }, start);
+        tl.to(id, { opacity: 0, duration: 0.16, ease: "power2.in" }, start + duration - 0.16);
+      }
+      tl.fromTo("#tag", { opacity: 0, x: -70 }, { opacity: 1, x: 0, duration: 0.25 }, 0.3);
+      tl.to("#tag", { opacity: 0, x: -40, duration: 0.2 }, 4.3);
+      ["#copy-1", "#copy-2", "#copy-3"].forEach((selector) => {
+        const el = document.querySelector(selector);
+        const start = Number(el.dataset.start);
+        const duration = Number(el.dataset.duration);
+        tl.fromTo(selector, { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 0.28, ease: "power3.out" }, start);
+        tl.to(selector, { opacity: 0, y: -55, duration: 0.25 }, start + duration - 0.25);
+      });
+      window.__timelines["crossfit-20260520-ad"] = tl;
+    </script>
+  </body>
+</html>

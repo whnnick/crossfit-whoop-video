@@ -1,0 +1,4 @@
+interface:
+  display_name: "CrossFit WHOOP Video"
+  short_description: "Vertical CrossFit edits with WHOOP HUDs"
+  default_prompt: "Use $crossfit-whoop-video to cut a vertical CrossFit short with WHOOP data overlays."

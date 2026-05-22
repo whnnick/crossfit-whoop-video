@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "templates": [
+    {
+      "id": "broadcast_bright",
+      "role": "opening",
+      "durationSeconds": [3, 6],
+      "layout": "large headline + bottom data strip",
+      "visualStyle": "brighter cinematic WHOOP green, light scan grid, subtle vignette",
+      "motion": ["number roll", "scan-line sweep", "progress bar grow", "soft beat flash"],
+      "safeZones": ["lower third", "left headline area"],
+      "metrics": ["heart_rate", "strain", "recovery"]
+    },
+    {
+      "id": "glass_side_hud",
+      "role": "mid-intensity",
+      "durationSeconds": [2, 4],
+      "layout": "right-side translucent glass panel",
+      "visualStyle": "cyan heart-rate number, WHOOP green load bar, thin white dividers",
+      "motion": ["heart-rate tick", "bar grow", "panel slide-in", "micro pulse"],
+      "safeZones": ["right side", "upper right"],
+      "metrics": ["heart_rate", "calories", "strain", "duration"]
+    },
+    {
+      "id": "summary_card",
+      "role": "ending",
+      "durationSeconds": [4, 8],
+      "layout": "large bottom card with metric grid",
+      "visualStyle": "glass card, green top accent, clear bold numbers",
+      "motion": ["tiles reveal sequentially", "numbers count up", "final glow"],
+      "safeZones": ["bottom half", "full-width lower panel"],
+      "metrics": ["duration", "calories", "avg_heart_rate", "max_heart_rate", "recovery", "sleep"]
+    },
+    {
+      "id": "compact_telemetry",
+      "role": "action-safe insert",
+      "durationSeconds": [1.5, 3],
+      "layout": "small corner chip with two stacked metrics",
+      "visualStyle": "minimal glass, thin green border, no headline",
+      "motion": ["quick slide-in", "number flicker", "slide-out"],
+      "safeZones": ["top left", "top right"],
+      "metrics": ["heart_rate", "strain"]
+    },
+    {
+      "id": "redline_peak",
+      "role": "peak alert",
+      "durationSeconds": [1, 2],
+      "layout": "short alert band + large peak number",
+      "visualStyle": "WHOOP green plus restrained red accent",
+      "motion": ["impact flash", "peak number punch-in", "short shake"],
+      "safeZones": ["side band", "bottom strip"],
+      "metrics": ["max_heart_rate", "zone"]
+    },
+    {
+      "id": "minimal_ticker",
+      "role": "low-obstruction data",
+      "durationSeconds": [3, 8],
+      "layout": "bottom ticker strip",
+      "visualStyle": "black translucent strip, compact monospace labels",
+      "motion": ["ticker crawl", "small numeric updates"],
+      "safeZones": ["bottom edge"],
+      "metrics": ["heart_rate", "strain", "recovery"]
+    }
+  ]
+}

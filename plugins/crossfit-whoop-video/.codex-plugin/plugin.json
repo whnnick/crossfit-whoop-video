@@ -1,0 +1,35 @@
+{
+  "name": "crossfit-whoop-video",
+  "version": "0.1.0",
+  "description": "Create vertical CrossFit training ads with cinematic editing workflows, WHOOP-style biometric HUDs, and multi-device workout data guidance.",
+  "author": {
+    "name": "CrossFit WHOOP Video Contributors"
+  },
+  "license": "MIT",
+  "keywords": [
+    "crossfit",
+    "whoop",
+    "apple-watch",
+    "video",
+    "ffmpeg",
+    "sports"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "CrossFit WHOOP Video",
+    "shortDescription": "Cinematic CrossFit edits with biometric HUDs.",
+    "longDescription": "A Codex plugin and skill bundle for planning, cutting, rendering, and validating vertical CrossFit or gym training videos with selective WHOOP-style overlays and real workout metrics from supported data exports.",
+    "developerName": "CrossFit WHOOP Video Contributors",
+    "category": "Creativity",
+    "capabilities": [
+      "Write",
+      "Interactive"
+    ],
+    "defaultPrompt": [
+      "Cut this CrossFit footage into a vertical sports ad.",
+      "Add selective WHOOP-style HUD overlays to this workout video.",
+      "Plan a 50 second gym edit from these clips."
+    ],
+    "brandColor": "#B6FF00"
+  }
+}

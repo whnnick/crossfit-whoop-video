@@ -1,0 +1,15 @@
+# Generated media
+/assets/clips/
+/assets/overlays/
+/assets/base-cut.mp4
+/assets/ambient.wav
+/assets/music-bed.wav
+/assets/sfx.wav
+/renders/
+
+# Local source media links or copied footage
+/assets/source/
+
+# Local previews and OS noise
+/previews/
+.DS_Store

@@ -1,0 +1,17 @@
+{
+  "name": "crossfit-20260520-ad",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "clips": "node scripts/prepare-clips.mjs",
+    "music": "node scripts/select-music.mjs",
+    "ambient": "node scripts/extract-ambient.mjs",
+    "sfx": "node scripts/generate-sfx.mjs",
+    "overlays": "node scripts/generate-overlays.mjs",
+    "render": "node scripts/render-final.mjs",
+    "clean": "rm -rf assets/clips assets/base-cut.mp4 assets/ambient.wav assets/music-bed.wav assets/sfx.wav assets/overlays previews/.DS_Store",
+    "all": "npm run clips && npm run music && npm run ambient && npm run sfx && npm run overlays && npm run render",
+    "check": "npx hyperframes lint && npx hyperframes validate"
+  }
+}

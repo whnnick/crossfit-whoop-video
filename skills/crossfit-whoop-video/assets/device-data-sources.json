@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "whoop",
+      "access": "direct_api",
+      "input": ["oauth_api_response", "json_export"],
+      "metrics": ["duration", "calories", "average_heart_rate", "max_heart_rate", "strain", "recovery", "sleep_score", "heart_rate_zones"],
+      "notes": "Use real WHOOP API/export data. Do not commit tokens or raw private responses."
+    },
+    {
+      "id": "apple_watch",
+      "access": "export_file",
+      "input": ["apple_health_export_xml", "fit", "tcx", "csv"],
+      "metrics": ["duration", "active_calories", "average_heart_rate", "max_heart_rate", "heart_rate_samples", "workout_type"],
+      "notes": "Prefer Apple Health export or HealthFit-style exports. Direct HealthKit access requires an iOS app/export bridge."
+    },
+    {
+      "id": "garmin",
+      "access": "export_file",
+      "input": ["fit", "tcx", "csv"],
+      "metrics": ["duration", "calories", "average_heart_rate", "max_heart_rate", "heart_rate_samples"],
+      "notes": "Use local exports unless the project explicitly implements Garmin authorization."
+    },
+    {
+      "id": "strava",
+      "access": "direct_api_or_export_file",
+      "input": ["oauth_api_response", "fit", "tcx", "gpx"],
+      "metrics": ["duration", "calories", "average_heart_rate", "max_heart_rate", "distance", "pace"],
+      "notes": "Use only user-authorized data."
+    },
+    {
+      "id": "manual",
+      "access": "manual_entry",
+      "input": ["typed_metrics", "screenshot_reading"],
+      "metrics": ["duration", "calories", "average_heart_rate", "max_heart_rate", "recovery", "sleep_score"],
+      "notes": "Label manual values clearly and avoid pretending they came from an API."
+    }
+  ]
+}

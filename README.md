@@ -2,11 +2,15 @@
 
 A reusable HyperFrames template for vertical 4K CrossFit-style training ads with WHOOP-inspired biometric overlays, motion effects, and optional real WHOOP API data.
 
-## Is This a Codex Skill?
+## Project Modes
 
-No. This repository is a normal HyperFrames video template project, not a Codex skill.
+This repository now supports two use patterns:
 
-The intended use is:
+- `crossfit-whoop-ad/`: a normal HyperFrames video template project.
+- `skills/crossfit-whoop-video/`: a Codex skill that teaches Codex how to plan and execute CrossFit/WHOOP-style edits.
+- `plugins/crossfit-whoop-video/`: a Codex plugin bundle that packages the skill for plugin-based installs.
+
+For the normal template project, the intended use is:
 
 1. Clone the repository.
 2. Add your own footage.
@@ -14,14 +18,49 @@ The intended use is:
 4. Edit `template.config.json`.
 5. Render a new video.
 
-Codex or another coding agent can help operate and customize the template, but users do not install this repository as a Codex skill.
+For the Codex skill, copy or symlink `skills/crossfit-whoop-video/` into your Codex skills directory, then ask Codex to use `$crossfit-whoop-video`.
+
+Example:
+
+```bash
+mkdir -p ~/.codex/skills
+cp -R skills/crossfit-whoop-video ~/.codex/skills/
+```
+
+Then prompt Codex:
+
+```text
+Use $crossfit-whoop-video to cut this CrossFit footage into a 50 second vertical 4K sports ad with selective WHOOP overlays.
+```
+
+For the Codex plugin bundle:
+
+```bash
+mkdir -p ~/plugins
+cp -R plugins/crossfit-whoop-video ~/plugins/
+```
+
+OpenClaw compatibility notes are in [docs/OPENCLAW_COMPATIBILITY.md](docs/OPENCLAW_COMPATIBILITY.md).
 
 ## What This Repository Contains
 
 - A HyperFrames composition under `crossfit-whoop-ad/`
+- A reusable Codex skill under `skills/crossfit-whoop-video/`
+- A Codex plugin bundle under `plugins/crossfit-whoop-video/`
 - A reusable template config: `crossfit-whoop-ad/template.config.json`
 - WHOOP OAuth and data-fetch scripts
 - Motion-ad visual treatment: speed lines, pulse rings, scan effects, impact flashes, and transition wipes
+
+## Device Data Sources
+
+The workflow supports biometric data in these practical ways:
+
+- WHOOP: OAuth/API or exported JSON data.
+- Apple Watch: Apple Health export XML, or FIT/TCX/CSV exports from apps such as HealthFit.
+- Garmin/Strava-style sources: FIT, TCX, GPX, CSV, or authorized API data when implemented by the user.
+- Manual metrics: allowed only when clearly labeled as manual input.
+
+Apple Watch support is export-based in this open-source project. Direct HealthKit access requires an iOS app or export bridge.
 
 ## What This Repository Does Not Include
 

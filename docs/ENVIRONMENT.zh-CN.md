@@ -4,6 +4,8 @@
 
 如果你是在 Codex 里使用，并且已经启用了 HyperFrames 插件或等价的视频生成能力，通常可以先上传素材或粘贴路径并输入提示词，不需要在开始前手动安装本页列出的所有工具。
 
+HyperFrames 是这个项目使用的核心视频引擎。skill/plugin 提供的是 agent 工作流知识；HyperFrames 提供 composition、动画、预览、检查和渲染能力。
+
 对 OpenClaw、本地渲染和开发场景来说，这个项目是本地视频生成工作流，不是云端渲染服务。真正渲染真实素材的机器需要准备好本地视频处理环境。
 
 ## 必需工具
@@ -22,7 +24,7 @@
 - Node.js：20 或更新。
 - npm：使用 Node.js 自带的稳定版本即可。
 - ffmpeg / ffprobe：使用 Homebrew、apt 或官方构建的较新版本。
-- HyperFrames：通过 `npx` 运行；通用模板里需要固定版本时使用 `hyperframes@0.6.22`。
+- HyperFrames：通过 `npx` 运行；通用模板里需要固定版本时使用 `hyperframes@0.6.22`。这表示 HyperFrames 会在命令运行时由 npm/npx 拉取或复用缓存；仓库不会提交 `node_modules/`，也不会默认把 HyperFrames 全局安装到你的电脑里。
 
 ## macOS 安装
 

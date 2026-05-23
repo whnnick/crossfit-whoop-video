@@ -2,6 +2,8 @@
 
 这份文档面向普通 Codex/OpenClaw 用户。目标体验是：让 agent 帮你安装这个 skill/plugin，提供训练素材，复制提示词，然后得到按这套方法生成的剪辑。后面的本地模板部分是给更高阶开发者看的。
 
+重要：HyperFrames 是核心视频生成能力。这个仓库提供的是可复用剪辑流程、skill/plugin 指令、HUD 预设和本地模板脚本，不是 HyperFrames 的替代品。
+
 版本历史记录在 [../CHANGELOG.zh-CN.md](../CHANGELOG.zh-CN.md)。每次发布都应同时更新版本号和更新日志。
 
 如果要做本地渲染或 OpenClaw 部署，再阅读：
@@ -13,8 +15,8 @@
 
 ### Codex 普通用户流程
 
-1. 在 Codex 里说：`请帮我从 https://github.com/whnnick/crossfit-whoop-video 安装 crossfit-whoop-video skill/plugin`。
-2. 启用 HyperFrames 插件或等价的视频生成能力。
+1. 在 Codex 里启用 HyperFrames 插件或等价的视频生成能力。
+2. 对 Codex 说：`请帮我从 https://github.com/whnnick/crossfit-whoop-video 安装 crossfit-whoop-video skill/plugin`。
 3. 上传训练视频，或粘贴本地视频路径。
 4. 复制下面的提示词，让 Codex 按 `crossfit-whoop-video` 工作流剪辑。
 
@@ -36,13 +38,19 @@
 
 | 用户类型 | 推荐方式 |
 | --- | --- |
-| Codex 用户 | 让 Codex 安装 skill/plugin，启用 HyperFrames 或等价视频能力，上传素材或粘贴本地路径，然后输入提示词。 |
-| OpenClaw 用户 | 让 OpenClaw 安装 skill/plugin，并确认本地机器有 `ffmpeg`、Node.js 等工具链，再提供素材路径。配置凭据后，可以通过同一套本地 `whoop:auth` / `whoop:fetch` 脚本读取 WHOOP API 数据。 |
+| Codex 用户 | 先启用 HyperFrames 或等价视频能力，再让 Codex 安装 skill/plugin，上传素材或粘贴本地路径，然后输入提示词。 |
+| OpenClaw 用户 | 让 OpenClaw 安装 skill/plugin，并确认本地机器有 `ffmpeg`、Node.js、npm/npx、HyperFrames 访问能力等工具链，再提供素材路径。配置凭据后，可以通过同一套本地 `whoop:auth` / `whoop:fetch` 脚本读取 WHOOP API 数据。 |
 | 高级/本地开发者 | 使用 `crossfit-whoop-ad/`，编辑 `template.config.json`，按需配置 WHOOP，然后运行 npm 脚本。 |
 
 ## Codex 普通用户流程
 
-对 Codex 用户来说，这个仓库首先是一套可复用的剪辑方法。如果 Codex 已经启用了 HyperFrames 插件或其他视频渲染能力，通常不需要在开始前手动安装 `ffmpeg`、Node.js、Chrome 或本地模板。
+对 Codex 用户来说，这个仓库首先是一套建立在 HyperFrames 之上的可复用剪辑方法。如果 Codex 已经启用了 HyperFrames 插件或其他视频渲染能力，通常不需要在开始前手动安装 `ffmpeg`、Node.js、Chrome 或本地模板。
+
+可以这样理解分工：
+
+- HyperFrames 负责 HTML 视频 composition、动画、预览、检查和渲染。
+- 这个 skill/plugin 负责剪辑方法：选镜头、训练故事线、HUD 出现时机、WHOOP 风格视觉规则、提示词模板、隐私检查和输出 QA。
+- 本地脚本通过 `npx` 调用 HyperFrames；这个仓库不会内置 HyperFrames，也不会把它全局安装到你的电脑里。
 
 使用流程：
 
@@ -57,7 +65,7 @@
 使用 crossfit-whoop-video 的工作流，把我上传的训练素材剪成 50 秒竖屏 4K 电影感运动短片。风格要高燃、有数据科技感。WHOOP 风格 HUD 只在开头、高强度段落和结尾总结出现。保留部分训练环境声，并用 ffprobe 验证最终输出。
 ```
 
-skill/plugin 里的说明会帮助 Codex 做剪辑判断：完整动作镜头、训练故事线、HUD 出现窗口、音乐和环境声平衡、安全检查和输出验证。它也包含 10 个内置 HUD 预设，包括 `01`、`02`、`04` 等，以及通过 prompt 自定义样式的规则。它不是剪映式 GUI，也不包含私人素材或真实 WHOOP 凭据。
+skill/plugin 里的说明会帮助 Codex 做剪辑判断：完整动作镜头、训练故事线、HUD 出现窗口、音乐和环境声平衡、安全检查和输出验证。它也包含 10 个内置 HUD 预设，包括 `01`、`02`、`04` 等，以及通过 prompt 自定义样式的规则。它不是剪映式 GUI，不包含私人素材或真实 WHOOP 凭据，也不是 HyperFrames 渲染能力本身。
 
 ## Codex Skill 安装方式
 

@@ -2,7 +2,9 @@
 
 这是一个 Codex plugin bundle，用于创建竖屏 CrossFit、健身房、HYROX 和运动训练视频，包含电影感剪辑指导和选择性生物数据 HUD。
 
-这个 bundle 是给 agent 使用的工作流/skill 包，不是独立的视频剪辑软件界面。在 Codex 里，应配合 HyperFrames 等已启用的视频能力使用；在 OpenClaw 里，应配合具备本地视频工具链的运行机器使用。
+这个 bundle 是给 agent 使用的工作流/skill 包，不是独立的视频剪辑软件界面，也不内置 HyperFrames 渲染器。在 Codex 里，应配合 HyperFrames 等已启用的视频能力使用；在 OpenClaw 里，应配合具备本地视频工具链的运行机器使用。
+
+HyperFrames 是负责 composition、动画、预览、检查和渲染的核心视频能力。这个 plugin 提供的是可复用剪辑方法、HUD 样式规则、提示词模式和安全检查。
 
 ## 内容
 
@@ -25,7 +27,7 @@ cp -R plugins/crossfit-whoop-video ~/plugins/
 
 ## 作为 OpenClaw 兼容 Bundle 安装
 
-OpenClaw 可以安装包含 `.codex-plugin/plugin.json` 的兼容 Codex bundle。真实视频输出仍需要 OpenClaw 所在机器具备 `ffmpeg`、Node.js 和可用于浏览器渲染的环境。
+OpenClaw 可以安装包含 `.codex-plugin/plugin.json` 的兼容 Codex bundle。真实视频输出仍需要 OpenClaw 所在机器具备 `ffmpeg`、Node.js、npm/npx、HyperFrames 访问能力和可用于浏览器渲染的环境。
 
 ```bash
 openclaw plugins install ./plugins/crossfit-whoop-video

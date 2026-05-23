@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <a href="CHANGELOG.md"><img alt="Version: 1.0.10" src="https://img.shields.io/badge/version-1.0.10-111827"></a>
+  <a href="CHANGELOG.md"><img alt="Version: 1.0.11" src="https://img.shields.io/badge/version-1.0.11-111827"></a>
   <a href="docs/ENVIRONMENT.md"><img alt="Environment: ffmpeg, Node.js, HyperFrames" src="https://img.shields.io/badge/environment-ffmpeg%20%7C%20Node.js%20%7C%20HyperFrames-1677ff"></a>
   <a href="docs/CODEX_USAGE.md"><img alt="Agents: Codex, OpenClaw" src="https://img.shields.io/badge/agents-Codex%20%7C%20OpenClaw-7c3aed"></a>
   <a href="docs/WORKFLOW.md"><img alt="Workflow: 9:16 4K sports video" src="https://img.shields.io/badge/output-9%3A16%204K%20sports%20video-00a36c"></a>
@@ -38,6 +38,14 @@
 | Install local tools for OpenClaw, local rendering, or development | [Environment requirements](docs/ENVIRONMENT.md) |
 | Understand the full pipeline | [End-to-end workflow](docs/WORKFLOW.md) |
 
+## Core Video Capability
+
+HyperFrames is the core video-composition and rendering capability behind this project. The `crossfit-whoop-video` skill/plugin is the reusable editing method: it tells Codex or OpenClaw how to inspect footage, choose complete action shots, place WHOOP-style HUD overlays, keep privacy-safe files ignored, and verify output.
+
+For Codex users, the fastest path is to enable the HyperFrames plugin or an equivalent video capability in Codex, then ask Codex to install/use this skill and provide footage. The skill does not replace HyperFrames; it makes HyperFrames-driven edits more repeatable.
+
+For OpenClaw and local-template users, the project calls HyperFrames through `npx hyperframes` or pinned `npx hyperframes@0.6.22` commands. The repository does not commit `node_modules/` and does not globally install HyperFrames for you.
+
 ## Preview
 
 These animated previews are synthetic. They demonstrate the intended vertical cinematic sports-video HUD direction and multiple reusable HUD styles without using private training footage, real WHOOP data, tokens, or local file paths.
@@ -48,7 +56,7 @@ These animated previews are synthetic. They demonstrate the intended vertical ci
 
 ## Fastest Path: Codex
 
-For most Codex users, the intended flow is simple: ask Codex to install this skill/plugin from the repository, enable HyperFrames or equivalent video capability, attach workout footage or paste local file paths, then ask Codex to create the edit.
+For most Codex users, the intended flow is simple: enable HyperFrames or equivalent video capability, ask Codex to install this skill/plugin from the repository, attach workout footage or paste local file paths, then ask Codex to create the edit.
 
 ```text
 Use the crossfit-whoop-video workflow to cut the attached CrossFit footage into a 50 second vertical 4K cinematic sports video. Keep it energetic and data-driven. Show WHOOP-style data only in the opening, peak effort, and ending summary.

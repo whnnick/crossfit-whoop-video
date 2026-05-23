@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <a href="CHANGELOG.zh-CN.md"><img alt="版本: 1.0.10" src="https://img.shields.io/badge/version-1.0.10-111827"></a>
+  <a href="CHANGELOG.zh-CN.md"><img alt="版本: 1.0.11" src="https://img.shields.io/badge/version-1.0.11-111827"></a>
   <a href="docs/ENVIRONMENT.zh-CN.md"><img alt="环境: ffmpeg, Node.js, HyperFrames" src="https://img.shields.io/badge/environment-ffmpeg%20%7C%20Node.js%20%7C%20HyperFrames-1677ff"></a>
   <a href="docs/CODEX_USAGE.zh-CN.md"><img alt="Agent: Codex, OpenClaw" src="https://img.shields.io/badge/agents-Codex%20%7C%20OpenClaw-7c3aed"></a>
   <a href="docs/WORKFLOW.zh-CN.md"><img alt="输出: 9:16 4K sports video" src="https://img.shields.io/badge/output-9%3A16%204K%20sports%20video-00a36c"></a>
@@ -39,6 +39,14 @@
 | 我想看每个版本更新了什么 | [更新日志](CHANGELOG.zh-CN.md) |
 | 为 OpenClaw、本地渲染或二次开发安装基础工具 | [基础环境要求](docs/ENVIRONMENT.zh-CN.md) |
 | 理解完整剪辑和生成链路 | [项目完整工作链路](docs/WORKFLOW.zh-CN.md) |
+
+## 核心视频能力
+
+HyperFrames 是这个项目背后真正负责视频 composition、动画和渲染的核心能力。`crossfit-whoop-video` skill/plugin 是一套可复用剪辑方法：它告诉 Codex 或 OpenClaw 怎么检查素材、挑选完整动作镜头、安排 WHOOP 风格 HUD、避免提交隐私文件，并验证最终输出。
+
+对 Codex 用户来说，最快路径是先在 Codex 里启用 HyperFrames 插件或等价的视频生成能力，然后让 Codex 安装/使用这个 skill，再上传素材或粘贴本地路径。这个 skill 不是 HyperFrames 的替代品；它是让 HyperFrames 驱动的运动短片剪辑更稳定、更标准化。
+
+对 OpenClaw 和本地模板用户来说，项目会通过 `npx hyperframes` 或固定版本的 `npx hyperframes@0.6.22` 调用 HyperFrames。仓库不会提交 `node_modules/`，也不会替你把 HyperFrames 全局安装到电脑里。
 
 ## 效果预览
 
@@ -61,7 +69,7 @@
 
 ## 最快方式：在 Codex 中使用
 
-对大多数 Codex 用户来说，目标很简单：让 Codex 帮你安装这个 skill/plugin，启用 HyperFrames 或等价的视频生成能力，上传训练视频或粘贴本地路径，然后让 Codex 按这套方法剪辑。
+对大多数 Codex 用户来说，目标很简单：先启用 HyperFrames 或等价的视频生成能力，再让 Codex 帮你安装这个 skill/plugin，上传训练视频或粘贴本地路径，然后让 Codex 按这套方法剪辑。
 
 ```text
 使用 crossfit-whoop-video 的工作流，把我上传的 CrossFit 素材剪成 50 秒竖屏 4K 电影感运动短片。风格要高燃、有大片感、有数据科技感。WHOOP 风格数据只在开头、高强度段落和结尾总结出现。

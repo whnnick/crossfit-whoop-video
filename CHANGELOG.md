@@ -2,6 +2,12 @@
 
 All notable user-facing changes should be recorded here. Every release must update the project version and this changelog.
 
+## 1.0.11 - 2026-05-23
+
+- Clarified that HyperFrames is the core video-composition and rendering capability behind the project.
+- Reworked Codex usage guidance so users enable HyperFrames first, then install/use the skill or plugin.
+- Explained that the repository calls HyperFrames through `npx` and does not commit `node_modules/` or globally install HyperFrames.
+
 ## 1.0.10 - 2026-05-22
 
 - Repositioned the project toward cinematic sports-video and data-tech training-video language.

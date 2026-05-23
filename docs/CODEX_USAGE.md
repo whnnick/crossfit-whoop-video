@@ -2,6 +2,8 @@
 
 This guide is for regular Codex/OpenClaw users. The intended experience is: ask the agent to install this skill/plugin, provide workout footage, copy a prompt, and get a guided edit. The local template section is for advanced developers.
 
+Important: HyperFrames is the core video-generation capability. This repository provides the reusable editing workflow, skill/plugin instructions, HUD presets, and local template scripts. It does not replace HyperFrames.
+
 Version history is tracked in [../CHANGELOG.md](../CHANGELOG.md). Every release should update both the version number and the changelog.
 
 Before local rendering or OpenClaw deployment, also read:
@@ -13,8 +15,8 @@ Before local rendering or OpenClaw deployment, also read:
 
 ### Codex User Workflow
 
-1. In Codex, ask: `Please install the crossfit-whoop-video skill/plugin from https://github.com/whnnick/crossfit-whoop-video`.
-2. Enable HyperFrames or equivalent video generation capability.
+1. Enable the HyperFrames plugin or equivalent video generation capability in Codex.
+2. Ask Codex: `Please install the crossfit-whoop-video skill/plugin from https://github.com/whnnick/crossfit-whoop-video`.
 3. Attach workout videos, or paste local video paths.
 4. Copy the prompt below and ask Codex to use the `crossfit-whoop-video` workflow.
 
@@ -36,13 +38,19 @@ Use crossfit-whoop-video to edit these local workout videos into an approximatel
 
 | User type | Recommended path |
 | --- | --- |
-| Codex user | Ask Codex to install the skill/plugin, enable HyperFrames or equivalent video capability, attach footage or paste local paths, then prompt Codex. |
-| OpenClaw user | Ask OpenClaw to install the skill/plugin, make sure the local machine has `ffmpeg`, Node.js, and related tools, then provide footage paths. WHOOP API data is available through the same local `whoop:auth` / `whoop:fetch` scripts when credentials are configured. |
+| Codex user | Enable HyperFrames or equivalent video capability, ask Codex to install the skill/plugin, attach footage or paste local paths, then prompt Codex. |
+| OpenClaw user | Ask OpenClaw to install the skill/plugin, make sure the local machine has `ffmpeg`, Node.js, npm/npx, HyperFrames access, and related tools, then provide footage paths. WHOOP API data is available through the same local `whoop:auth` / `whoop:fetch` scripts when credentials are configured. |
 | Advanced/local developer | Use `crossfit-whoop-ad/`, edit `template.config.json`, configure WHOOP if needed, and run npm scripts. |
 
 ## Codex User Workflow
 
-For Codex users, this repository is primarily a reusable editing method. If Codex already has the HyperFrames plugin or another video-rendering capability enabled, you usually do not need to manually install `ffmpeg`, Node.js, Chrome, or the local template before asking for an edit.
+For Codex users, this repository is primarily a reusable editing method on top of HyperFrames. If Codex already has the HyperFrames plugin or another video-rendering capability enabled, you usually do not need to manually install `ffmpeg`, Node.js, Chrome, or the local template before asking for an edit.
+
+Think of the split this way:
+
+- HyperFrames handles HTML video composition, animation, preview, inspection, and rendering.
+- This skill/plugin handles the editing playbook: shot selection, training arc, HUD timing, WHOOP-style visual rules, prompt patterns, privacy checks, and output QA.
+- Local scripts call HyperFrames through `npx`; the repository does not include or globally install the HyperFrames app for you.
 
 Use this flow:
 
@@ -57,7 +65,7 @@ Example prompt:
 Use the crossfit-whoop-video workflow to edit the attached workout footage into a 50 second vertical 4K cinematic sports video. Keep it energetic and data-tech focused. Show WHOOP-style HUD data only in the opening, peak effort, and ending summary. Preserve some gym ambience and verify the final output with ffprobe.
 ```
 
-The skill/plugin guidance helps Codex make editing decisions: complete action shots, training arc, selective HUD windows, music/ambient balance, safety checks, and output verification. It also includes 10 built-in HUD presets such as `01`, `02`, and `04`, plus prompt-custom style rules. It is not a CapCut-style GUI and does not include private footage or real WHOOP credentials.
+The skill/plugin guidance helps Codex make editing decisions: complete action shots, training arc, selective HUD windows, music/ambient balance, safety checks, and output verification. It also includes 10 built-in HUD presets such as `01`, `02`, and `04`, plus prompt-custom style rules. It is not a CapCut-style GUI, does not include private footage or real WHOOP credentials, and does not replace the HyperFrames rendering capability.
 
 ## Codex Skill Installation
 

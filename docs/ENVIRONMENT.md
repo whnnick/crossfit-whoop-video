@@ -4,6 +4,8 @@ This page is mainly for OpenClaw users, local template users, contributors, and 
 
 If you are using Codex with the HyperFrames plugin or an equivalent video capability already enabled, you usually can start by attaching footage and prompting Codex. You do not need to manually install every tool on this page before trying the Codex workflow.
 
+HyperFrames is the core video engine used by this project. The skill/plugin gives the agent workflow knowledge; HyperFrames provides the composition, animation, preview, inspection, and rendering capability.
+
 For OpenClaw, local rendering, and development, this repository is a local video-generation workflow. It does not ship a cloud renderer, so the machine that renders real footage needs a working local video environment.
 
 ## Required Tools
@@ -22,7 +24,7 @@ For OpenClaw, local rendering, and development, this repository is a local video
 - Node.js: 20 or newer.
 - npm: current stable version bundled with Node.js.
 - ffmpeg / ffprobe: recent Homebrew, apt, or official binary build.
-- HyperFrames: run through `npx`; the template pins `hyperframes@0.6.22` where needed.
+- HyperFrames: run through `npx`; the template pins `hyperframes@0.6.22` where needed. This means HyperFrames is fetched or reused by npm/npx at command time; it is not committed as `node_modules/` and is not installed globally unless the user chooses to do that separately.
 
 ## macOS Setup
 
